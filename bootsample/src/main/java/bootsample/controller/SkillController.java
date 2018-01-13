@@ -18,7 +18,7 @@ public class SkillController {
 
 	@Autowired
 	private SkillService skillService;
-	
+
 	@GetMapping("/skill")
 	public String doGet(HttpServletRequest request) {
 		request.setAttribute("skills", skillService.findAll());
@@ -26,48 +26,54 @@ public class SkillController {
 		request.setAttribute("mode", "LIST");
 		return "Skill";
 	}
-	
+
 	@GetMapping("/delete-skill")
-	public String deleteSkill(@RequestParam int no, HttpServletRequest request){
+	public String deleteSkill(@RequestParam int no, HttpServletRequest request) {
 		try {
 			skillService.delete(no);
 			request.setAttribute("announce", "You delete successfully");
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			request.setAttribute("announce", "Error when you delete skill");
 		}
 		request.setAttribute("skills", skillService.findAll());
 		request.setAttribute("mode", "LIST");
 		return "Skill";
 	}
-	
+
 	@GetMapping("/new-skill")
-	public String newSkill(HttpServletRequest request){
+	public String newSkill(HttpServletRequest request) {
 		request.setAttribute("announce", "");
 		request.setAttribute("mode", "NEW");
 		return "Skill";
 	}
-	
+
 	@GetMapping("/update-skill")
-	public String updateTask(@RequestParam int no, HttpServletRequest request){
+	public String updateSkill(@RequestParam int no, HttpServletRequest request) {
 		request.setAttribute("announce", "");
 		request.setAttribute("skill", skillService.findSkill(no));
 		request.setAttribute("mode", "UPDATE");
 		return "Skill";
 	}
-	
+
 	@PostMapping("save-skill")
-	public String saveSkill(@ModelAttribute Skill skill, BindingResult bindingResult, HttpServletRequest request){
+	public String saveSkill(@ModelAttribute Skill skill, BindingResult bindingResult, HttpServletRequest request) {
+		String announce = null;		
+		if(skill.getNo()==0)
+		{
+			announce = "add new skill";
+		} else announce = "update skill";
+		
 		try {
-		skillService.save(skill);
-		request.setAttribute("announce", "You update successfully");
-		}catch (Exception e) {
-			request.setAttribute("announce", "Error when you update skill");
+			request.setCharacterEncoding("UTF-8");
+			skillService.save(skill);
+				request.setAttribute("announce", "You "+  announce +" successfully");
+		} catch (Exception e) {
+			
+			request.setAttribute("announce", "Error when you "+ announce);
 		}
 		request.setAttribute("skills", skillService.findAll());
 		request.setAttribute("mode", "LIST");
 		return "Skill";
 	}
-	
-	
+
 }
