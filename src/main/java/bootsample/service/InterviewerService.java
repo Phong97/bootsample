@@ -24,7 +24,6 @@ public class InterviewerService {
 	public List<Interviewer> findAll(){
 		List<Interviewer> interviewers = new ArrayList<>();
 		for(Interviewer interviewer:interviewerRepository.findAll()) {
-			System.out.println(interviewer.toString());
 			interviewers.add(interviewer);
 		}
 		

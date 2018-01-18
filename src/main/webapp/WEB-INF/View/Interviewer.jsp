@@ -60,18 +60,19 @@
 
 <!-- jquery ui -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
 </head>
 
 <body class="no-skin" style="font-size: 13px;">
 
-<%-- thông báo --%>
-<c:if test="${announce ne ''}">
-	<script type="text/javascript">
+	<%-- thông báo --%>
+	<c:if test="${announce ne ''}">
+		<script type="text/javascript">
 	 	var announce = '${announce}';
 		alert(announce);
 	</script>
-</c:if>
+	</c:if>
 
 	<!-- HEADER -->
 	<div id="navbar"
@@ -135,16 +136,16 @@
 			</a></li>
 
 			<!-- fa-desktop: là sử dụng font-awesome để lấy các icon -->
-			<li><a href="skill"> <i
-					class="menu-icon fa fa-file-text"></i> <span class="menu-text">Manage
-						Skill </span>
+			<li><a href="skill"> <i class="menu-icon fa fa-file-text"></i>
+					<span class="menu-text">Manage Skill </span>
 			</a></li>
 			<li><a href="position"> <i
 					class="menu-icon fa fa-line-chart"></i> <span class="menu-text">Manage
 						Position </span>
 			</a></li>
 			<li class="active"><a href="interviewer"> <i
-					class="menu-icon fa fa-users"></i> <span class="menu-text">Manage Interviewer</span>
+					class="menu-icon fa fa-users"></i> <span class="menu-text">Manage
+						Interviewer</span>
 			</a></li>
 		</ul>
 		<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
@@ -197,7 +198,8 @@
 									<thead>
 										<tr style="background: skyblue">
 											<th class="text-center" style="width: 150px">&emsp;&emsp;Name</th>
-											<th class="text-center" style="width: 150px">&emsp;&emsp;Account Fsoft</th>
+											<th class="text-center" style="width: 150px">&emsp;&emsp;Account
+												Fsoft</th>
 											<th class="text-center">&emsp;&emsp;Email</th>
 											<th class="text-center" style="width: 100px">Action</th>
 										</tr>
@@ -208,7 +210,9 @@
 												<td>${interviewer.name}</td>
 												<td>${interviewer.accountfsoft}</td>
 												<td>${interviewer.email}</td>
-												<td><select style="width: 80px !important; height: 26px !important;" onchange="myFunction(this.value, ${interviewer.id})">
+												<td><select
+													style="width: 80px !important; height: 26px !important;"
+													onchange="myFunction(this.value, ${interviewer.id})">
 														<option value="0">Option</option>
 														<option value="1">Calendar</option>
 														<option value="2">Edit</option>
@@ -219,7 +223,7 @@
 									</tbody>
 								</table>
 							</div>
-							
+
 							<div class="col-sm-1 col-xs-1"></div>
 							<!-- chọn action -->
 							<script type="text/javascript">
@@ -249,8 +253,10 @@
 									        });
 									} else if (val == 2) {
 										window.location.assign('update-interviewer?id=' + id)
+									} else if (val == 1) {
+										window.location.assign('view-calendar?id=' + id)
 									}
-								}
+									}
 							</script>
 						</div>
 
@@ -278,12 +284,15 @@
 						<b><h1>MANAGE INTERVIEWER INFORMATION</h1></b>
 					</div>
 					<div class="col-sm-6 col-xs-6">
-						<h2><c:out value="${mode}"></c:out> INTERVIEWER</h2>
+						<h2>
+							<c:out value="${mode}"></c:out>
+							INTERVIEWER
+						</h2>
 					</div>
 					<div class="col-sm-5 col-xs-5"></div>
 					<div class="col-sm-1 col-xs-1"></div>
 
-					<br> <br> <br> <br> <br> 
+					<br> <br> <br> <br> <br>
 					<div class="col-sm-12 col-xs-12">
 						<form action="save-interviewer" method="POST"
 							style="align-items: center;">
@@ -292,8 +301,7 @@
 							</div>
 							<div class="col-sm-10 col-xs-10">
 								<label style="color: black; width: 110px; font-size: 20px;"><b>Name</b></label>
-								<input
-									name="name" type="text"
+								<input name="name" type="text"
 									style="width: 500px !important; height: 33px !important; text-align: center; font-size: 17px !important; color: black;"
 									value="${interviewer.name}" required="required" />
 							</div>
@@ -309,11 +317,14 @@
 							<div class="col-sm-2 col-xs-2"></div>
 							<div class="col-sm-7 col-xs-7">
 								<label style="color: black; width: 110px; font-size: 20px;"><b>Email</b></label>
-								<input onfocusout="KTEmail('email')" id="email" name="email" type="text"
+								<input onfocusout="KTEmail('email')" id="email" name="email"
+									type="text"
 									style="width: 500px !important; height: 33px !important; text-align: center; font-size: 17px !important; color: black;"
 									value="${interviewer.email}" required="required" />
 							</div>
-							<div class="col-sm-3 col-xs-3"> <p style="color: red;" id="pthongbao"></p> </div>
+							<div class="col-sm-3 col-xs-3">
+								<p style="color: red;" id="pthongbao"></p>
+							</div>
 							<br> <br> <br>
 							<div class="col-sm-9 col-xs-9">
 								<div class="col-sm-9 col-xs-9">
@@ -323,7 +334,8 @@
 										<b>SAVE</b>
 									</button>
 								</div>
-								<a href="interviewer"><button type="button" class="pull-right"
+								<a href="interviewer"><button type="button"
+										class="pull-right"
 										style="color: white; width: 80px; font-size: 15px; background-color: #337ab7; margin-left: 50px;">
 										<b>CLOSE</b>
 									</button></a>
@@ -334,6 +346,70 @@
 			</div>
 		</c:when>
 
+		<c:when test="${mode == 'VIEW'}">
+			<div class="main-content">
+
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li><i class="ace-icon fa fa-home home-icon"></i> <a
+								href="home">Home</a></li>
+
+							<li><a href="interviewer">Manage Interviewer</a></li>
+						</ul>
+					</div>
+
+					<div class="page-content">
+						<div class="page-header text-center">
+							<b><h1>MANAGE INTERVIEWER INFORMATION</h1></b>
+						</div>
+						<div class="col-sm-1 col-xs-1"></div>
+						<div class="col-sm-5 col-xs-5">
+							<h2>VIEW CALENDAR</h2>
+						</div>
+						<div class="col-sm-4 col-xs-4"></div>
+						<div class="col-sm-2 col-xs-2"><h3>${interviewer.name}</h3></div>
+						
+
+						<div class="col-sm-12 col-xs-12">
+							<div class="col-sm-1 col-xs-1"></div>
+
+							<div class="table-responsive col-sm-10 col-xs-10">
+								<table id="table"
+									class="table table-bordered table-striped text-center">
+									<thead>
+										<tr style="background: skyblue">
+											<th class="text-center">&emsp;&emsp;Room</th>
+											<th class="text-center">&emsp;&emsp;Start
+												Time</th>
+											<th class="text-center">&emsp;&emsp;End Time</th>
+											<th class="text-center">&emsp;&emsp;Round Name</th>
+											<th class="text-center">&emsp;&emsp;Process Name</th>
+											<th class="text-center">&emsp;&emsp;Start Date</th>
+										</tr>
+									</thead>
+									<tbody id="myTable">
+										<c:forEach var="calendar" items="${calendars}">
+											<tr>
+												<td>${calendar.room}</td>
+												<td>${calendar.starttime}</td>
+												<td>${calendar.endtime}</td>
+												<td>${calendar.roundname}</td>
+												<td>${calendar.processname}</td>
+												<td>${calendar.startdate}</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+
+							<div class="col-sm-1 col-xs-1"></div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</c:when>
 	</c:choose>
 
 	<!-- FOOTER -->

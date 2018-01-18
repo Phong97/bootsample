@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import bootsample.model.Interviewer;
+import bootsample.service.CalendarViewService;
 import bootsample.service.InterviewerService;
 
 @Controller
@@ -19,6 +20,10 @@ public class InterviewerController {
 	
 	@Autowired
 	private InterviewerService interviewerService;
+	
+	@Autowired
+	private CalendarViewService calendarViewService;
+	
 	
 	@GetMapping("/interviewer")
 	public String doGet(HttpServletRequest request) {
@@ -74,6 +79,15 @@ public class InterviewerController {
 		}
 		request.setAttribute("interviewers", interviewerService.findAll());
 		request.setAttribute("mode", "LIST");
+		return PATH;
+	}
+	
+	@GetMapping("/view-calendar")
+	public String viewCalendar(@RequestParam int id, HttpServletRequest request) {
+		request.setAttribute("calendars", calendarViewService.findById(id));
+		request.setAttribute("interviewer", interviewerService.findInterviewer(id));
+		request.setAttribute("announce", "");
+		request.setAttribute("mode", "VIEW");
 		return PATH;
 	}
 }
