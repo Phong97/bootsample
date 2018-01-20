@@ -296,8 +296,8 @@
 							</div>
 							<div class="col-sm-10 col-xs-10">
 								<label style="color: black; width: 110px; font-size: 20px;"><b>Code</b></label>
-								<input
-									<c:if test="${mode == 'UPDATE'}"> <c:out value="disabled='disabled'"></c:out> </c:if>
+								<input 
+									<c:if test="${mode == 'UPDATE'}"> <c:out value="readonly"></c:out> </c:if>
 									name="code" type="text"
 									style="width: 500px !important; height: 33px !important; text-align: center; font-size: 17px !important; color: black;"
 									value="${position.code}" required="required" />
