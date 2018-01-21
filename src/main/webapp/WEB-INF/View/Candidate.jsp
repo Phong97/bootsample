@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -48,10 +47,11 @@
 <script src="Style/js/jquery.dataTables.min.js"></script>
 <script src="Style/js/dataTables.bootstrap.min.js"></script>
 <script>
-	$(document).ready(function() {
-		$("#table").DataTable();
-	});
-</script>
+                        $(document).ready(function() {
+                            $("#table").DataTable();
+                        });
+
+                    </script>
 
 <!-- ace scripts -->
 <script src="Style/js/ace-elements.min.js"></script>
@@ -69,9 +69,10 @@
 	<%-- thông báo --%>
 	<c:if test="${announce ne ''}">
 		<script type="text/javascript">
-	 	var announce = '${announce}';
-		alert(announce);
-	</script>
+                                var announce = '${announce}';
+                                alert(announce);
+
+                            </script>
 	</c:if>
 
 	<!-- HEADER -->
@@ -97,11 +98,11 @@
 	<!-- MENU -->
 	<div id="sidebar" class="sidebar responsive ace-save-state">
 		<script type="text/javascript">
-			try {
-				ace.settings.loadState('sidebar')
-			} catch (e) {
-			}
-		</script>
+                                try {
+                                    ace.settings.loadState('sidebar')
+                                } catch (e) {}
+
+                            </script>
 
 		<div class="sidebar-shortcuts" id="sidebar-shortcuts">
 			<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
@@ -136,21 +137,34 @@
 			</a></li>
 
 			<!-- fa-desktop: là sử dụng font-awesome để lấy các icon -->
-			<li><a href="skill"> <i class="menu-icon fa fa-file-text"></i>
-					<span class="menu-text">Manage Skill </span>
-			</a></li>
-			<li><a href="position"> <i
-					class="menu-icon fa fa-line-chart"></i> <span class="menu-text">Manage
-						Position </span>
-			</a></li>
-			<li><a href="interviewer"> <i
-					class="menu-icon fa fa-users"></i> <span class="menu-text">Manage Interviewer</span>
-			</a></li>
-			<li  class="active"><a href="candidate"> <i
-					class="menu-icon fa fa-user"></i> <span class="menu-text">Manage Candidate</span>
+			<li><a href="candidate"> <i class="menu-icon fa fa-user"></i>
+					<span class="menu-text">Manage Candidate </span>
 			</a></li>
 			<li><a href="question"> <i
-					class="menu-icon fa fa-folder-open-o"></i> <span class="menu-text">Manage Question</span>
+					class="menu-icon fa fa-folder-open-o"></i> <span class="menu-text">Manage
+						Question </span>
+			</a></li>
+			<li><a href="interview_process"> <i
+					class="menu-icon fa fa-hourglass-start"></i> <span
+					class="menu-text">Interview Process </span>
+			</a></li>
+			<li><a href="user"> <i class="menu-icon fa fa-github-alt"></i>
+					<span class="menu-text">Manage User</span>
+			</a></li>
+			<li><a href="candidate"> <i class="menu-icon fa fa-user"></i>
+					<span class="menu-text">Manage Candidate</span>
+			</a></li>
+			<li><a href="question"> <i
+					class="menu-icon fa fa-folder-open-o"></i> <span class="menu-text">Manage
+						Question</span>
+			</a></li>
+			<li><a href="InterviewResult"> <i
+					class="menu-icon fa fa-pencil-square-o"></i> <span
+					class="menu-text">Manage Result</span>
+			</a></li>
+			<li><a href="InterviewSchedule"> <i
+					class="menu-icon fa fa-calendar"></i> <span class="menu-text">Manage
+						Schedule</span>
 			</a></li>
 		</ul>
 		<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
@@ -236,35 +250,36 @@
 							<div class="col-sm-1 col-xs-1"></div>
 							<!-- chọn action -->
 							<script type="text/javascript">
-								function myFunction(val, id) {
-									if (val == 2) {
-										 var dynamicDialog = $('<div id="conformBox">Are you sure to delete?</div>');
-									        
-									        dynamicDialog.dialog({
-									                title : "Warning",
-									                closeOnEscape: true,
-									                modal : true,
-									        
-									               buttons : 
-									                        [{
-									                                text : "Delete",
-									                                click : function() {
-									                                	$(this).dialog("close");
-									                                	window.location.assign('delete-position?id=' + id)
-									                                }
-									                        },
-									                        {
-									                                text : "Cancel",
-									                                click : function() {
-									                                        $(this).dialog("close");
-									                                }
-									                        }]
-									        });
-									} else if (val == 1) {
-										window.location.assign('update-position?id=' + id)
-									}
-								}
-							</script>
+                                                    function myFunction(val, id) {
+                                                        if (val == 2) {
+                                                            var dynamicDialog = $('<div id="conformBox">Are you sure to delete?</div>');
+
+                                                            dynamicDialog.dialog({
+                                                                title: "Warning",
+                                                                closeOnEscape: true,
+                                                                modal: true,
+
+                                                                buttons: [{
+                                                                        text: "Delete",
+                                                                        click: function() {
+                                                                            $(this).dialog("close");
+                                                                            window.location.assign('delete-position?id=' + id)
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        text: "Cancel",
+                                                                        click: function() {
+                                                                            $(this).dialog("close");
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            });
+                                                        } else if (val == 1) {
+                                                            window.location.assign('update-position?id=' + id)
+                                                        }
+                                                    }
+
+                                                </script>
 						</div>
 
 					</div>
@@ -299,7 +314,7 @@
 					<div class="col-sm-5 col-xs-5"></div>
 					<div class="col-sm-1 col-xs-1"></div>
 
-					<br> <br> <br> <br> <br> 
+					<br> <br> <br> <br> <br>
 					<div class="col-sm-12 col-xs-12">
 						<form action="save-position" method="POST"
 							style="align-items: center;">
@@ -308,8 +323,10 @@
 							</div>
 							<div class="col-sm-10 col-xs-10">
 								<label style="color: black; width: 110px; font-size: 20px;"><b>Code</b></label>
-								<input 
-									<c:if test="${mode == 'UPDATE'}"> <c:out value="readonly"></c:out> </c:if>
+								<input
+									<c:if test="${mode == 'UPDATE'}">
+                                                    <c:out value="readonly"></c:out>
+                                                    </c:if>
 									name="code" type="text"
 									style="width: 500px !important; height: 33px !important; text-align: center; font-size: 17px !important; color: black;"
 									value="${position.code}" required="required" />

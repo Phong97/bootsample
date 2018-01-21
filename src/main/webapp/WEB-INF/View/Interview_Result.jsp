@@ -112,39 +112,23 @@
 
              <ul class="nav nav-list">
 
-                <li>
-                	<a href="home"> 
-	                	<i class="menu-icon fa fa-tachometer"></i>
-	                	<span class="menu-text">Home Admin</span>
-					</a> 
-				</li>
+               <li ><a href="home"> <i class="menu-icon fa fa-tachometer"></i>
+					<span class="menu-text">Home Admin</span>
+			</a></li>
 
-                <!-- fa-desktop: là sử dụng font-awesome để lấy các icon -->
-                <li > 
-                	<a href="candidate"> 
-	                	<i class="menu-icon fa fa-user"></i> 
-	                	<span class="menu-text">Manage Candidate </span>
-					</a>
-                </li>
-				<li> 
-                	<a href="question"> 
-	                	<i class="menu-icon fa fa-folder-open-o"></i> 
-	                	<span class="menu-text">Manage Question </span>
-					</a>			
-                </li>
-                <li> 
-                	<a href="interview_process"> 
-	                	<i class="menu-icon fa fa-hourglass-start"></i>
-	                	<span class="menu-text">Interview Process </span>
-					</a>			
-                </li>
-                <li> 
-                	<a href="user"> 
-	                	<i class="menu-icon fa fa-github-alt"></i> 
-	                	<span class="menu-text">Manage User</span>
-					</a>			
-                </li>
-                <li><a href="candidate"> <i
+			<!-- fa-desktop: là sử dụng font-awesome để lấy các icon -->
+			<li><a href="skill"> <i
+					class="menu-icon fa fa-file-text"></i> <span class="menu-text">Manage
+						Skill </span>
+			</a></li>
+			<li><a href="position"> <i
+					class="menu-icon fa fa-line-chart"></i> <span class="menu-text">Manage
+						Position </span>
+			</a></li>
+			<li><a href="interviewer"> <i
+					class="menu-icon fa fa-users"></i> <span class="menu-text">Manage Interviewer</span>
+			</a></li>
+			<li><a href="candidate"> <i
 					class="menu-icon fa fa-user"></i> <span class="menu-text">Manage Candidate</span>
 			</a></li>
 			<li><a href="question"> <i
@@ -274,7 +258,10 @@
 				else
 					if(val==1)
 					{
+						
 						$("#myModal_1").modal();
+						window.location.assign('ViewResult?no=' + no)
+						
 					}					
 			}
 			$(document).ready(function() {

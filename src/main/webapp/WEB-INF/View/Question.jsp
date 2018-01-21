@@ -153,6 +153,18 @@
 					class="menu-icon fa fa-folder-open-o"></i> <span class="menu-text">Manage
 						Question</span>
 			</a></li>
+                <li> 
+                	<a href="InterviewResult"> 
+	                	<i class="menu-icon fa fa-pencil-square-o"></i> 
+	                	<span class="menu-text">Manage Result</span>
+					</a>			
+                </li>
+                <li> 
+                	<a href="InterviewSchedule"> 
+	                	<i class="menu-icon fa fa-calendar"></i> 
+	                	<span class="menu-text">Manage Schedule</span>
+					</a>			
+                </li>
 		</ul>
 		<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 			<i id="sidebar-toggle-icon"

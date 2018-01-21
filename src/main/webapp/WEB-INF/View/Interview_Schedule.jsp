@@ -159,55 +159,39 @@
 
              <ul class="nav nav-list">
 
-                <li>
-                	<a href="home"> 
-	                	<i class="menu-icon fa fa-tachometer"></i>
-	                	<span class="menu-text">Home Admin</span>
-					</a> 
-				</li>
+                <li ><a href="home"> <i class="menu-icon fa fa-tachometer"></i>
+					<span class="menu-text">Home Admin</span>
+			</a></li>
 
-                <!-- fa-desktop: là sử dụng font-awesome để lấy các icon -->
-                <li class="active"> 
-                	<a href="candidate"> 
-	                	<i class="menu-icon fa fa-user"></i> 
-	                	<span class="menu-text">Manage Candidate </span>
-					</a>
-                </li>
-				<li> 
-                	<a href="question"> 
-	                	<i class="menu-icon fa fa-folder-open-o"></i> 
-	                	<span class="menu-text">Manage Question </span>
-					</a>			
-                </li>
-                <li> 
-                	<a href="interview_process"> 
-	                	<i class="menu-icon fa fa-hourglass-start"></i>
-	                	<span class="menu-text">Interview Process </span>
-					</a>			
-                </li>
-                <li> 
-                	<a href="user"> 
-	                	<i class="menu-icon fa fa-github-alt"></i> 
-	                	<span class="menu-text">Manage User</span>
-					</a>			
-                </li>
-                <li><a href="candidate"> <i
+			<!-- fa-desktop: là sử dụng font-awesome để lấy các icon -->
+			<li><a href="skill"> <i
+					class="menu-icon fa fa-file-text"></i> <span class="menu-text">Manage
+						Skill </span>
+			</a></li>
+			<li><a href="position"> <i
+					class="menu-icon fa fa-line-chart"></i> <span class="menu-text">Manage
+						Position </span>
+			</a></li>
+			<li><a href="interviewer"> <i
+					class="menu-icon fa fa-users"></i> <span class="menu-text">Manage Interviewer</span>
+			</a></li>
+			<li><a href="candidate"> <i
 					class="menu-icon fa fa-user"></i> <span class="menu-text">Manage Candidate</span>
 			</a></li>
 			<li><a href="question"> <i
 					class="menu-icon fa fa-folder-open-o"></i> <span class="menu-text">Manage Question</span>
 			</a></li>
-                <li> 
+                <li > 
                 	<a href="InterviewResult"> 
 	                	<i class="menu-icon fa fa-pencil-square-o"></i> 
 	                	<span class="menu-text">Manage Result</span>
 					</a>			
                 </li>
-                <li class="active"> 
+                <li class="active">  
                 	<a href="InterviewSchedule"> 
 	                	<i class="menu-icon fa fa-calendar"></i> 
 	                	<span class="menu-text">Manage Schedule</span>
-					</a>				
+					</a>			
                 </li>
             </ul>
             <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
