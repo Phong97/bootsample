@@ -139,14 +139,14 @@
 			<li><a href="skill"> <i class="menu-icon fa fa-file-text"></i>
 					<span class="menu-text">Manage Skill </span>
 			</a></li>
-			<li class="active"><a href="position"> <i
+			<li><a href="position"> <i
 					class="menu-icon fa fa-line-chart"></i> <span class="menu-text">Manage
 						Position </span>
 			</a></li>
 			<li><a href="interviewer"> <i
 					class="menu-icon fa fa-users"></i> <span class="menu-text">Manage Interviewer</span>
 			</a></li>
-			<li><a href="candidate"> <i
+			<li  class="active"><a href="candidate"> <i
 					class="menu-icon fa fa-user"></i> <span class="menu-text">Manage Candidate</span>
 			</a></li>
 			<li><a href="question"> <i
