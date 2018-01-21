@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -47,11 +48,10 @@
 <script src="Style/js/jquery.dataTables.min.js"></script>
 <script src="Style/js/dataTables.bootstrap.min.js"></script>
 <script>
-                        $(document).ready(function() {
-                            $("#table").DataTable();
-                        });
-
-                    </script>
+	$(document).ready(function() {
+		$("#table").DataTable();
+	});
+</script>
 
 <!-- ace scripts -->
 <script src="Style/js/ace-elements.min.js"></script>
@@ -69,10 +69,9 @@
 	<%-- thông báo --%>
 	<c:if test="${announce ne ''}">
 		<script type="text/javascript">
-                                var announce = '${announce}';
-                                alert(announce);
-
-                            </script>
+	 	var announce = '${announce}';
+		alert(announce);
+	</script>
 	</c:if>
 
 	<!-- HEADER -->
@@ -98,11 +97,11 @@
 	<!-- MENU -->
 	<div id="sidebar" class="sidebar responsive ace-save-state">
 		<script type="text/javascript">
-                                try {
-                                    ace.settings.loadState('sidebar')
-                                } catch (e) {}
-
-                            </script>
+			try {
+				ace.settings.loadState('sidebar')
+			} catch (e) {
+			}
+		</script>
 
 		<div class="sidebar-shortcuts" id="sidebar-shortcuts">
 			<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
@@ -137,35 +136,34 @@
 			</a></li>
 
 			<!-- fa-desktop: là sử dụng font-awesome để lấy các icon -->
-			<li><a href="candidate"> <i class="menu-icon fa fa-user"></i>
-					<span class="menu-text">Manage Candidate </span>
+			<li><a href="skill"> <i class="menu-icon fa fa-file-text"></i>
+					<span class="menu-text">Manage Skill </span>
+			</a></li>
+			<li><a href="position"> <i
+					class="menu-icon fa fa-line-chart"></i> <span class="menu-text">Manage
+						Position </span>
+			</a></li>
+			<li><a href="interviewer"> <i
+					class="menu-icon fa fa-users"></i> <span class="menu-text">Manage Interviewer</span>
+			</a></li>
+			<li  class="active"><a href="candidate"> <i
+					class="menu-icon fa fa-user"></i> <span class="menu-text">Manage Candidate</span>
 			</a></li>
 			<li><a href="question"> <i
-					class="menu-icon fa fa-folder-open-o"></i> <span class="menu-text">Manage
-						Question </span>
+					class="menu-icon fa fa-folder-open-o"></i> <span class="menu-text">Manage Question</span>
 			</a></li>
-			<li><a href="interview_process"> <i
-					class="menu-icon fa fa-hourglass-start"></i> <span
-					class="menu-text">Interview Process </span>
-			</a></li>
-			<li><a href="user"> <i class="menu-icon fa fa-github-alt"></i>
-					<span class="menu-text">Manage User</span>
-			</a></li>
-			<li><a href="candidate"> <i class="menu-icon fa fa-user"></i>
-					<span class="menu-text">Manage Candidate</span>
-			</a></li>
-			<li><a href="question"> <i
-					class="menu-icon fa fa-folder-open-o"></i> <span class="menu-text">Manage
-						Question</span>
-			</a></li>
-			<li><a href="InterviewResult"> <i
-					class="menu-icon fa fa-pencil-square-o"></i> <span
-					class="menu-text">Manage Result</span>
-			</a></li>
-			<li><a href="InterviewSchedule"> <i
-					class="menu-icon fa fa-calendar"></i> <span class="menu-text">Manage
-						Schedule</span>
-			</a></li>
+			<li> 
+                	<a href="InterviewResult"> 
+	                	<i class="menu-icon fa fa-pencil-square-o"></i> 
+	                	<span class="menu-text">Manage Result</span>
+					</a>			
+                </li>
+                <li> 
+                	<a href="InterviewSchedule"> 
+	                	<i class="menu-icon fa fa-calendar"></i> 
+	                	<span class="menu-text">Manage Schedule</span>
+					</a>			
+                </li>
 		</ul>
 		<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 			<i id="sidebar-toggle-icon"
@@ -187,7 +185,7 @@
 							<li><i class="ace-icon fa fa-home home-icon"></i> <a
 								href="home">Home</a></li>
 
-							<li><a href="position">Manage Candidate</a></li>
+							<li><a href="candidate">Manage Candidate</a></li>
 						</ul>
 					</div>
 
@@ -200,7 +198,7 @@
 							<h2>CANDIDATE</h2>
 						</div>
 						<div class="col-sm-5 col-xs-5">
-							<a href="new-position"><button
+							<a href="new-candidate"><button
 									style="border: 0 !important; margin-top: 12px;"
 									class="addcandidate btn btn-primary btn pull-right">
 									<span class="fa fa-plus-circle"> </span> Add Candidate
@@ -211,12 +209,11 @@
 						<div class="col-sm-12 col-xs-12">
 							<div class="col-sm-1 col-xs-1"></div>
 
-							<div class="table-responsive col-sm-10 col-xs-10">
+							<div class="table-responsive col-sm-12 col-xs-12">
 								<table id="table"
 									class="table table-bordered table-striped text-center">
 									<thead>
 										<tr style="background: skyblue">
-											<th class="text-center" style="width: 20px">#</th>
 											<th class="text-center">&emsp;&emsp;ID</th>
 											<th class="text-center">&emsp;&emsp;NAME</th>
 											<th class="text-center">&emsp;&emsp;BIRTH</th>
@@ -229,17 +226,47 @@
 										</tr>
 									</thead>
 									<tbody id="myTable">
-										<c:forEach var="position" items="${positions}">
+										<c:forEach var="candidate" items="${candidates}">
 											<tr>
-												<td>${position.id}</td>
-												<td>${position.code}</td>
-												<td>${position.name}</td>
-												<td><select
-													style="width: 80px !important; height: 26px !important;"
-													onchange="myFunction(this.value, ${position.id})">
+												<td>${candidate.id}</td>
+												<td>${candidate.name}</td>
+												<td>${candidate.birth}</td>
+												<td>${candidate.email}</td>
+												<td>${candidate.phone}</td>
+												<td>${candidate.university}</td>
+												<td>
+													<c:forEach var="position" items="${positions}">
+														<c:if test="${candidate.position_id == position.id}">
+															${position.name}
+														</c:if>
+													</c:forEach>
+												</td>
+												<td>
+													<c:if test="${candidate.coincidence == 0}">
+														<div style="background-color: green; padding: 12px 40px !important;"></div>
+													</c:if>
+													<c:if test="${candidate.coincidence == 1}">
+														<div style="background-color: blue; padding: 12px 40px !important;"></div>
+													</c:if>
+													<c:if test="${candidate.coincidence == 2}">
+														<div style="background-color: orange; padding: 12px 40px !important;"></div>
+													</c:if>
+													<c:if test="${candidate.coincidence == 3}">
+														<div style="background-color: red; padding: 12px 40px !important;"></div>
+													</c:if>
+													<c:if test="${candidate.coincidence == 4}">
+														<div style="background-color: pink; padding: 12px 40px !important;"></div>
+													</c:if>
+													<c:if test="${candidate.coincidence == 5}">
+														<div style="background-color: black; padding: 12px 40px !important;"></div>
+													</c:if>
+												</td>
+												<td><select style="width: 80px !important; height: 26px !important;"
+													onchange="myFunction(this.value, ${candidate.id})">
 														<option value="0">Option</option>
-														<option value="1">Edit</option>
-														<option id="delete" value="2">Delete</option>
+													 	<option value="1">Details</option>
+													  	<option value="2">Edit</option>
+														<option id="delete" value="3">Delete</option>
 												</select></td>
 											</tr>
 										</c:forEach>
@@ -250,36 +277,38 @@
 							<div class="col-sm-1 col-xs-1"></div>
 							<!-- chọn action -->
 							<script type="text/javascript">
-                                                    function myFunction(val, id) {
-                                                        if (val == 2) {
-                                                            var dynamicDialog = $('<div id="conformBox">Are you sure to delete?</div>');
-
-                                                            dynamicDialog.dialog({
-                                                                title: "Warning",
-                                                                closeOnEscape: true,
-                                                                modal: true,
-
-                                                                buttons: [{
-                                                                        text: "Delete",
-                                                                        click: function() {
-                                                                            $(this).dialog("close");
-                                                                            window.location.assign('delete-position?id=' + id)
-                                                                        }
-                                                                    },
-                                                                    {
-                                                                        text: "Cancel",
-                                                                        click: function() {
-                                                                            $(this).dialog("close");
-                                                                        }
-                                                                    }
-                                                                ]
-                                                            });
-                                                        } else if (val == 1) {
-                                                            window.location.assign('update-position?id=' + id)
-                                                        }
-                                                    }
-
-                                                </script>
+								function myFunction(val, id) {
+									if (val == 3) {
+										 var dynamicDialog = $('<div id="conformBox">Are you sure to delete?</div>');
+									        
+									        dynamicDialog.dialog({
+									                title : "Warning",
+									                closeOnEscape: true,
+									                modal : true,
+									        
+									               buttons : 
+									                        [{
+									                                text : "Delete",
+									                                click : function() {
+									                                	$(this).dialog("close");
+									                                	window.location.assign('delete-candidate?id=' + id)
+									                                }
+									                        },
+									                        {
+									                                text : "Cancel",
+									                                click : function() {
+									                                        $(this).dialog("close");
+									                                }
+									                        }]
+									        });
+									} else if (val == 2) {
+										window.location.assign('update-candidate?id=' + id)
+									}
+									else if (val == 1) {
+										window.location.assign('detail-candidate?id=' + id)
+									}
+								}
+							</script>
 						</div>
 
 					</div>
@@ -287,7 +316,7 @@
 			</div>
 		</c:when>
 
-		<c:when test="${mode == 'NEW' || mode == 'UPDATE' }">
+	<c:when test="${mode == 'NEW'}">
 			<div class="main-content">
 
 				<div class="main-content-inner">
@@ -296,19 +325,19 @@
 							<li><i class="ace-icon fa fa-home home-icon"></i> <a
 								href="home">Home</a></li>
 
-							<li><a href="position">Manage Position</a></li>
+							<li><a href="candidate">Manage Candidate</a></li>
 						</ul>
 					</div>
 				</div>
-
+			<br> <br>
 				<div class="page-content">
 					<div class="page-header text-center">
-						<b><h1>MANAGE POSITION INFORMATION</h1></b>
+						<b><h1>MANAGE CANDIDATE INFORMATION</h1></b>
 					</div>
 					<div class="col-sm-6 col-xs-6">
 						<h2>
 							<c:out value="${mode}"></c:out>
-							POSITION
+							CANDIDATE
 						</h2>
 					</div>
 					<div class="col-sm-5 col-xs-5"></div>
@@ -316,49 +345,387 @@
 
 					<br> <br> <br> <br> <br>
 					<div class="col-sm-12 col-xs-12">
-						<form action="save-position" method="POST"
-							style="align-items: center;">
-							<div class="col-sm-2 col-xs-2">
-								<input type="hidden" name="id" value="${position.id}" />
+						<form action="save-candidate" method="POST" style="align-items: center;">
+							<p><strong>Personal Information</strong></p>
+							<div class="form-group col-sm-12 col-xs-12">
+									<input type="hidden" name="id" value="0" />
+							</div>	
+							<div class="form-group col-sm-6">
+								<span>Full name:</span><span style="color: red;">(*)</span>  
+								<input style="width: 230px!important;" class="form-control" type="text" name="name" 
+									id ="fullname" required>
 							</div>
-							<div class="col-sm-10 col-xs-10">
-								<label style="color: black; width: 110px; font-size: 20px;"><b>Code</b></label>
-								<input
-									<c:if test="${mode == 'UPDATE'}">
-                                                    <c:out value="readonly"></c:out>
-                                                    </c:if>
-									name="code" type="text"
-									style="width: 500px !important; height: 33px !important; text-align: center; font-size: 17px !important; color: black;"
-									value="${position.code}" required="required" />
+							<div class="form-group col-sm-6">
+								<span>ID card:</span> 
+								<input style="width: 230px!important;" type="text" class="form-control" value="999999999" name="idcard" 
+									id="idcard">								
 							</div>
-							<br> <br> <br>
-							<div class="col-sm-2 col-xs-2"></div>
-							<div class="col-sm-10 col-xs-10">
-								<label style="color: black; width: 110px; font-size: 20px;"><b>Name</b></label>
-								<input name="name" type="text"
-									style="width: 500px !important; height: 33px !important; text-align: center; font-size: 17px !important; color: black;"
-									value="${position.name}" required="required" />
+							<div class="form-group col-sm-6">
+								<span>Email:</span><span style="color: red;">(*)</span> 
+								<input style="width: 230px!important;" type="email" class="form-control" name="email" 
+									id ="email" required>
 							</div>
-							<br> <br> <br>
-							<div class="col-sm-9 col-xs-9">
-								<div class="col-sm-9 col-xs-9">
-
-									<button class="pull-right" type="submit"
-										style="color: white; width: 80px; font-size: 15px; background-color: #337ab7;">
-										<b>SAVE</b>
-									</button>
-								</div>
-								<a href="position"><button type="button" class="pull-right"
-										style="color: white; width: 80px; font-size: 15px; background-color: #337ab7; margin-left: 50px;">
-										<b>CLOSE</b>
-									</button></a>
+							<div class="form-group col-sm-6">
+								<span>Birth of day:</span><span style="color: red;">(*)</span><br>  
+								<input style="width: 230px!important;" type="date" name="birth"
+									id="birthday" required>
+							</div>
+	
+							<div class="form-group col-sm-6">
+								<span>Phone:</span><span style="color: red;">(*)</span>  
+								<input style="width: 230px!important;" type="text" class="form-control" name="phone" 
+									id="phone" required>
+							</div>
+							<div class="form-group col-sm-6">
+								<span>Address:</span> 
+								<input style="width: 230px!important;" type="text" class="form-control" name="address" 
+									id="address">								
+							</div>
+							<div class="form-group col-sm-12"> 
+								<input style="width: 230px!important;" type="hidden" class="form-control" value="0" name="coincidence" 
+									id="address">								
+							</div>						
+							<p><strong>Education</strong></p>
+							<div class="form-group col-sm-6">
+								<span>University:</span><span style="color: red;">(*)</span>  
+								<input style="width: 230px!important;" class="form-control" type="text" name="university" 
+									id ="university" required>
+							</div>
+							<div class="form-group col-sm-6">
+								<span>Major:</span> 
+								<input style="width: 230px!important;" type="text" class="form-control" name="major" 
+									id ="major">
+							</div>
+							<div class="form-group col-sm-6">
+								<span>Graduation year:</span> 
+								<input style="width: 230px!important;" type="text" class="form-control" value="9999" name="graduationyear" 
+									id="graduationyear">
+							</div>
+	
+							<div class="form-group col-sm-6">
+								<span>GPA:</span> 
+								<input style="width: 230px!important;" type="text" class="form-control" value="4" name="gpa" 
+									id="gpa">
+							</div>
+							<p><strong>Skills</strong></p>
+							<div class="form-group col-sm-12">
+									<select style="width: 230px!important;" name="skill_id" id="skill">
+										<option value="1">Choose Skill</option>            
+	                    			<c:forEach var="skill" items="${skills}">
+										<option value="${skill.no}">${skill.name}</option>
+									</c:forEach>
+		                    		</select>
+							</div>
+							<div class="form-group col-sm-6">
+								<span>GST:</span> 
+								<input style="width: 230px!important;" type="text" class="form-control" name="gst" 
+									id="gst">
+							</div>
+							<div class="form-group col-sm-6">
+								<span>Others:</span> 
+								<input style="width: 230px!important;" type="text" class="form-control" name="others" 
+									id="others">
+							</div>
+							<p><strong>Apply for</strong></p>
+							<div class="form-group col-sm-6">
+									<span>Position:</span><span style="color: red;">(*)</span> <br>
+									<select style="width: 230px!important;" name="position_id" id="position" required>
+										<option>Choose Positon</option>	             
+		                    			<c:forEach var="position" items="${positions}">
+											<option value="${position.id}">${position.name}</option>
+										</c:forEach>
+		                    		</select>
+							</div>
+							<div class="form-group col-sm-6">
+									<span>Interviewer admin:</span><br>
+									<select style="width: 230px!important;" name="intervieweradmin_id" id="intervieweradmin">
+										<option value="1">Choose Interviewer Admin</option>
+										<c:forEach var="interviewer" items="${interviewers}">
+											<option value="${interviewer.id}">${interviewer.name}</option>
+										</c:forEach>
+		                    		</select>
+							</div>
+							<p><strong>Documents</strong></p>
+							<div class="form-group col-sm-12 col-xs-12">					
+								<div class="col-sm-6 col-xs-12">
+									<input style="width: 230px!important;" type="file" name="cv" id="file">
+		                    	</div>
+							</div>
+							
+							<div class="col-sm-6 col-xs-12">
+								<button style="border: 0!important;" type="submit" class="btn btn-success btn-block">
+									<span class="glyphicon glyphicon-ok"></span> Save
+								</button>	
+							</div>
+							<div class="col-sm-6 col-xs-12">
+									<button style="border: 0!important;" type="reset" class="btn btn-danger btn-block">
+										<span class="glyphicon glyphicon-remove"></span> Reset
+									</button>						
 							</div>
 						</form>
 					</div>
 				</div>
 			</div>
 		</c:when>
+		
+		<c:when test="${mode == 'UPDATE'}">
+			<div class="main-content">
 
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li><i class="ace-icon fa fa-home home-icon"></i> <a
+								href="home">Home</a></li>
+
+							<li><a href="question">Manage Candidate</a></li>
+						</ul>
+					</div>
+				</div>
+			<br> <br>
+				<div class="page-content">
+					<div class="page-header text-center">
+						<b><h1>MANAGE CANDIDATE INFORMATION</h1></b>
+					</div>
+					<div class="col-sm-6 col-xs-6">
+						<h2>
+							<c:out value="${mode}"></c:out>
+							CANDIDATE
+						</h2>
+					</div>
+					<div class="col-sm-5 col-xs-5"></div>
+					<div class="col-sm-1 col-xs-1"></div>
+
+					<br> <br> <br> <br> <br>
+					<div class="col-sm-12 col-xs-12">
+						<form action="save-candidate" method="POST" style="align-items: center;">
+							<p><strong>Personal Information</strong></p>
+							<div class="form-group col-sm-12 col-xs-12">
+									<input type="hidden" name="id" value="0" />
+							</div>	
+							<div class="form-group col-sm-6">
+								<span>Full name:</span> 
+								<input style="width: 230px!important;" class="form-control" type="text" name="name" 
+									id ="fullname" required>
+							</div>
+							<div class="form-group col-sm-6">
+								<span>ID card:</span> 
+								<input style="width: 230px!important;" type="text" class="form-control" name="idcard" 
+									id="idcard">								
+							</div>
+							<div class="form-group col-sm-6">
+								<span>Email:</span>
+								<input style="width: 230px!important;" type="text" class="form-control" name="email" 
+									id ="email" required>
+							</div>
+							<div class="form-group col-sm-6">
+								<span>Birth of day:</span><br>  
+								<input style="width: 230px!important;" type="date" name="birth"
+									id="birthday" required>
+							</div>
+	
+							<div class="form-group col-sm-6">
+								<span>Phone:</span>  
+								<input style="width: 230px!important;" type="text" class="form-control" name="phone" 
+									id="phone" required>
+							</div>
+							<div class="form-group col-sm-6">
+								<span>Address:</span> 
+								<input style="width: 230px!important;" type="text" class="form-control" name="address" 
+									id="address">								
+							</div>
+							<div class="form-group col-sm-12"> 
+								<input style="width: 230px!important;" type="hidden" class="form-control" value="0" name="coincidence" 
+									id="address">								
+							</div>						
+							<p><strong>Education</strong></p>
+							<div class="form-group col-sm-6">
+								<span>University:</span> 
+								<input style="width: 230px!important;" class="form-control" type="text" name="university" 
+									id ="university" required>
+							</div>
+							<div class="form-group col-sm-6">
+								<span>Major:</span> 
+								<input style="width: 230px!important;" type="text" class="form-control" name="major" 
+									id ="major">
+							</div>
+							<div class="form-group col-sm-6">
+								<span>Graduation year:</span> 
+								<input style="width: 230px!important;" type="text" class="form-control" name="graduationyear" 
+									id="graduationyear">
+							</div>
+	
+							<div class="form-group col-sm-6">
+								<span>GPA:</span> 
+								<input style="width: 230px!important;" type="text" class="form-control" name="gpa" 
+									id="gpa">
+							</div>
+							<p><strong>Skills</strong></p>
+							<div class="form-group col-sm-12">
+									<select style="width: 230px!important;" name="skill_id" id="skill">
+										<option>Choose Skill</option>            
+	                    			<c:forEach var="skill" items="${skills}">
+										<option value="${skill.no}">${skill.name}</option>
+									</c:forEach>
+		                    		</select>
+							</div>
+							<div class="form-group col-sm-6">
+								<span>GST:</span> 
+								<input style="width: 230px!important;" type="text" class="form-control" name="gst" 
+									id="gst">
+							</div>
+							<div class="form-group col-sm-6">
+								<span>Others:</span> 
+								<input style="width: 230px!important;" type="text" class="form-control" name="others" 
+									id="others">
+							</div>
+							<p><strong>Apply for</strong></p>
+							<div class="form-group col-sm-6">
+									<span>Position:</span><span style="color: red;">(*)</span> <br>
+									<select style="width: 230px!important;" name="position_id" id="position" required>
+										<option>Choose Positon</option>	             
+		                    			<c:forEach var="position" items="${positions}">
+											<option value="${position.id}">${position.name}</option>
+										</c:forEach>
+		                    		</select>
+							</div>
+							<div class="form-group col-sm-6">
+									<span>Interviewer admin:</span><br>
+									<select style="width: 230px!important;" name="intervieweradmin_id" id="intervieweradmin">
+										<option>Choose Interviewer Admin</option>
+										<c:forEach var="interviewer" items="${interviewers}">
+											<option value="${interviewer.id}">${interviewer.name}</option>
+										</c:forEach>
+		                    		</select>
+							</div>
+							<p><strong>Documents</strong></p>
+							<div class="form-group col-sm-12 col-xs-12">
+								<div class="col-sm-6 col-xs-12">
+									<span>NguyenChiTrung.pdf</span> 
+								</div>
+								<div class="col-sm-6 col-xs-12">
+									<input style="width: 230px!important;" type="file" name="cv" id="file">
+		                    	</div>
+							</div>
+							
+							<div class="col-sm-6 col-xs-12">
+								<button style="border: 0!important;" type="submit" class="btn btn-success btn-block">
+									<span class="glyphicon glyphicon-ok"></span> Save
+								</button>	
+							</div>
+							<div class="col-sm-6 col-xs-12">
+									<button style="border: 0!important;" type="reset" class="btn btn-danger btn-block">
+										<span class="glyphicon glyphicon-remove"></span> Reset
+									</button>						
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</c:when>
+		
+		<c:when test="${mode == 'DETAIL'}">
+			<!-- Details Candidate -->
+			<div class="main-content">
+
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li><i class="ace-icon fa fa-home home-icon"></i> <a
+								href="home">Home</a></li>
+
+							<li><a href="question">Manage Candidate</a></li>
+						</ul>
+					</div>
+				</div>
+			<br> <br>
+			<div class="page-content">
+				<div class="page-header text-center">
+					<b><h1>MANAGE CANDIDATE INFORMATION</h1></b>
+				</div>
+			<div class="col-sm-6 col-xs-6">
+			</div>
+			<div class="col-sm-5 col-xs-5"></div>
+			<div class="col-sm-1 col-xs-1"></div>
+			<div class="col-sm-10 col-xs-10">
+			<div style="padding: 0px 10px; background:skyblue">
+					<h2>
+						<span class="glyphicon glyphicon-user"></span>Candidate profile
+					</h2>
+			</div>
+			<h3 class="col-sm-12 col-xs-12"><b>Nguyễn Chí Trung - nckhai09061997@gmail.com</b></h3>
+						<p><strong>Personal Information</strong></p>
+						<hr>
+						<div class="form-group col-sm-6">
+							<span>Full name: </span>Nguyễn Chí Trung
+						</div>
+						<div class="form-group col-sm-6">
+							<span>ID card: </span>205969565
+						</div>
+						<div class="form-group col-sm-6">
+							<span>Birth day: </span> 22/04/1997
+						</div>
+
+						<div class="form-group col-sm-6">
+							<span>Address: </span>Thăng Bình, Quảng Nam 							
+						</div>
+						<div class="form-group col-sm-6">
+							<span>Phone: </span>01665293553	
+						</div>
+						<div class="form-group col-sm-6">
+							<span>Email: </span>nckhai09061997@gmail.com	
+						</div>
+						
+						<p><strong>Education</strong></p>
+						<hr>
+						<div class="form-group col-sm-6">
+							<span>University: </span>HCMUTE
+						</div>
+						<div class="form-group col-sm-6">
+							<span>Major:</span> Information Technology 						
+						</div>
+						<div class="form-group col-sm-6">
+							<span>Graduation year:</span>2019							
+						</div>
+
+						<div class="form-group col-sm-6">
+							<span>GPA:</span> 3.31
+						</div>
+						<p><strong>Skills</strong></p>
+						<hr>
+						<div class="form-group col-sm-4">
+							<span>Skills: </span>.NET, Java
+						</div>
+						<div class="form-group col-sm-4">
+							<span>GST: </span> GST_Java 						
+						</div>
+						<div class="form-group col-sm-4">
+							<span>Others: </span>Toeic 550							
+						</div>
+						<p><strong>Apply for</strong></p>
+						<hr>
+						<div class="form-group col-sm-6">
+							<span>Position: </span>Fresher Java
+						</div>
+						<div class="form-group col-sm-6">
+							<span>Interviewer Admin:</span> Thủy Thị Ngọc Huyền 						
+						</div>
+						<p><strong>Documents</strong></p>
+						<hr>
+						<div class="form-group col-sm-12 col-xs-12">
+								<a href="#"><span>NguyenChiTrung.pdf</span></a>
+						</div>
+						<p><strong>Interviewer history</strong></p>
+						<hr>
+						<div class="form-group col-sm-6">
+							<span>Interviewer: </span>Nguyễn Văn Thanh
+						</div>
+						<div class="form-group col-sm-6">
+							<span>Result: </span><span style="color: #0fda0f;">PASS</span> 						
+						</div>
+					</div>
+				</div>
+			</div>
+		</c:when>
 	</c:choose>
 
 	<!-- FOOTER -->

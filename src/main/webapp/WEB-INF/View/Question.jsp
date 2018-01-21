@@ -140,8 +140,8 @@
 					<span class="menu-text">Manage Skill </span>
 			</a></li>
 			<li><a href="position"> <i
-					class="menu-icon fa fa-line-chart"></i> <span class="menu-text">Manage
-						Position </span>
+					class="menu-icon fa fa-line-chart"></i> 
+					<span class="menu-text">Manage Position </span>
 			</a></li>
 			<li><a href="interviewer"> <i class="menu-icon fa fa-users"></i>
 					<span class="menu-text">Manage Interviewer</span>
@@ -149,11 +149,11 @@
 			<li><a href="candidate"> <i class="menu-icon fa fa-user"></i>
 					<span class="menu-text">Manage Candidate</span>
 			</a></li>
-			<li class="active"><a href="question"> <i
-					class="menu-icon fa fa-folder-open-o"></i> <span class="menu-text">Manage
-						Question</span>
+			<li class="active"><a href="question"> 
+			<i class="menu-icon fa fa-folder-open-o">
+				</i> <span class="menu-text">Manage Question</span>
 			</a></li>
-                <li> 
+			<li> 
                 	<a href="InterviewResult"> 
 	                	<i class="menu-icon fa fa-pencil-square-o"></i> 
 	                	<span class="menu-text">Manage Result</span>
@@ -183,13 +183,11 @@
 				<div class="main-content-inner">
 					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
 						<ul class="breadcrumb">
-							<li><i class="ace-icon fa fa-home home-icon"></i> <a
-								href="home">Home</a></li>
-
-							<li><a href="position">Manage Question</a></li>
+							<li><i class="ace-icon fa fa-home home-icon">
+							</i> <a href="home">Home</a></li>
+							<li><a href="question">Manage Question</a></li>
 						</ul>
 					</div>
-
 					<div class="page-content">
 						<div class="page-header text-center">
 							<b><h1>MANAGE QUESTION INFORMATION</h1></b>
@@ -210,7 +208,7 @@
 						<div class="col-sm-12 col-xs-12">
 							<div class="col-sm-1 col-xs-1"></div>
 
-							<div class="table-responsive col-sm-10 col-xs-10">
+							<div class="table-responsive col-sm-12 col-xs-12">
 								<table id="table"
 									class="table table-bordered table-striped text-center">
 									<thead>
@@ -296,11 +294,11 @@
 							<li><i class="ace-icon fa fa-home home-icon"></i> <a
 								href="home">Home</a></li>
 
-							<li><a href="position">Manage Question</a></li>
+							<li><a href="question">Manage Question</a></li>
 						</ul>
 					</div>
 				</div>
-
+			<br> <br>
 				<div class="page-content">
 					<div class="page-header text-center">
 						<b><h1>MANAGE QUESTION INFORMATION</h1></b>
@@ -363,11 +361,11 @@
 							<li><i class="ace-icon fa fa-home home-icon"></i> <a
 								href="home">Home</a></li>
 
-							<li><a href="position">Manage Question</a></li>
+							<li><a href="question">Manage Question</a></li>
 						</ul>
 					</div>
 				</div>
-
+			<br> <br>
 				<div class="page-content">
 					<div class="page-header text-center">
 						<b><h1>MANAGE QUESTION INFORMATION</h1></b>
