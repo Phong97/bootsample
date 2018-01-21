@@ -11,7 +11,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Manage Skill</title>
+<title>Manage Question</title>
 
 <meta name="description" content="overview &amp; stats" />
 <meta name="viewport"
@@ -60,18 +60,19 @@
 
 <!-- jquery ui -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
 </head>
 
 <body class="no-skin" style="font-size: 13px;">
 
-<%-- thông báo --%>
-<c:if test="${announce ne ''}">
-	<script type="text/javascript">
+	<%-- thông báo --%>
+	<c:if test="${announce ne ''}">
+		<script type="text/javascript">
 	 	var announce = '${announce}';
 		alert(announce);
 	</script>
-</c:if>
+	</c:if>
 
 	<!-- HEADER -->
 	<div id="navbar"
@@ -135,22 +136,22 @@
 			</a></li>
 
 			<!-- fa-desktop: là sử dụng font-awesome để lấy các icon -->
-			<li class="active"><a href="skill"> <i
-					class="menu-icon fa fa-file-text"></i> <span class="menu-text">Manage
-						Skill </span>
+			<li><a href="skill"> <i class="menu-icon fa fa-file-text"></i>
+					<span class="menu-text">Manage Skill </span>
 			</a></li>
-			<li><a href="position"> <i
+			<li class="active"><a href="position"> <i
 					class="menu-icon fa fa-line-chart"></i> <span class="menu-text">Manage
 						Position </span>
 			</a></li>
-			<li><a href="interviewer"> <i
-					class="menu-icon fa fa-users"></i> <span class="menu-text">Manage Interviewer</span>
+			<li><a href="interviewer"> <i class="menu-icon fa fa-users"></i>
+					<span class="menu-text">Manage Interviewer</span>
 			</a></li>
-				<li><a href="candidate"> <i
-					class="menu-icon fa fa-user"></i> <span class="menu-text">Manage Candidate</span>
+			<li><a href="candidate"> <i class="menu-icon fa fa-user"></i>
+					<span class="menu-text">Manage Candidate</span>
 			</a></li>
 			<li><a href="question"> <i
-					class="menu-icon fa fa-folder-open-o"></i> <span class="menu-text">Manage Question</span>
+					class="menu-icon fa fa-folder-open-o"></i> <span class="menu-text">Manage
+						Question</span>
 			</a></li>
 		</ul>
 		<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
@@ -173,23 +174,23 @@
 							<li><i class="ace-icon fa fa-home home-icon"></i> <a
 								href="home">Home</a></li>
 
-							<li><a href="skill">Manage Skill</a></li>
+							<li><a href="position">Manage Question</a></li>
 						</ul>
 					</div>
 
 					<div class="page-content">
 						<div class="page-header text-center">
-							<b><h1>MANAGE SKILL INFORMATION</h1></b>
+							<b><h1>MANAGE QUESTION INFORMATION</h1></b>
 						</div>
 						<div class="col-sm-1 col-xs-1"></div>
 						<div class="col-sm-5 col-xs-5">
-							<h2>SKILL</h2>
+							<h2>QUESTION</h2>
 						</div>
 						<div class="col-sm-5 col-xs-5">
-							<a href="new-skill"><button
+							<a href="new-question"><button
 									style="border: 0 !important; margin-top: 12px;"
 									class="addcandidate btn btn-primary btn pull-right">
-									<span class="fa fa-plus-circle"> </span> Add Skill
+									<span class="fa fa-plus-circle"> </span> Add Question
 								</button></a>
 						</div>
 						<div class="col-sm-1 col-xs-1"></div>
@@ -202,19 +203,29 @@
 									class="table table-bordered table-striped text-center">
 									<thead>
 										<tr style="background: skyblue">
-											<th class="text-center" style="width: 20px">#</th>
-											<th class="text-center">&emsp;&emsp;NAME</th>
+											<th class="text-center">&emsp;&emsp;N.o</th>
+											<th class="text-center">&emsp;&emsp;Position</th>
+											<th class="text-center">&emsp;&emsp;Question</th>
+											<th class="text-center">&emsp;&emsp;Answer</th>
 											<th class="text-center" style="width: 200px">Action</th>
 										</tr>
 									</thead>
 									<tbody id="myTable">
-										<c:forEach var="skill" items="${skills}">
+										<c:forEach var="question" items="${questions}">
 											<tr>
-												<td>${skill.no}</td>
-												<td>${skill.name}</td>
+												<td>${question.no}</td>
+												<td>
+													<c:forEach var="position" items="${positions}">
+														<c:if test="${question.position_id == position.id}">
+															${position.name}
+														</c:if>
+													</c:forEach>
+												</td>
+												<td>${question.question}</td>
+												<td>${question.answer}</td>
 												<td><select
 													style="width: 80px !important; height: 26px !important;"
-													onchange="myFunction(this.value, ${skill.no})">
+													onchange="myFunction(this.value, ${question.no})">
 														<option value="0">Option</option>
 														<option value="1">Edit</option>
 														<option id="delete" value="2">Delete</option>
@@ -224,7 +235,7 @@
 									</tbody>
 								</table>
 							</div>
-							
+
 							<div class="col-sm-1 col-xs-1"></div>
 							<!-- chọn action -->
 							<script type="text/javascript">
@@ -242,7 +253,7 @@
 									                                text : "Delete",
 									                                click : function() {
 									                                	$(this).dialog("close");
-									                                	window.location.assign('delete-skill?no=' + no)
+									                                	window.location.assign('delete-question?no=' + no)
 									                                }
 									                        },
 									                        {
@@ -253,7 +264,7 @@
 									                        }]
 									        });
 									} else if (val == 1) {
-										window.location.assign('update-skill?no=' + no)
+										window.location.assign('update-question?no=' + no)
 									}
 								}
 							</script>
@@ -264,7 +275,7 @@
 			</div>
 		</c:when>
 
-		<c:when test="${mode == 'NEW' || mode == 'UPDATE' }">
+		<c:when test="${mode == 'NEW'}">
 			<div class="main-content">
 
 				<div class="main-content-inner">
@@ -273,47 +284,128 @@
 							<li><i class="ace-icon fa fa-home home-icon"></i> <a
 								href="home">Home</a></li>
 
-							<li><a href="skill">Manage Skill</a></li>
+							<li><a href="position">Manage Question</a></li>
 						</ul>
 					</div>
 				</div>
 
 				<div class="page-content">
 					<div class="page-header text-center">
-						<b><h1>MANAGE SKILL INFORMATION</h1></b>
+						<b><h1>MANAGE QUESTION INFORMATION</h1></b>
 					</div>
 					<div class="col-sm-6 col-xs-6">
-						<h2><c:out value="${mode}"></c:out> SKILL</h2>
+						<h2>
+							<c:out value="${mode}"></c:out>
+							QUESTION
+						</h2>
 					</div>
 					<div class="col-sm-5 col-xs-5"></div>
 					<div class="col-sm-1 col-xs-1"></div>
 
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
+					<br> <br> <br> <br> <br>
 					<div class="col-sm-12 col-xs-12">
-						<form action="save-skill" method="POST" style="align-items: center;">
-						<div class="col-sm-2 col-xs-2"><input type="hidden" name="no" value="${skill.no}"/></div>
-						<div class="col-sm-10 col-xs-10">
-							<label style="color: black; width: 110px; font-size: 20px;"><b>Name</b></label>
-							<input name="name" type="text" style="width: 500px!important; height: 33px!important; text-align: center; font-size: 17px!important; color: black;" value="${skill.name}" required="required" />
+						<form action="save-question" method="POST" style="align-items: center;">
+							<div class="form-group col-sm-12 col-xs-12">
+								<input type="hidden" name="no" value="0" />
+							</div>
+							<div class="form-group col-sm-6 col-xs-12">
+								
+								<span>Position: </span> <span style="color: red;">(*)</span> 
+								<select style="width: 230px!important;" name="position_id" id="position" required>
+									<option>Choose Positon</option>	             
+	                    			<c:forEach var="position" items="${positions}">
+										<option value="${position.id}">${position.name}</option>
+									</c:forEach>
+	                    		</select>
+							</div>						
+						<div class="form-group col-sm-12 col-xs-12">
+							<span>Question:</span><span style="color: red;">(*)</span>  
+							<textarea class="form-control" rows="4" name="question" required></textarea>					
 						</div>
-						<br><br><br>
-						<div class="col-sm-9 col-xs-9">
-						<a href="skill"><button type="button" class="pull-right"style="color: white; width: 80px; font-size: 15px; background-color: #337ab7; margin-left: 50px;"><b>CLOSE</b></button></a>
-						<button class="pull-right" type="submit" style="color: white; width: 80px; font-size: 15px; background-color: #337ab7;"><b>SAVE</b></button>						
+						<div class="form-group col-sm-12 col-xs-12">
+							<span>Answer: </span><span style="color: red;">(*)</span>  
+							<textarea class="form-control" rows="4" name="answer" required></textarea>
+						</div>				
+						
+						<div class="col-sm-6 col-xs-12">
+							<button style="border: 0!important;" type="submit" class="btn btn-success btn-block">
+								<span class="glyphicon glyphicon-ok"></span> Save
+							</button>	
 						</div>
-					</form>
+						<div class="col-sm-6 col-xs-12">
+								<button style="border: 0!important;" type="reset" class="btn btn-danger btn-block">
+									<span class="glyphicon glyphicon-remove"></span> Reset
+								</button>						
+						</div>
+						</form>
 					</div>
 				</div>
 			</div>
 		</c:when>
+		<c:when test="${mode == 'UPDATE'}">
+			<div class="main-content">
 
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li><i class="ace-icon fa fa-home home-icon"></i> <a
+								href="home">Home</a></li>
+
+							<li><a href="position">Manage Question</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="page-content">
+					<div class="page-header text-center">
+						<b><h1>MANAGE QUESTION INFORMATION</h1></b>
+					</div>
+					<div class="col-sm-6 col-xs-6">
+						<h2>
+							<c:out value="${mode}"></c:out>
+							QUESTION
+						</h2>
+					</div>
+					<div class="col-sm-5 col-xs-5"></div>
+					<div class="col-sm-1 col-xs-1"></div>
+
+					<br> <br> <br> <br> <br>
+					<div class="col-sm-12 col-xs-12">
+						<form action="save-position" method="POST"
+							style="align-items: center;">
+							<div class="form-group col-sm-6 col-xs-12">
+								<span>Position: </span>
+								<select style="width: 230px!important;" name="position" id="position" required>
+									<option>Choose Positon</option>
+	                    			<c:forEach var="position" items="${positions}">
+										<option>${position.name}</option>
+									</c:forEach>
+	                    		</select>
+						</div>						
+						<div class="form-group col-sm-12 col-xs-12">
+							<span>Question:</span>
+							<textarea class="form-control" rows="4" name="comment" required></textarea>					
+						</div>
+						<div class="form-group col-sm-12 col-xs-12">
+							<span>Answer: </span>
+							<textarea class="form-control" rows="4" name="comment" required></textarea>
+						</div>				
+						
+						<div class="col-sm-6 col-xs-12">
+							<button style="border: 0!important;" type="submit" class="btn btn-success btn-block">
+								<span class="glyphicon glyphicon-ok"></span> Save
+							</button>	
+						</div>
+						<div class="col-sm-6 col-xs-12">
+								<button style="border: 0!important;" type="reset" class="btn btn-danger btn-block">
+									<span class="glyphicon glyphicon-remove"></span> Reset
+								</button>						
+						</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</c:when>
 	</c:choose>
 
 	<!-- FOOTER -->

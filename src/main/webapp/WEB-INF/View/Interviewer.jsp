@@ -147,6 +147,12 @@
 					class="menu-icon fa fa-users"></i> <span class="menu-text">Manage
 						Interviewer</span>
 			</a></li>
+			<li><a href="candidate"> <i
+					class="menu-icon fa fa-user"></i> <span class="menu-text">Manage Candidate</span>
+			</a></li>
+			<li><a href="question"> <i
+					class="menu-icon fa fa-folder-open-o"></i> <span class="menu-text">Manage Question</span>
+			</a></li>
 		</ul>
 		<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 			<i id="sidebar-toggle-icon"
