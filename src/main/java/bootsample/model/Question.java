@@ -11,18 +11,20 @@ public class Question {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int no;
 	private int position_id;
-	private String question;
+	private String question1;
 	private String answer;
 	
 	public Question() {}
 
-	public Question(int no, int position_id, String question, String answer) {
+	public Question(int no, int position_id, String question1, String answer) {
 		super();
 		this.no = no;
 		this.position_id = position_id;
-		this.question = question;
+		this.question1 = question1;
 		this.answer = answer;
 	}
+
+
 
 	public int getNo() {
 		return no;
@@ -40,12 +42,12 @@ public class Question {
 		this.position_id = position_id;
 	}
 
-	public String getQuestion() {
-		return question;
+	public String getQuestion1() {
+		return question1;
 	}
 
-	public void setQuestion(String question) {
-		this.question = question;
+	public void setQuestion1(String question1) {
+		this.question1 = question1;
 	}
 
 	public String getAnswer() {

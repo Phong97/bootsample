@@ -139,7 +139,7 @@
 			<li><a href="skill"> <i class="menu-icon fa fa-file-text"></i>
 					<span class="menu-text">Manage Skill </span>
 			</a></li>
-			<li class="active"><a href="position"> <i
+			<li><a href="position"> <i
 					class="menu-icon fa fa-line-chart"></i> <span class="menu-text">Manage
 						Position </span>
 			</a></li>
@@ -149,7 +149,7 @@
 			<li><a href="candidate"> <i class="menu-icon fa fa-user"></i>
 					<span class="menu-text">Manage Candidate</span>
 			</a></li>
-			<li><a href="question"> <i
+			<li class="active"><a href="question"> <i
 					class="menu-icon fa fa-folder-open-o"></i> <span class="menu-text">Manage
 						Question</span>
 			</a></li>
@@ -221,7 +221,7 @@
 														</c:if>
 													</c:forEach>
 												</td>
-												<td>${question.question}</td>
+												<td>${question.question1}</td>
 												<td>${question.answer}</td>
 												<td><select
 													style="width: 80px !important; height: 26px !important;"
@@ -319,9 +319,9 @@
 	                    		</select>
 							</div>						
 						<div class="form-group col-sm-12 col-xs-12">
-							<span>Question:</span><span style="color: red;">(*)</span>  
-							<textarea class="form-control" rows="4" name="question" required></textarea>					
-						</div>
+							<span>Question: </span><span style="color: red;">(*)</span>  
+							<textarea class="form-control" rows="4" name="question1" required></textarea>
+						</div>	
 						<div class="form-group col-sm-12 col-xs-12">
 							<span>Answer: </span><span style="color: red;">(*)</span>  
 							<textarea class="form-control" rows="4" name="answer" required></textarea>
@@ -371,24 +371,32 @@
 
 					<br> <br> <br> <br> <br>
 					<div class="col-sm-12 col-xs-12">
-						<form action="save-position" method="POST"
-							style="align-items: center;">
+						<form action="save-question" method="POST" style="align-items: center;">
+							<div class="form-group col-sm-12 col-xs-12">
+								<input type="hidden" name="no" value="${question.no}" />
+							</div>
 							<div class="form-group col-sm-6 col-xs-12">
 								<span>Position: </span>
-								<select style="width: 230px!important;" name="position" id="position" required>
-									<option>Choose Positon</option>
-	                    			<c:forEach var="position" items="${positions}">
-										<option>${position.name}</option>
+								<select style="width: 230px!important;" name="position_id" id="position" required>	
+											
+	                    			<c:forEach var="position" items="${positions}">	
+	                    				<c:if test="${question.position_id == position.id}">
+	                    					<option selected="selected" value="${position.id}">${position.name}</option>
+										</c:if>
+										<c:if test="${question.position_id != position.id}">
+	                    					<option value="${position.id}">${position.name}</option>
+										</c:if>								
 									</c:forEach>
+									
 	                    		</select>
 						</div>						
 						<div class="form-group col-sm-12 col-xs-12">
 							<span>Question:</span>
-							<textarea class="form-control" rows="4" name="comment" required></textarea>					
+							<textarea class="form-control" rows="4" name="question1" required>${question.question1}</textarea>					
 						</div>
 						<div class="form-group col-sm-12 col-xs-12">
 							<span>Answer: </span>
-							<textarea class="form-control" rows="4" name="comment" required></textarea>
+							<textarea class="form-control" rows="4" name="answer" required>${question.answer}</textarea>
 						</div>				
 						
 						<div class="col-sm-6 col-xs-12">
