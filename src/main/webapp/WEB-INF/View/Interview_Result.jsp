@@ -144,6 +144,12 @@
 	                	<span class="menu-text">Manage User</span>
 					</a>			
                 </li>
+                <li><a href="candidate"> <i
+					class="menu-icon fa fa-user"></i> <span class="menu-text">Manage Candidate</span>
+			</a></li>
+			<li><a href="question"> <i
+					class="menu-icon fa fa-folder-open-o"></i> <span class="menu-text">Manage Question</span>
+			</a></li>
                 <li class="active"> 
                 	<a href="InterviewResult"> 
 	                	<i class="menu-icon fa fa-pencil-square-o"></i> 

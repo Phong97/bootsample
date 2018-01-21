@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <!--     Khai báo thư viện -->
+  	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+	
 <!DOCTYPE html >
 <html>
 <head>
@@ -185,14 +191,20 @@
 	                	<span class="menu-text">Manage User</span>
 					</a>			
                 </li>
+                <li><a href="candidate"> <i
+					class="menu-icon fa fa-user"></i> <span class="menu-text">Manage Candidate</span>
+			</a></li>
+			<li><a href="question"> <i
+					class="menu-icon fa fa-folder-open-o"></i> <span class="menu-text">Manage Question</span>
+			</a></li>
                 <li> 
-                	<a href="Interview_Result"> 
+                	<a href="InterviewResult"> 
 	                	<i class="menu-icon fa fa-pencil-square-o"></i> 
 	                	<span class="menu-text">Manage Result</span>
 					</a>			
                 </li>
                 <li class="active"> 
-                	<a href="Interview_Schedule"> 
+                	<a href="InterviewSchedule"> 
 	                	<i class="menu-icon fa fa-calendar"></i> 
 	                	<span class="menu-text">Manage Schedule</span>
 					</a>				
@@ -255,9 +267,10 @@
 								</tr>
 						    </thead>
 							<tbody id="myTable">
+								<c:forEach items="schedules" var="list">
 									<tr>
-										<td>Nguyễn Quang Huy</td>
-										<td>20/01/2017 8:00</td>
+										<td>${list.fullname }</td>
+										<td>${list.start }</td>
 										<td class="text-center">
 											<select style="width: 80px !important; height: 26px!important; "
 											 onchange="myFunction(this.value)">
@@ -267,18 +280,7 @@
 											</select>	
 										</td>
 									</tr>
-									<tr>
-										<td>Nguyễn Van A</td>
-										<td>20/01/2017 9:00</td>
-										<td class="text-center">
-											<select style="width: 80px !important; height: 26px!important; "
-											 onchange="myFunction(this.value)">
-											  <option value="0">Option</option>
-											  <option value="1">Start</option>
-											  <option value="2" id="myBtn2">Edit Information</option>
-											</select>	
-										</td>
-									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -366,9 +368,9 @@
 					</div>
 					<div class="modal-body" style="padding: 20px 30px;">
 							
-							<script src="Huy/js/audiodisplay.js"></script>
-						    <script src="Huy/js/recorderjs/recorder.js"></script>
-						    <script src="Huy/js/main.js"></script>
+							<script src="Style/Huy/js/audiodisplay.js"></script>
+						    <script src="Style/Huy/js/recorderjs/recorder.js"></script>
+						    <script src="Style/Huy/js/main.js"></script>
 							
 						<div class="row">
 						<div class="col-sm-5">
