@@ -19,6 +19,7 @@ public class ScheduleController {
 	@GetMapping("InterviewSchedule")
 	public String doGet(HttpServletRequest request) {
 		request.setAttribute("schedules", scheduleService.findAll());
+		System.out.println("Huy Hello" + scheduleService.findAll());
 		request.setAttribute("announcement", "Show data successfull");
 		request.setAttribute("mode", "LIST");
 		return PATH;

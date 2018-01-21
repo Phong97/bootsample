@@ -22,7 +22,6 @@
 	
 	
 	<!-- page specific plugin styles -->
-	<link rel="stylesheet" href="Style/js/jquery-ui.custom.min.css" />
 	<link rel="stylesheet" href="Style/css/fullcalendar.min.css" />
 	
 	
@@ -78,7 +77,8 @@
             background: radial-gradient(center, ellipse cover, #ff0000 0%, lightgrey 75%, lightgrey 100%, #7db9e8 100%);
         }
 
-        #save, #save img {
+        #save, #save 
+		{
             height: 10vh;
         }
 
@@ -267,7 +267,7 @@
 								</tr>
 						    </thead>
 							<tbody id="myTable">
-								<c:forEach items="schedules" var="list">
+								<c:forEach items="${schedules }" var="list">
 									<tr>
 										<td>${list.fullname }</td>
 										<td>${list.start }</td>
@@ -380,8 +380,8 @@
 									    <canvas id="wavedisplay" width="200px" height="60px"></canvas>
 									</div>
 									<div id="controls">
-									    <img id="record" src="Style/img/mic128.png" onclick="toggleRecording(this);">
-									    <a id="save" href="#"><img src="Style/img/save.svg" style="margin-left: 30px;margin-top: 20px;"></a>
+									    <img id="record" src="Style/images/mic128.png" onclick="toggleRecording(this);">
+									    <a id="save" href="#"><img src="Style/images/save.svg" style="margin-left: 30px;margin-top: 20px;"></a>
 									</div>
 						</div>	
 						<div class="col-sm-7">
