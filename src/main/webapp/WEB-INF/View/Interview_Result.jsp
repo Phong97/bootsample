@@ -153,6 +153,9 @@
         </div>
 
 	<!--BODY -->
+	<c:choose>
+
+		<c:when test="${mode == 'LIST'}">
 		<div class="main-content">
 
 			<div class="main-content-inner">
@@ -209,7 +212,7 @@
 										<td>${list.result }</td>
 										<td>
 											<select style="width: 80px !important; height: 26px!important; "
-											 onchange="myFunction(this.value)">
+											 onchange="myFunction(this.value, ${list.no})">
 											  <option value="0">Option</option>
 											  <option value="1">View</option>
 											  <option value="2">Edit</option>
@@ -220,10 +223,529 @@
 							</tbody>
 						</table>
 					</div>
-				
+					<script type="text/javascript">
+						function myFunction(val, no) {
+							if (val == 2) {
+								window.location.assign('update-result?no=' + no)
+							} else if (val == 1) {
+								window.location.assign('view-result?no=' + no)
+								
+							}
+						}
+					</script>
 				</div>
 			</div>
 		</div>
+		</c:when>
+		<c:when test="${mode == 'VIEW' }">
+		<div class="main-content">
+		
+		<div class="main-content-inner">
+				<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+					<ul class="breadcrumb">
+						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="home">Home</a>
+						</li>
+
+						<li><a href="candidate">Manage Result</a></li>
+						<li class="active"> Display list interview result</li>
+					</ul>
+				</div>
+
+				<div class="page-content">
+					<div class="page-header">
+						<h1> View and Edit Result 
+							<small> 
+								<i class="ace-icon fa fa-angle-double-right"></i> 
+								You can view or edit result
+							</small>
+						</h1>
+					</div>
+					<div class="col-sm-6 col-xs-6">
+						<h2>
+							<c:out value="${mode}"></c:out>
+							RESULT
+						</h2>
+					</div>
+					
+					<div class="row">
+					<div class="col-sm-7">
+						<div class="tab">
+						  <button class="tablinks" onclick="openCity(event, 'round1')">Round 1</button>
+						  <button class="tablinks" onclick="openCity(event, 'round2')">Round 2</button>
+						  <button class="tablinks" onclick="openCity(event, 'round3')">Round 3</button>
+						</div>
+						
+						<div class="tabcontent" id="round1">
+							 
+							 <span>Account :</span> <span>AnhPH10</span> 
+							 <span style="margin-left: 80px">Name :</span> <span>Nguyễn Quang Huy</span>
+								<br><br>
+							 <table id="table" class="table table-bordered table-striped">
+							 	
+							 	<thead>
+							 		<tr>
+							 			<th colspan="3">Skill </th>
+							 			<th>Answer the question </th>
+							 			<th>Mask </th>
+							 			<th>Note </th>
+							 		</tr>
+							 	</thead>
+							 <tbody>
+							 
+							 	
+							 	<tr>
+							 		<th rowspan="3">1</th>
+							 		<td>Basic Knowledge</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+							 	<tr>
+							 		<td>Basic Knowledge</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+						 		<tr>
+							 		<th rowspan="3">1</th>
+							 		<td>Basic Knowledge</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+							 	<tr>
+							 		<td>Basic Knowledge</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+							 	
+							 </tbody>
+							 </table>
+							 
+							 <span>Replay ...</span>
+							 <br>
+							<audio controls autoplay></audio><br>
+							  <button type="button" class="  btn-success">Save</button>
+							    <button type="button" class="  btn-danger">Cancel</button>
+						</div>
+							
+						<div class="tabcontent" id="round2">
+						 
+							 <span>Account :</span> <span>AnhPH10</span> 
+							 <span style="margin-left: 80px">Name :</span> <span>Nguyễn Quang Huy</span>
+								<br><br>
+							 <table id="table" class="table table-bordered table-striped">
+							 	
+							 	<thead>
+							 		<tr>
+							 			<th colspan="3">Skill </th>
+							 			<th>Answer the question </th>
+							 			<th>Mask </th>
+							 			<th>Note </th>
+							 		</tr>
+							 	</thead>
+							 <tbody>
+							 
+							 	
+							 	<tr>
+							 		<th rowspan="3">1</th>
+							 		<td>Basic Knowledge</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+							 	<tr>
+							 		<td>Basic Knowledge Database</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+						 		<tr>
+							 		<th rowspan="3">1</th>
+							 		<td>Basic Knowledge</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+							 	<tr>
+							 		<td>Basic Knowledge UML/Patten</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+							 	
+							 </tbody>
+							 </table>
+						 </div>
+						
+						<div class="tabcontent" id="round3">
+							 
+							<span>Account :</span> <span>AnhPH10</span> 
+							 <span style="margin-left: 80px">Name :</span> <span>Nguyễn Quang Huy</span>
+								<br><br>
+							 <table id="table" class="table table-bordered table-striped">
+							 	
+							 	<thead>
+							 		<tr>
+							 			<th colspan="3">Skill </th>
+							 			<th>Answer the question </th>
+							 			<th>Mask </th>
+							 			<th>Note </th>
+							 		</tr>
+							 	</thead>
+							 <tbody>
+							 
+							 	
+							 	<tr>
+							 		<th rowspan="3">1</th>
+							 		<td>Basic Knowledge OOP</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+							 	<tr>
+							 		<td>Basic Knowledge</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+						 		<tr>
+							 		<th rowspan="3">1</th>
+							 		<td>Basic Knowledge</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+							 	<tr>
+							 		<td>Basic Knowledge</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+							 	
+							 </tbody>
+							 </table>
+						</div>
+					</div>
+					<div class="col-sm-5">
+						
+						<p><strong>Information Candidate</strong></p>
+						<span>Name: </span><span class="viewresult">Nguyễn Quang Huy</span> 
+						<br><br>
+						<span>Position: </span><span class="viewresult">Fresher JAVA</span> 
+						<br><br>
+						<span>Skill: </span> <span class="viewresult">Java,Net</span>
+						<br><br>
+						<span>University: </span> <span class="viewresult">ĐH Sư Phạm Kỹ Thuật Tp Hồ Chí Minh</span>
+						<br><br>
+						<span>GST: </span> <span class="viewresult">Không</span>
+						<br><br>
+						<span>GPA: </span> <span class="viewresult">3</span>
+						<br><br>
+						<table id="table" class="table table-bordered table-striped">
+						
+							 <thead>
+							    <tr style="background: skyblue">
+									<th class="text-center">Round</th>
+									<th class="text-center">Result</th>
+								</tr>
+						    </thead>
+							<tbody id="myTable">
+									<tr>
+										<td>Round 1</td>
+										<td>PASS</td>
+										
+									</tr>
+									<tr>
+										<td>Round 2</td>
+										<td>PASS</td>
+										
+									</tr>
+									<tr>
+										<td>Round 3</td>
+										<td>PASS</td>
+										
+									</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+					
+				</div>
+			</div>
+		</div>
+		
+		</c:when>
+		
+		
+		<c:when test="${mode == 'UPDATE' }">
+		<div class="main-content">
+		
+		<div class="main-content-inner">
+				<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+					<ul class="breadcrumb">
+						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="home">Home</a>
+						</li>
+
+						<li><a href="candidate">Manage Result</a></li>
+						<li class="active"> Display list interview result</li>
+					</ul>
+				</div>
+
+				<div class="page-content">
+					<div class="page-header">
+						<h1> View and Edit Result 
+							<small> 
+								<i class="ace-icon fa fa-angle-double-right"></i> 
+								You can view or edit result
+							</small>
+						</h1>
+					</div>
+					<div class="col-sm-6 col-xs-6">
+						<h2>
+							<c:out value="${mode}"></c:out>
+							RESULT
+						</h2>
+					</div>
+					
+					<div class="row">
+					<div class="col-sm-7">
+						<div class="tab">
+						  <button class="tablinks" onclick="openCity(event, 'round1')">Round 1</button>
+						  <button class="tablinks" onclick="openCity(event, 'round2')">Round 2</button>
+						  <button class="tablinks" onclick="openCity(event, 'round3')">Round 3</button>
+						</div>
+						
+						<div class="tabcontent" id="round1">
+							 
+							 <span>Account :</span> <span>AnhPH10</span> 
+							 <span style="margin-left: 80px">Name :</span> <span>Nguyễn Quang Huy</span>
+								<br><br>
+							 <table id="table" class="table table-bordered table-striped">
+							 	
+							 	<thead>
+							 		<tr>
+							 			<th colspan="3">Skill </th>
+							 			<th>Answer the question </th>
+							 			<th>Mask </th>
+							 			<th>Note </th>
+							 		</tr>
+							 	</thead>
+							 <tbody>
+							 
+							 	
+							 	<tr>
+							 		<th rowspan="3">1</th>
+							 		<td>Basic Knowledge</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+							 	<tr>
+							 		<td>Basic Knowledge</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+						 		<tr>
+							 		<th rowspan="3">1</th>
+							 		<td>Basic Knowledge</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+							 	<tr>
+							 		<td>Basic Knowledge</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+							 	
+							 </tbody>
+							 </table>
+							 
+							 <span>Replay ...</span>
+							 <br>
+							<audio controls autoplay></audio><br>
+							  <button type="button" class="  btn-success">Save</button>
+							    <button type="button" class="  btn-danger">Cancel</button>
+						</div>
+							
+						<div class="tabcontent" id="round2">
+						 
+							 <span>Account :</span> <span>AnhPH10</span> 
+							 <span style="margin-left: 80px">Name :</span> <span>Nguyễn Quang Huy</span>
+								<br><br>
+							 <table id="table" class="table table-bordered table-striped">
+							 	
+							 	<thead>
+							 		<tr>
+							 			<th colspan="3">Skill </th>
+							 			<th>Answer the question </th>
+							 			<th>Mask </th>
+							 			<th>Note </th>
+							 		</tr>
+							 	</thead>
+							 <tbody>
+							 
+							 	
+							 	<tr>
+							 		<th rowspan="3">1</th>
+							 		<td>Basic Knowledge</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+							 	<tr>
+							 		<td>Basic Knowledge Database</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+						 		<tr>
+							 		<th rowspan="3">1</th>
+							 		<td>Basic Knowledge</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+							 	<tr>
+							 		<td>Basic Knowledge UML/Patten</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+							 	
+							 </tbody>
+							 </table>
+						 </div>
+						
+						<div class="tabcontent" id="round3">
+							 
+							<span>Account :</span> <span>AnhPH10</span> 
+							 <span style="margin-left: 80px">Name :</span> <span>Nguyễn Quang Huy</span>
+								<br><br>
+							 <table id="table" class="table table-bordered table-striped">
+							 	
+							 	<thead>
+							 		<tr>
+							 			<th colspan="3">Skill </th>
+							 			<th>Answer the question </th>
+							 			<th>Mask </th>
+							 			<th>Note </th>
+							 		</tr>
+							 	</thead>
+							 <tbody>
+							 
+							 	
+							 	<tr>
+							 		<th rowspan="3">1</th>
+							 		<td>Basic Knowledge OOP</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+							 	<tr>
+							 		<td>Basic Knowledge</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+						 		<tr>
+							 		<th rowspan="3">1</th>
+							 		<td>Basic Knowledge</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+							 	<tr>
+							 		<td>Basic Knowledge</td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 		<td></td>
+							 	<tr>
+							 	
+							 </tbody>
+							 </table>
+						</div>
+					</div>
+					<div class="col-sm-5">
+						
+						<p><strong>Information Candidate</strong></p>
+						<span>Name: </span><span class="viewresult">Nguyễn Quang Huy</span> 
+						<br><br>
+						<span>Position: </span><span class="viewresult">Fresher JAVA</span> 
+						<br><br>
+						<span>Skill: </span> <span class="viewresult">Java,Net</span>
+						<br><br>
+						<span>University: </span> <span class="viewresult">ĐH Sư Phạm Kỹ Thuật Tp Hồ Chí Minh</span>
+						<br><br>
+						<span>GST: </span> <span class="viewresult">Không</span>
+						<br><br>
+						<span>GPA: </span> <span class="viewresult">3</span>
+						<br><br>
+						<table id="table" class="table table-bordered table-striped">
+						
+							 <thead>
+							    <tr style="background: skyblue">
+									<th class="text-center">Round</th>
+									<th class="text-center">Result</th>
+								</tr>
+						    </thead>
+							<tbody id="myTable">
+									<tr>
+										<td>Round 1</td>
+										<td>PASS</td>
+										
+									</tr>
+									<tr>
+										<td>Round 2</td>
+										<td>PASS</td>
+										
+									</tr>
+									<tr>
+										<td>Round 3</td>
+										<td>PASS</td>
+										
+									</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+					
+				</div>
+			</div>
+		</div>
+		
+		</c:when>
+		
+		
+		</c:choose>
 	<!-- FOOTER -->
  		<div class="footer">
             <div class="footer-inner">
@@ -249,28 +771,8 @@
                 </div>
             </div>
         </div>
-	<!-- MODAL  -->
-		<script type="text/javascript">
-			function myFunction(val) {
-				if(val==2){
-						$("#myModal_2").modal();
-				}	
-				else
-					if(val==1)
-					{
-						
-						$("#myModal_1").modal();
-						window.location.assign('ViewResult?no=' + no)
-						
-					}					
-			}
-			$(document).ready(function() {
-				$(".addcandidate").click(function(){
-					$("#myModal_0").modal();
-				});
-			});
-		</script>
-<!-- 		Script các tab trong result  -->
+		<!-- FOOTER -->
+	<!--  Script các tab trong result  -->
 		<script>
 			function openCity(evt, cityName) {
 			    var i, tabcontent, tablinks;
@@ -288,479 +790,8 @@
 		</script>
 		
 	
-	<!-- Edit Candidate -->
-	<div class="modal fade" id="myModal_2" role="dialog">
-		<div class="modal-dialog"  style="width: 950px;">
-
-			<!-- Modal content-->
-			<div class="modal-content" >
-				<div class="modal-header" style="padding: 0px 10px; background:skyblue">
-					<button style="margin-top:12px;" type="button" class="close" data-dismiss="modal">&times;</button>
-					<h2>
-						<span class="glyphicon glyphicon-user"></span>View Result
-					</h2>
-				</div>
-<!-- 				<ul class="tabs"> -->
-<!-- 				    <li class="active">Round 1</li> -->
-<!-- 				    <li>Round 2</li> -->
-<!-- 				    <li>Round 3</li> -->
-<!-- 				</ul> -->
-				<div class="row">
-					<div class="col-sm-7">
-						<div class="tab">
-						  <button class="tablinks" onclick="openCity(event, 'round1')">Round 1</button>
-						  <button class="tablinks" onclick="openCity(event, 'round2')">Round 2</button>
-						  <button class="tablinks" onclick="openCity(event, 'round3')">Round 3</button>
-						</div>
-						<!-- tab 1  -->
-						<div class="tabcontent" id="round1">
-							 
-							 <span>Account :</span> <span>AnhPH10</span> 
-							 <span style="margin-left: 80px">Name :</span> <span>Nguyễn Quang Huy</span>
-								<br><br>
-							 <table id="table" class="table table-bordered table-striped">
-							 	
-							 	<thead>
-							 		<tr>
-							 			<th colspan="3">Skill </th>
-							 			<th>Answer the question </th>
-							 			<th>Mask </th>
-							 			<th>Note </th>
-							 		</tr>
-							 	</thead>
-							 <tbody>
-							 
-							 	
-							 	<tr>
-							 		<th rowspan="3">1</th>
-							 		<td>Basic Knowledge</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-							 	<tr>
-							 		<td>Basic Knowledge</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-						 		<tr>
-							 		<th rowspan="3">1</th>
-							 		<td>Basic Knowledge</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-							 	<tr>
-							 		<td>Basic Knowledge</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-							 	
-							 </tbody>
-							 </table>
-							 
-							 <span>Replay ...</span>
-							 <br>
-							<audio controls autoplay></audio><br>
-							  <button type="button" class="  btn-success">Save</button>
-							    <button type="button" class="  btn-danger">Cancel</button>
-						</div>
-							<!-- tab 2 -->
-						<div class="tabcontent" id="round2">
-						 
-							 <span>Account :</span> <span>AnhPH10</span> 
-							 <span style="margin-left: 80px">Name :</span> <span>Nguyễn Quang Huy</span>
-								<br><br>
-							 <table id="table" class="table table-bordered table-striped">
-							 	
-							 	<thead>
-							 		<tr>
-							 			<th colspan="3">Skill </th>
-							 			<th>Answer the question </th>
-							 			<th>Mask </th>
-							 			<th>Note </th>
-							 		</tr>
-							 	</thead>
-							 <tbody>
-							 
-							 	
-							 	<tr>
-							 		<th rowspan="3">1</th>
-							 		<td>Basic Knowledge</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-							 	<tr>
-							 		<td>Basic Knowledge Database</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-						 		<tr>
-							 		<th rowspan="3">1</th>
-							 		<td>Basic Knowledge</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-							 	<tr>
-							 		<td>Basic Knowledge UML/Patten</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-							 	
-							 </tbody>
-							 </table>
-						 </div>
-						<!-- tab 3 -->
-						<div class="tabcontent" id="round3">
-							 
-							<span>Account :</span> <span>AnhPH10</span> 
-							 <span style="margin-left: 80px">Name :</span> <span>Nguyễn Quang Huy</span>
-								<br><br>
-							 <table id="table" class="table table-bordered table-striped">
-							 	
-							 	<thead>
-							 		<tr>
-							 			<th colspan="3">Skill </th>
-							 			<th>Answer the question </th>
-							 			<th>Mask </th>
-							 			<th>Note </th>
-							 		</tr>
-							 	</thead>
-							 <tbody>
-							 
-							 	
-							 	<tr>
-							 		<th rowspan="3">1</th>
-							 		<td>Basic Knowledge OOP</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-							 	<tr>
-							 		<td>Basic Knowledge</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-						 		<tr>
-							 		<th rowspan="3">1</th>
-							 		<td>Basic Knowledge</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-							 	<tr>
-							 		<td>Basic Knowledge</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-							 	
-							 </tbody>
-							 </table>
-						</div>
-					</div>
-					<div class="col-sm-5">
-						
-						<p><strong>Information Candidate</strong></p>
-						<span>Name: </span><span class="viewresult">Nguyễn Quang Huy</span> 
-						<br><br>
-						<span>Position: </span><span class="viewresult">Fresher JAVA</span> 
-						<br><br>
-						<span>Skill: </span> <span class="viewresult">Java,Net</span>
-						<br><br>
-						<span>University: </span> <span class="viewresult">ĐH Sư Phạm Kỹ Thuật Tp Hồ Chí Minh</span>
-						<br><br>
-						<span>GST: </span> <span class="viewresult">Không</span>
-						<br><br>
-						<span>GPA: </span> <span class="viewresult">3</span>
-						<br><br>
-						<table id="table" class="table table-bordered table-striped">
-						
-							 <thead>
-							    <tr style="background: skyblue">
-									<th class="text-center">Round</th>
-									<th class="text-center">Result</th>
-								</tr>
-						    </thead>
-							<tbody id="myTable">
-									<tr>
-										<td>Round 1</td>
-										<td>PASS</td>
-										
-									</tr>
-									<tr>
-										<td>Round 2</td>
-										<td>PASS</td>
-										
-									</tr>
-									<tr>
-										<td>Round 3</td>
-										<td>PASS</td>
-										
-									</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
 	
-	<!-- View Result -->
-	<div class="modal fade" id="myModal_1" role="dialog">
-		<div class="modal-dialog"  style="width: 950px;">
-
-			<!-- Modal content-->
-			<div class="modal-content" >
-				<div class="modal-header" style="padding: 0px 10px; background:skyblue">
-					<button style="margin-top:12px;" type="button" class="close" data-dismiss="modal">&times;</button>
-					<h2>
-						<span class="glyphicon glyphicon-user"></span>View Result
-					</h2>
-				</div>
-<!-- 				<ul class="tabs"> -->
-<!-- 				    <li class="active">Round 1</li> -->
-<!-- 				    <li>Round 2</li> -->
-<!-- 				    <li>Round 3</li> -->
-<!-- 				</ul> -->
-				<div class="row">
-					<div class="col-sm-7">
-						<div class="tab">
-						  <button class="tablinks" onclick="openCity(event, 'round1')">Round 1</button>
-						  <button class="tablinks" onclick="openCity(event, 'round2')">Round 2</button>
-						  <button class="tablinks" onclick="openCity(event, 'round3')">Round 3</button>
-						</div>
-						<!-- tab 1  -->
-						<div class="tabcontent" id="round1">
-							 
-							 <span>Account :</span> <span>AnhPH10</span> 
-							 <span style="margin-left: 80px">Name :</span> <span>Nguyễn Quang Huy</span>
-								<br><br>
-							 <table id="table" class="table table-bordered table-striped">
-							 	
-							 	<thead>
-							 		<tr>
-							 			<th colspan="3">Skill </th>
-							 			<th>Answer the question </th>
-							 			<th>Mask </th>
-							 			<th>Note </th>
-							 		</tr>
-							 	</thead>
-							 <tbody>
-							 
-							 	
-							 	<tr>
-							 		<th rowspan="3">1</th>
-							 		<td>Basic Knowledge</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-							 	<tr>
-							 		<td>Basic Knowledge</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-						 		<tr>
-							 		<th rowspan="3">1</th>
-							 		<td>Basic Knowledge</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-							 	<tr>
-							 		<td>Basic Knowledge</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-							 	
-							 </tbody>
-							 </table>
-							 
-							 <span>Replay ...</span>
-							 <br>
-							<audio controls autoplay></audio><br>
-							  <button type="button" class="  btn-success">Save</button>
-							    <button type="button" class="  btn-danger">Cancel</button>
-						</div>
-							<!-- tab 2 -->
-						<div class="tabcontent" id="round2">
-						 
-							 <span>Account :</span> <span>AnhPH10</span> 
-							 <span style="margin-left: 80px">Name :</span> <span>Nguyễn Quang Huy</span>
-								<br><br>
-							 <table id="table" class="table table-bordered table-striped">
-							 	
-							 	<thead>
-							 		<tr>
-							 			<th colspan="3">Skill </th>
-							 			<th>Answer the question </th>
-							 			<th>Mask </th>
-							 			<th>Note </th>
-							 		</tr>
-							 	</thead>
-							 <tbody>
-							 
-							 	
-							 	<tr>
-							 		<th rowspan="3">1</th>
-							 		<td>Basic Knowledge</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-							 	<tr>
-							 		<td>Basic Knowledge Database</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-						 		<tr>
-							 		<th rowspan="3">1</th>
-							 		<td>Basic Knowledge</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-							 	<tr>
-							 		<td>Basic Knowledge UML/Patten</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-							 	
-							 </tbody>
-							 </table>
-						 </div>
-						<!-- tab 3 -->
-						<div class="tabcontent" id="round3">
-							 
-							<span>Account :</span> <span>AnhPH10</span> 
-							 <span style="margin-left: 80px">Name :</span> <span>Nguyễn Quang Huy</span>
-								<br><br>
-							 <table id="table" class="table table-bordered table-striped">
-							 	
-							 	<thead>
-							 		<tr>
-							 			<th colspan="3">Skill </th>
-							 			<th>Answer the question </th>
-							 			<th>Mask </th>
-							 			<th>Note </th>
-							 		</tr>
-							 	</thead>
-							 <tbody>
-							 
-							 	
-							 	<tr>
-							 		<th rowspan="3">1</th>
-							 		<td>Basic Knowledge OOP</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-							 	<tr>
-							 		<td>Basic Knowledge</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-						 		<tr>
-							 		<th rowspan="3">1</th>
-							 		<td>Basic Knowledge</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-							 	<tr>
-							 		<td>Basic Knowledge</td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 		<td></td>
-							 	<tr>
-							 	
-							 </tbody>
-							 </table>
-						</div>
-					</div>
-					<div class="col-sm-5">
-						
-						<p><strong>Information Candidate</strong></p>
-						<span>Name: </span><span class="viewresult">Nguyễn Quang Huy</span> 
-						<br><br>
-						<span>Position: </span><span class="viewresult">Fresher JAVA</span> 
-						<br><br>
-						<span>Skill: </span> <span class="viewresult">Java,Net</span>
-						<br><br>
-						<span>University: </span> <span class="viewresult">ĐH Sư Phạm Kỹ Thuật Tp Hồ Chí Minh</span>
-						<br><br>
-						<span>GST: </span> <span class="viewresult">Không</span>
-						<br><br>
-						<span>GPA: </span> <span class="viewresult">3</span>
-						<br><br>
-						<table id="table" class="table table-bordered table-striped">
-						
-							 <thead>
-							    <tr style="background: skyblue">
-									<th class="text-center">Round</th>
-									<th class="text-center">Result</th>
-								</tr>
-						    </thead>
-							<tbody id="myTable">
-									<tr>
-										<td>Round 1</td>
-										<td>PASS</td>
-										
-									</tr>
-									<tr>
-										<td>Round 2</td>
-										<td>PASS</td>
-										
-									</tr>
-									<tr>
-										<td>Round 3</td>
-										<td>PASS</td>
-										
-									</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	
+	
 </body>
 </html>

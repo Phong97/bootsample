@@ -200,6 +200,9 @@
         </div>
 
 	<!--BODY -->
+	<c:choose>
+
+		<c:when test="${mode == 'LIST'}">
 		<div class="main-content">
 
 			<div class="main-content-inner">
@@ -241,6 +244,7 @@
 								
 							<br>
 						</div>
+					</form>
 					<div  class="table-responsive  col-sm-9 ">	
 						<table id="table" class="table table-bordered table-striped" id ="simple-table">
 						    <thead>
@@ -257,7 +261,7 @@
 										<td>${list.start }</td>
 										<td class="text-center">
 											<select style="width: 80px !important; height: 26px!important; "
-											 onchange="myFunction(this.value)">
+											 onchange="myFunction(this.value, ${list.id})">
 											  <option value="0">Option</option>
 											  <option value="1">Start</option>
 											  <option value="2" id="myBtn1">Edit Information</option>
@@ -268,10 +272,191 @@
 							</tbody>
 						</table>
 					</div>
-				</form>
+					
+					<script type="text/javascript">
+						function myFunction(val, id) {
+							if (val == 2) {
+								window.location.assign('start-schedule?id=' + id)
+								
+								document.getElementById("fullname").disabled = false;
+								document.getElementById("position").disabled = false;
+								document.getElementById("round").disabled = false;
+								
+								
+								var table = document.getElementById("simple-table"),rindex;
+								
+								for(var i =1 ; i < table.rows.length; i++)
+								{
+									alert("Huy");
+									 table.rows[i].onclick = function()
+									{
+										rindex = this.rowIndex;		
+										document.getElementById("fullname").value = this.cells[0].innerHTML;
+										document.getElementById("position").value = this.cells[1].innerHTML;
+										document.getElementById("round").value = this.cells[2].innerHTML;
+										
+									};
+								}
+								
+							} else if (val == 1) {
+								window.location.assign('update-schedule?id=' + id)
+								
+							}
+						}
+					</script>
 				</div>
 			</div>
 		</div>
+		</c:when>
+		
+		
+		<c:when test="${mode == 'START'}">
+		
+			<div class="main-content">
+
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li><i class="ace-icon fa fa-home home-icon"></i> <a href="home">Home</a>
+							</li>
+	
+							<li><a href="candidate">Manage Interview Schedule</a></li>
+							<li class="active">List Interview Schedule</li>
+						</ul>
+					</div>
+	
+					<div class="page-content">
+						<div class="page-header">
+							<h1> Add, Update and Delete Candidate 
+								<small> 
+									<i class="ace-icon fa fa-angle-double-right"></i> 
+									You can delete candidate or update candidate or delete candidate
+								</small>
+							</h1>
+						</div>
+						<div class="col-xs-12">
+							<h2>Interview Schedule</h2>
+						</div>
+						
+						<div class="modal-body" style="padding: 20px 30px;">
+									
+							<script src="Style/Huy/js/audiodisplay.js"></script>
+						    <script src="Style/Huy/js/recorderjs/recorder.js"></script>
+						    <script src="Style/Huy/js/main.js"></script>
+									
+								<div class="row">
+								<div class="col-sm-5">
+		
+									<div id="viz">
+									    <canvas id="analyser" width="200px" height="60px"></canvas>
+									    <canvas id="wavedisplay" width="200px" height="60px"></canvas>
+									</div>
+									<div id="controls">
+									    <img id="record" src="Style/images/mic128.png" onclick="toggleRecording(this);">
+									    <a id="save" href="#"><img src="Style/images/save.svg" style="margin-left: 30px;margin-top: 20px;"></a>
+									</div>
+								</div>	
+								<div class="col-sm-7">
+									<div class="">
+									
+										<span>Full Name: </span> 
+										<input style="width: 230px!important;" type="text" class="form-control" name="fullname" 
+											id ="fullname" required value="Nguyen Quang Huy" disabled>
+										<br>
+										<span>Position:</span> <br>
+											<input style="width: 230px!important; " type="text" class="form-control" name="position" 
+											id ="position" required value="Fresher JAVA" disabled>
+			                   			<br>
+										<span>Round: </span>  
+										<input style="width: 230px!important;" class="form-control" type="text" name="round" 
+											id ="round" required value="2" disabled>
+											
+										<br>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		</c:when>
+		
+<!-- 		Chưa xong chổ update -->
+		
+		<c:when test="${mode == 'UPDATE'}">
+		
+			<div class="main-content">
+
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li><i class="ace-icon fa fa-home home-icon"></i> <a href="home">Home</a>
+							</li>
+	
+							<li><a href="candidate">Manage Interview Schedule</a></li>
+							<li class="active">List Interview Schedule</li>
+						</ul>
+					</div>
+	
+					<div class="page-content">
+						<div class="page-header">
+							<h1> Add, Update and Delete Candidate 
+								<small> 
+									<i class="ace-icon fa fa-angle-double-right"></i> 
+									You can delete candidate or update candidate or delete candidate
+								</small>
+							</h1>
+						</div>
+						<div class="col-xs-12">
+							<h2>Interview Schedule</h2>
+						</div>
+						
+						<div class="modal-body" style="padding: 20px 30px;">
+									
+							<script src="Style/Huy/js/audiodisplay.js"></script>
+						    <script src="Style/Huy/js/recorderjs/recorder.js"></script>
+						    <script src="Style/Huy/js/main.js"></script>
+									
+								<div class="row">
+								<div class="col-sm-5">
+		
+									<div id="viz">
+									    <canvas id="analyser" width="200px" height="60px"></canvas>
+									    <canvas id="wavedisplay" width="200px" height="60px"></canvas>
+									</div>
+									<div id="controls">
+									    <img id="record" src="Style/images/mic128.png" onclick="toggleRecording(this);">
+									    <a id="save" href="#"><img src="Style/images/save.svg" style="margin-left: 30px;margin-top: 20px;"></a>
+									</div>
+								</div>	
+								<div class="col-sm-7">
+									<div class="">
+									
+										<span>Full Name: </span> 
+										<input style="width: 230px!important;" type="text" class="form-control" name="fullname" 
+											id ="fullname" required value="Nguyen Quang Huy" disabled>
+										<br>
+										<span>Position:</span> <br>
+											<input style="width: 230px!important; " type="text" class="form-control" name="position" 
+											id ="position" required value="Fresher JAVA" disabled>
+			                   			<br>
+										<span>Round: </span>  
+										<input style="width: 230px!important;" class="form-control" type="text" name="round" 
+											id ="round" required value="2" disabled>
+											
+										<br>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		</c:when>
+		
+		</c:choose>
 	<!-- FOOTER -->
  		<div class="footer">
             <div class="footer-inner">
@@ -298,43 +483,7 @@
             </div>
         </div>
 	<!-- MODAL  -->
-		<script type="text/javascript">
-			function myFunction(val) {
-				if(val==2){
-					
-					document.getElementById("fullname").disabled = false;
-					document.getElementById("position").disabled = false;
-					document.getElementById("round").disabled = false;
-					
-					
-					var table = document.getElementById("simple-table"),rindex;
-					
-					for(var i =1 ; i < table.rows.length; i++)
-					{
-						alert("Huy");
-						 table.rows[i].onclick = function()
-						{
-							rindex = this.rowIndex;		
-							document.getElementById("fullname").value = this.cells[0].innerHTML;
-							document.getElementById("position").value = this.cells[1].innerHTML;
-							document.getElementById("round").value = this.cells[2].innerHTML;
-							
-						};
-					}
-					
-				}	
-				else
-					if(val==1)
-					{
-						$("#myModal_1").modal();
-					}					
-			}
-			$(document).ready(function() {
-				$(".addcandidate").click(function(){
-					$("#myModal_0").modal();
-				});
-			});
-		</script>
+		
 		
 		
 	
