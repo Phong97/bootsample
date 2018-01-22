@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: bootsample
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: nguye
+Built-By: ChiTrung
 Implementation-Vendor-Id: samples
 Build-Jdk: 1.8.0_121
 Implementation-URL: http://projects.spring.io/spring-boot/bootsample/

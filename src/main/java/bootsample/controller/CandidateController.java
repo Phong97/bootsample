@@ -50,6 +50,7 @@ public class CandidateController {
 		request.setAttribute("candidates", candidateService.findAll());
 		request.setAttribute("positions", positionService.findAll());
 		request.setAttribute("skills", skillService.findAll());
+		request.setAttribute("interviewers", interviewerService.findAll());
 		request.setAttribute("mode", "LIST");
 		return PATH;
 	}
@@ -70,6 +71,7 @@ public class CandidateController {
 		request.setAttribute("candidate", candidateService.findCandidate(id));
 		request.setAttribute("positions", positionService.findAll());
 		request.setAttribute("skills", skillService.findAll());
+		request.setAttribute("interviewers", interviewerService.findAll());
 		request.setAttribute("mode", "UPDATE");
 		return PATH;
 	}
@@ -79,6 +81,7 @@ public class CandidateController {
 		request.setAttribute("candidate", candidateService.findCandidate(id));
 		request.setAttribute("positions", positionService.findAll());
 		request.setAttribute("skills", skillService.findAll());
+		request.setAttribute("interviewers", interviewerService.findAll());
 		request.setAttribute("mode", "DETAIL");
 		return PATH;
 	}
@@ -103,6 +106,7 @@ public class CandidateController {
 		request.setAttribute("candidates", candidateService.findAll());
 		request.setAttribute("positions", positionService.findAll());
 		request.setAttribute("skills", skillService.findAll());
+		request.setAttribute("interviewers", interviewerService.findAll());
 		request.setAttribute("mode", "LIST");
 		return PATH;
 	}

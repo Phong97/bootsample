@@ -232,7 +232,7 @@
 												<td>${candidate.name}</td>
 												<td>${candidate.birth}</td>
 												<td>${candidate.email}</td>
-												<td>${candidate.phone}</td>
+												<td>0${candidate.phone}</td>
 												<td>${candidate.university}</td>
 												<td>
 													<c:forEach var="position" items="${positions}">
@@ -382,8 +382,7 @@
 									id="address">								
 							</div>
 							<div class="form-group col-sm-12"> 
-								<input style="width: 230px!important;" type="hidden" class="form-control" value="0" name="coincidence" 
-									id="address">								
+								<input style="width: 230px!important;" type="hidden" class="form-control" name="coincidence" id="address">								
 							</div>						
 							<p><strong>Education</strong></p>
 							<div class="form-group col-sm-6">
@@ -500,107 +499,118 @@
 						<form action="save-candidate" method="POST" style="align-items: center;">
 							<p><strong>Personal Information</strong></p>
 							<div class="form-group col-sm-12 col-xs-12">
-									<input type="hidden" name="id" value="0" />
+									<input type="hidden" name="id" value="${candidate.id}" />
 							</div>	
 							<div class="form-group col-sm-6">
 								<span>Full name:</span> 
 								<input style="width: 230px!important;" class="form-control" type="text" name="name" 
-									id ="fullname" required>
+									 value="${candidate.name}" id ="fullname" required>
 							</div>
 							<div class="form-group col-sm-6">
 								<span>ID card:</span> 
 								<input style="width: 230px!important;" type="text" class="form-control" name="idcard" 
-									id="idcard">								
+									value="${candidate.idcard}" id="idcard">								
 							</div>
 							<div class="form-group col-sm-6">
 								<span>Email:</span>
 								<input style="width: 230px!important;" type="text" class="form-control" name="email" 
-									id ="email" required>
+									value="${candidate.email}" id ="email" required>
 							</div>
 							<div class="form-group col-sm-6">
 								<span>Birth of day:</span><br>  
 								<input style="width: 230px!important;" type="date" name="birth"
-									id="birthday" required>
+									value="${candidate.birth}" id="birthday" required>
 							</div>
 	
 							<div class="form-group col-sm-6">
 								<span>Phone:</span>  
 								<input style="width: 230px!important;" type="text" class="form-control" name="phone" 
-									id="phone" required>
+									value="0${candidate.phone}" id="phone" required>
 							</div>
 							<div class="form-group col-sm-6">
 								<span>Address:</span> 
 								<input style="width: 230px!important;" type="text" class="form-control" name="address" 
-									id="address">								
+									value="${candidate.address}" id="address">								
 							</div>
 							<div class="form-group col-sm-12"> 
-								<input style="width: 230px!important;" type="hidden" class="form-control" value="0" name="coincidence" 
-									id="address">								
+								<input style="width: 230px!important;" type="hidden" class="form-control" name="coincidence">								
 							</div>						
 							<p><strong>Education</strong></p>
 							<div class="form-group col-sm-6">
 								<span>University:</span> 
 								<input style="width: 230px!important;" class="form-control" type="text" name="university" 
-									id ="university" required>
+									value="${candidate.university}" id ="university" required>
 							</div>
 							<div class="form-group col-sm-6">
 								<span>Major:</span> 
 								<input style="width: 230px!important;" type="text" class="form-control" name="major" 
-									id ="major">
+									value="${candidate.major}" id ="major">
 							</div>
 							<div class="form-group col-sm-6">
 								<span>Graduation year:</span> 
 								<input style="width: 230px!important;" type="text" class="form-control" name="graduationyear" 
-									id="graduationyear">
+									value="${candidate.graduationyear}" id="graduationyear">
 							</div>
 	
 							<div class="form-group col-sm-6">
 								<span>GPA:</span> 
 								<input style="width: 230px!important;" type="text" class="form-control" name="gpa" 
-									id="gpa">
+									value="${candidate.gpa}" id="gpa">
 							</div>
 							<p><strong>Skills</strong></p>
 							<div class="form-group col-sm-12">
 									<select style="width: 230px!important;" name="skill_id" id="skill">
-										<option>Choose Skill</option>            
-	                    			<c:forEach var="skill" items="${skills}">
-										<option value="${skill.no}">${skill.name}</option>
-									</c:forEach>
+										<c:forEach var="skill" items="${skills}">	
+		                    				<c:if test="${candidate.skill_id == skill.no}">
+		                    					<option selected="selected" value="${skill.no}">${skill.name}</option>
+											</c:if>
+											<c:if test="${candidate.skill_id != skill.no}">
+		                    					<option value="${skill.no}">${skill.name}</option>
+											</c:if>								
+										</c:forEach>
 		                    		</select>
 							</div>
 							<div class="form-group col-sm-6">
 								<span>GST:</span> 
 								<input style="width: 230px!important;" type="text" class="form-control" name="gst" 
-									id="gst">
+									value="${candidate.gst}" id="gst">
 							</div>
 							<div class="form-group col-sm-6">
 								<span>Others:</span> 
 								<input style="width: 230px!important;" type="text" class="form-control" name="others" 
-									id="others">
+									value="${candidate.others}" id="others">
 							</div>
 							<p><strong>Apply for</strong></p>
 							<div class="form-group col-sm-6">
 									<span>Position:</span><span style="color: red;">(*)</span> <br>
 									<select style="width: 230px!important;" name="position_id" id="position" required>
-										<option>Choose Positon</option>	             
-		                    			<c:forEach var="position" items="${positions}">
-											<option value="${position.id}">${position.name}</option>
+										<c:forEach var="position" items="${positions}">	
+		                    				<c:if test="${candidate.position_id == position.id}">
+		                    					<option selected="selected" value="${position.id}">${position.name}</option>
+											</c:if>
+											<c:if test="${candidate.position_id != position.id}">
+		                    					<option value="${position.id}">${position.name}</option>
+											</c:if>								
 										</c:forEach>
 		                    		</select>
 							</div>
 							<div class="form-group col-sm-6">
 									<span>Interviewer admin:</span><br>
 									<select style="width: 230px!important;" name="intervieweradmin_id" id="intervieweradmin">
-										<option>Choose Interviewer Admin</option>
-										<c:forEach var="interviewer" items="${interviewers}">
-											<option value="${interviewer.id}">${interviewer.name}</option>
+										<c:forEach var="interviewer" items="${interviewers}">	
+		                    				<c:if test="${candidate.intervieweradmin_id == interviewer.id}">
+		                    					<option selected="selected" value="${interviewer.id}">${interviewer.name}</option>
+											</c:if>
+											<c:if test="${candidate.intervieweradmin_id != interviewer.id}">
+		                    					<option value="${interviewer.id}">${interviewer.name}</option>
+											</c:if>								
 										</c:forEach>
 		                    		</select>
 							</div>
 							<p><strong>Documents</strong></p>
 							<div class="form-group col-sm-12 col-xs-12">
 								<div class="col-sm-6 col-xs-12">
-									<span>NguyenChiTrung.pdf</span> 
+									<span><a href="#"><span>${candidate.cv}</span></a></span> 
 								</div>
 								<div class="col-sm-6 col-xs-12">
 									<input style="width: 230px!important;" type="file" name="cv" id="file">
@@ -652,67 +662,82 @@
 						<span class="glyphicon glyphicon-user"></span>Candidate profile
 					</h2>
 			</div>
-			<h3 class="col-sm-12 col-xs-12"><b>Nguyễn Chí Trung - nckhai09061997@gmail.com</b></h3>
-						<p><strong>Personal Information</strong></p>
-						<hr>
+			<h3 class="col-sm-12 col-xs-12"><b>${candidate.name} - ${candidate.email}</b></h3>
+						<p><strong>Personal Information</strong></p>	
+						<hr>					
 						<div class="form-group col-sm-6">
-							<span>Full name: </span>Nguyễn Chí Trung
+							<span>Full name: </span> ${candidate.name}
 						</div>
 						<div class="form-group col-sm-6">
-							<span>ID card: </span>205969565
+							<span>ID card: </span> ${candidate.idcard}
 						</div>
 						<div class="form-group col-sm-6">
-							<span>Birth day: </span> 22/04/1997
+							<span>Birth day: </span> ${candidate.birth}
 						</div>
 
 						<div class="form-group col-sm-6">
-							<span>Address: </span>Thăng Bình, Quảng Nam 							
+							<span>Address: </span> ${candidate.address} 							
 						</div>
 						<div class="form-group col-sm-6">
-							<span>Phone: </span>01665293553	
+							<span>Phone: </span> 0${candidate.phone}	
 						</div>
 						<div class="form-group col-sm-6">
-							<span>Email: </span>nckhai09061997@gmail.com	
+							<span>Email: </span><a target="_blank" href="https://mail.google.com/mail">${candidate.email}</a>
 						</div>
-						
+						<hr>						
 						<p><strong>Education</strong></p>
 						<hr>
 						<div class="form-group col-sm-6">
-							<span>University: </span>HCMUTE
+							<span>University: </span> ${candidate.university}
 						</div>
 						<div class="form-group col-sm-6">
-							<span>Major:</span> Information Technology 						
+							<span>Major:</span> ${candidate.major}					
 						</div>
 						<div class="form-group col-sm-6">
-							<span>Graduation year:</span>2019							
+							<span>Graduation year:</span> ${candidate.graduationyear}							
 						</div>
 
 						<div class="form-group col-sm-6">
-							<span>GPA:</span> 3.31
+							<span>GPA:</span> ${candidate.gpa}	
 						</div>
 						<p><strong>Skills</strong></p>
 						<hr>
 						<div class="form-group col-sm-4">
-							<span>Skills: </span>.NET, Java
+							<span>Skills: </span> 
+							<c:forEach var="skill" items="${skills}">
+								<c:if test="${candidate.skill_id == skill.no}">
+									${skill.name}
+								</c:if>
+							</c:forEach>
 						</div>
 						<div class="form-group col-sm-4">
-							<span>GST: </span> GST_Java 						
+							<span>GST: </span> ${candidate.gst}							
 						</div>
 						<div class="form-group col-sm-4">
-							<span>Others: </span>Toeic 550							
+							<span>Others: </span> ${candidate.others}							
 						</div>
 						<p><strong>Apply for</strong></p>
 						<hr>
 						<div class="form-group col-sm-6">
-							<span>Position: </span>Fresher Java
+							<span>Position: </span> 
+							<c:forEach var="position" items="${positions}">
+								<c:if test="${candidate.position_id == position.id}">
+									${position.name}
+								</c:if>
+							</c:forEach>	
 						</div>
 						<div class="form-group col-sm-6">
-							<span>Interviewer Admin:</span> Thủy Thị Ngọc Huyền 						
+							<span>Interviewer Admin:</span> 
+							<c:forEach var="interviewer" items="${interviewers}">
+								<c:if test="${candidate.intervieweradmin_id == interviewer.id}">
+									${interviewer.name}
+								</c:if>
+							</c:forEach> 						
 						</div>
 						<p><strong>Documents</strong></p>
 						<hr>
 						<div class="form-group col-sm-12 col-xs-12">
-								<a href="#"><span>NguyenChiTrung.pdf</span></a>
+								<a href="#"><span>${candidate.cv}</span></a>
 						</div>
 						<p><strong>Interviewer history</strong></p>
 						<hr>
