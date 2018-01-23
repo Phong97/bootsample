@@ -369,18 +369,18 @@
 						    <script src="Style/Huy/js/main.js"></script>
 									
 								<div class="row">
-								<div class="col-sm-5">
+								<div class="col-sm-7">
 		
 									<div id="viz">
-									    <canvas id="analyser" width="400px" height="60px"></canvas>
-									    <canvas id="wavedisplay" width="400px" height="60px"></canvas>
+									    <canvas id="analyser" width="400px" height="80px"></canvas>
+									    <canvas id="wavedisplay" width="400px" height="80px"></canvas>
 									</div>
 									<div id="controls">
 									    <img id="record" src="Style/images/mic128.png" onclick="toggleRecording(this);">
-									    <a id="save" href="#"><img src="Style/images/save.svg" style="margin-left: 30px;margin-top: 20px;"></a>
+									    <a id="save" href="#"><img src="Style/images/save.svg" style="margin-left: -200px;margin-top: 50px;"></a>
 									</div>
 								</div>	
-								<div class="col-sm-7">
+								<div class="col-sm-5	">
 									<div class="">
 						
 											<span>Full Name: </span> 

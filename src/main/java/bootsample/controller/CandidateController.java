@@ -26,7 +26,6 @@ public class CandidateController {
 	private PositionService positionService;
 	@Autowired
 	private SkillService skillService ;
-	
 	@Autowired
 	private InterviewerService interviewerService;
 	
