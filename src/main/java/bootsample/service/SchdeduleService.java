@@ -35,7 +35,7 @@ public class SchdeduleService {
 	}
 
 	// Lưu kết quả
-	public void Save(ScheduleView schedule) {
+	public void SaveSchedule(ScheduleView schedule) {
 		scheduleRepository.save(schedule);
 	}
 }
