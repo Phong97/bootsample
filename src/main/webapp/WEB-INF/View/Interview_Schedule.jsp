@@ -204,6 +204,12 @@
 	                	<span class="menu-text">Manage Schedule</span>
 					</a>			
                 </li>
+                <li> 
+              	<a href="interview_process"> 
+	               	<i class="menu-icon fa fa-hourglass-start"></i> 
+	               	<span class="menu-text">Manage Process</span>
+				</a>			
+            	</li>
             </ul>
             <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
                 <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>

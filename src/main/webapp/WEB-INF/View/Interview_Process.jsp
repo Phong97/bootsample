@@ -11,7 +11,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Manage Skill</title>
+<title>Manage Interview Process</title>
 
 <meta name="description" content="overview &amp; stats" />
 <meta name="viewport"
@@ -60,18 +60,19 @@
 
 <!-- jquery ui -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
 </head>
 
 <body class="no-skin" style="font-size: 13px;">
 
-<%-- thông báo --%>
-<c:if test="${announce ne ''}">
-	<script type="text/javascript">
+	<%-- thông báo --%>
+	<c:if test="${announce ne ''}">
+		<script type="text/javascript">
 	 	var announce = '${announce}';
 		alert(announce);
 	</script>
-</c:if>
+	</c:if>
 
 	<!-- HEADER -->
 	<div id="navbar"
@@ -135,36 +136,35 @@
 			</a></li>
 
 			<!-- fa-desktop: là sử dụng font-awesome để lấy các icon -->
-			<li class="active"><a href="skill"> <i class="menu-icon fa fa-file-text"></i>
+			<li><a href="skill"> <i class="menu-icon fa fa-file-text"></i>
 					<span class="menu-text">Manage Skill </span>
 			</a></li>
 			<li><a href="position"> <i
 					class="menu-icon fa fa-line-chart"></i> <span class="menu-text">Manage
 						Position </span>
 			</a></li>
-			<li><a href="interviewer"> <i class="menu-icon fa fa-users"></i>
-					<span class="menu-text">Manage Interviewer</span>
+			<li><a href="interviewer"> <i
+					class="menu-icon fa fa-users"></i> <span class="menu-text">Manage Interviewer</span>
 			</a></li>
-			<li><a href="candidate"> <i class="menu-icon fa fa-user"></i>
-					<span class="menu-text">Manage Candidate</span>
+			<li><a href="candidate"> <i
+					class="menu-icon fa fa-user"></i> <span class="menu-text">Manage Candidate</span>
 			</a></li>
-			<li ><a href="question"> <i
-					class="menu-icon fa fa-folder-open-o"></i> <span class="menu-text">Manage
-						Question</span>
+			<li><a href="question"> <i
+					class="menu-icon fa fa-folder-open-o"></i> <span class="menu-text">Manage Question</span>
 			</a></li>
-                <li > 
-                	<a href="InterviewResult"> 
-	                	<i class="menu-icon fa fa-pencil-square-o"></i> 
-	                	<span class="menu-text">Manage Result</span>
-					</a>			
-                </li>
-                <li> 
-                	<a href="InterviewSchedule"> 
-	                	<i class="menu-icon fa fa-calendar"></i> 
-	                	<span class="menu-text">Manage Schedule</span>
-					</a>			
-                </li>
+			<li> 
+              	<a href="InterviewResult"> 
+	               	<i class="menu-icon fa fa-pencil-square-o"></i> 
+	               	<span class="menu-text">Manage Result</span>
+				</a>			
+            </li>
             <li> 
+              	<a href="InterviewSchedule"> 
+	               	<i class="menu-icon fa fa-calendar"></i> 
+	               	<span class="menu-text">Manage Schedule</span>
+				</a>			
+            </li>
+            <li  class="active"> 
               	<a href="interview_process"> 
 	               	<i class="menu-icon fa fa-hourglass-start"></i> 
 	               	<span class="menu-text">Manage Process</span>
@@ -191,23 +191,23 @@
 							<li><i class="ace-icon fa fa-home home-icon"></i> <a
 								href="home">Home</a></li>
 
-							<li><a href="skill">Manage Skill</a></li>
+							<li><a href="interview_process">Manage Interview Process</a></li>
 						</ul>
 					</div>
 
 					<div class="page-content">
 						<div class="page-header text-center">
-							<b><h1>MANAGE SKILL INFORMATION</h1></b>
+							<b><h1>MANAGE INTERVIEW PROCESS</h1></b>
 						</div>
 						<div class="col-sm-1 col-xs-1"></div>
 						<div class="col-sm-5 col-xs-5">
-							<h2>SKILL</h2>
+							<h2>INTERVIEW PROCESS</h2>
 						</div>
 						<div class="col-sm-5 col-xs-5">
-							<a href="new-skill"><button
+							<a href="new-interview-process"><button
 									style="border: 0 !important; margin-top: 12px;"
 									class="addcandidate btn btn-primary btn pull-right">
-									<span class="fa fa-plus-circle"> </span> Add Skill
+									<span class="fa fa-plus-circle"> </span> Add Process
 								</button></a>
 						</div>
 						<div class="col-sm-1 col-xs-1"></div>
@@ -220,19 +220,31 @@
 									class="table table-bordered table-striped text-center">
 									<thead>
 										<tr style="background: skyblue">
-											<th class="text-center" style="width: 20px">#</th>
-											<th class="text-center">&emsp;&emsp;NAME</th>
-											<th class="text-center" style="width: 200px">Action</th>
+											<th class="text-center">N.o</th>
+											<th class="text-center">Process name</th>
+											<th class="text-center">Position</th>
+											<th class="text-center">Start date</th>
+											<th class="text-center">Status</th>
+											<th class="text-center">Action</th>
 										</tr>
 									</thead>
 									<tbody id="myTable">
-										<c:forEach var="skill" items="${skills}">
+										<c:forEach var="interviewprocess" items="${interviewprocesses}">
 											<tr>
-												<td>${skill.no}</td>
-												<td>${skill.name}</td>
+												<td>${interviewprocess.no}</td>
+												<td>${interviewprocess.processname}</td>
+												<td>
+													<c:forEach var="position" items="${positions}">
+														<c:if test="${interviewprocess.position_id == position.id}">
+															${position.name}
+														</c:if>
+													</c:forEach>
+												</td>
+												<td>${interviewprocess.startdate}</td>
+												<td>${interviewprocess.status}</td>
 												<td><select
 													style="width: 80px !important; height: 26px !important;"
-													onchange="myFunction(this.value, ${skill.no})">
+													onchange="myFunction(this.value, ${interviewprocess.no})">
 														<option value="0">Option</option>
 														<option value="1">Edit</option>
 														<option id="delete" value="2">Delete</option>
@@ -242,11 +254,11 @@
 									</tbody>
 								</table>
 							</div>
-							
+
 							<div class="col-sm-1 col-xs-1"></div>
 							<!-- chọn action -->
 							<script type="text/javascript">
-								function myFunction(val, no) {
+								function myFunction(val, id) {
 									if (val == 2) {
 										 var dynamicDialog = $('<div id="conformBox">Are you sure to delete?</div>');
 									        
@@ -260,7 +272,7 @@
 									                                text : "Delete",
 									                                click : function() {
 									                                	$(this).dialog("close");
-									                                	window.location.assign('delete-skill?no=' + no)
+									                                	window.location.assign('delete-interview-process?id=' + id)
 									                                }
 									                        },
 									                        {
@@ -271,9 +283,9 @@
 									                        }]
 									        });
 									} else if (val == 1) {
-										window.location.assign('update-skill?no=' + no)
+										window.location.assign('update-interview-process?id=' + id)
 									}
-								}
+									}
 							</script>
 						</div>
 
@@ -291,47 +303,86 @@
 							<li><i class="ace-icon fa fa-home home-icon"></i> <a
 								href="home">Home</a></li>
 
-							<li><a href="skill">Manage Skill</a></li>
+							<li><a href="interview_process">Manage interview Process</a></li>
 						</ul>
 					</div>
 				</div>
 
 				<div class="page-content">
 					<div class="page-header text-center">
-						<b><h1>MANAGE SKILL INFORMATION</h1></b>
+						<b><h1>MANAGE INTERVIEW PROCESS</h1></b>
 					</div>
-					<div class="col-sm-6 col-xs-6">
-						<h2><c:out value="${mode}"></c:out> SKILL</h2>
+					<div class="col-sm-12 col-xs-12">
+						<h2 style="font-size: 19px; padding-left: 50px; margin-top: 30px;">
+							<c:out value="${mode}"></c:out>
+							INTERVIEW PROCESS
+						</h2>
 					</div>
 					<div class="col-sm-5 col-xs-5"></div>
 					<div class="col-sm-1 col-xs-1"></div>
 
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
+					<br> <br> <br> <br>
 					<div class="col-sm-12 col-xs-12">
-						<form action="save-skill" method="POST" style="align-items: center;">
-						<div class="col-sm-2 col-xs-2"><input type="hidden" name="no" value="${skill.no}"/></div>
-						<div class="col-sm-10 col-xs-10">
-							<label style="color: black; width: 110px; font-size: 20px;"><b>Name</b></label>
-							<input name="name" type="text" style="width: 500px!important; height: 33px!important; text-align: center; font-size: 17px!important; color: black;" value="${skill.name}" required="required" />
-						</div>
-						<br><br><br>
-						<div class="col-sm-9 col-xs-9">
-						<a href="skill"><button type="button" class="pull-right"style="color: white; width: 80px; font-size: 15px; background-color: #337ab7; margin-left: 50px;"><b>CLOSE</b></button></a>
-						<button class="pull-right" type="submit" style="color: white; width: 80px; font-size: 15px; background-color: #337ab7;"><b>SAVE</b></button>						
-						</div>
-					</form>
+						<form action="save-interview-process" method="POST" style="padding-left: 200px;">
+							<div class="col-sm-12 col-xs-12">
+								<input type="hidden" name="no" value="${interviewprocess.no}" />
+							</div>
+							<div class="col-sm-12 col-xs-12">
+								<label style="color: black; width: 110px; font-size: 15px;"><b>Process Name</b></label>
+								<input name="processname" type="text"
+									style="width: 500px !important; height: 33px !important; text-align: center; font-size: 15px !important; color: black;"
+									value="${interviewprocess.processname}" required="required" />
+							</div>
+							<br> <br> <br>
+							<div class="col-sm-12 col-xs-12">
+								<label style="color: black; width: 110px; font-size: 15px;"><b>Start date</b></label>
+								<input name="startdate" type="date"
+									style="width: 500px !important; height: 33px !important; text-align: center; font-size: 15px !important; color: black;"
+									value="${interviewprocess.startdate}" required="required" />
+							</div>
+							<br> <br> <br>
+							<div class="col-sm-12 col-xs-12">
+								<label style="color: black; width: 110px; font-size: 15px;"><b>Status</b></label>
+								<input name="status" type="text"
+									style="width: 500px !important; height: 33px !important; text-align: center; font-size: 15px !important; color: black;"
+									value="${interviewprocess.status}" required="required" />
+							</div>
+							<br> <br> <br>
+							<div class="form-group col-sm-12">
+								<label style="color: black; width: 110px; font-size: 15px;"><b>Position</b></label>
+								<select style="width: 500px !important; height: 33px !important; text-align: center; font-size: 15px !important; color: black;" name="position_id" id="position" required>
+									<c:forEach var="position" items="${positions}">	
+	                    				<c:if test="${interviewprocess.position_id == position.id}">
+	                    					<option selected="selected" value="${position.id}">${position.name}</option>
+										</c:if>
+										<c:if test="${interviewprocess.position_id != position.id}">
+	                    					<option value="${position.id}">${position.name}</option>
+										</c:if>								
+									</c:forEach>
+	                    		</select>
+	                    		<a href="new-position" type="button" style="font-size:13px;" class="btn">Add position</a>
+							</div>
+							
+							<div class="col-sm-3 col-xs-3">
+								<p style="color: red;" id="pthongbao"></p>
+							</div>
+							<br> <br> <br>
+							<div class="col-sm-2 col-xs-12">
+								<button style="border: 0!important;" type="submit" class="btn btn-success btn-block">
+									<span class="glyphicon glyphicon-ok"></span> Save
+								</button>	
+							</div>
+							<div class="col-sm-2 col-xs-12">
+								<a href="interview_process" type="button" class="btn btn-danger btn-block" style="border: 0!important;">
+									<span class="glyphicon glyphicon-remove"></span> Close
+								</a>
+							</div>
+							
+						</form> 	
 					</div>
 				</div>
 			</div>
 		</c:when>
-
 	</c:choose>
 
 	<!-- FOOTER -->

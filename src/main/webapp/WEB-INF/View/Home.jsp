@@ -142,6 +142,12 @@
 						class="menu-icon fa fa-calendar"></i> <span class="menu-text">Manage
 							Schedule</span>
 				</a></li>
+				<li> 
+              	<a href="interview_process"> 
+	               	<i class="menu-icon fa fa-hourglass-start"></i> 
+	               	<span class="menu-text">Manage Process</span>
+				</a>			
+            </li>
 			</ul>
 			<!-- /.nav-list -->
 
