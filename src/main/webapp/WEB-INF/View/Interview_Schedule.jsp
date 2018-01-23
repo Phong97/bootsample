@@ -49,6 +49,17 @@
 			$("#table").DataTable();
 		});
 	</script>
+	<script type="text/javascript">
+		function show_comfirm() {
+			var comfirmBox;
+			comfirmBox = confirm("Bạn có chắc chắn muốn lưu dữ liệu không?");
+			if (comfirmBox == true) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	</script>
 	
 	<!-- ace scripts -->
 	<script src="Style/js/ace-elements.min.js"></script>
@@ -234,7 +245,7 @@
 					<div class="col-xs-12">
 						<h2>Interview Schedule</h2>
 					</div>
-					<form action="" method="POST">
+					<form action="save-schedule" method="POST">
 						<div class="form-group col-sm-3">
 							<span>Full Name: </span> 
 							<input style="width: 230px!important;" type="text" class="form-control" name="fullname" 
@@ -247,16 +258,18 @@
 							<span>Round: </span>  
 							<input style="width: 230px!important;" class="form-control" type="text" name="round" 
 								id ="round" required value="2" disabled>
-								
 							<br>
+							<button type="submit" class=" btn-success" onclick="return show_comfirm()">Save</button>
 						</div>
 					</form>
 					<div  class="table-responsive  col-sm-9 ">	
-						<table id="table" class="table table-bordered table-striped" id ="simple-table">
+						<table class="table table-bordered table-striped" id ="simple-table">
 						    <thead>
 							    <tr style="background: skyblue">
 									<th class="text-center">Full Name</th>
 									<th class="text-center">Start Time</th>
+									<th class="text-center">Position</th>
+									<th class="text-center">Round</th>
 									<th class="text-center">Action</th>
 								</tr>
 						    </thead>
@@ -265,51 +278,62 @@
 									<tr>
 										<td>${list.fullname }</td>
 										<td>${list.start }</td>
+										<td>${list.position }</td>
+										<td>${list.round }</td>
 										<td class="text-center">
 											<select style="width: 80px !important; height: 26px!important; "
 											 onchange="myFunction(this.value, ${list.id})">
 											  <option value="0">Option</option>
 											  <option value="1">Start</option>
-											  <option value="2" id="myBtn1">Edit Information</option>
+											  <option value="2" id="myBtn${list.id }">Edit Information</option>
 											</select>	
 										</td>
 									</tr>
+									
+									<script type="text/javascript">
+										
+										function myFunction(val, id) {
+											
+											if (val == 2) {
+												
+											document.getElementById("fullname").disabled = false;
+											document.getElementById("position").disabled = false;
+											document.getElementById("round").disabled = false;
+											
+											var table = document.getElementById("simple-table"),rindex;
+											
+											for(var i =1 ; i < table.rows.length; i++)
+											{
+												
+												 table.rows[i].onclick = function()
+												{
+													rindex = this.rowIndex;		
+													document.getElementById("fullname").value = this.cells[0].innerHTML;
+													document.getElementById("position").value =  this.cells[2].innerHTML;
+													document.getElementById("round").value = this.cells[3].innerHTML;
+												};
+											}
+											
+											
+											} else if (val == 1) {
+												
+												window.location.assign('start-schedule?id=' + id)
+								 
+											}
+											else{
+												document.getElementById("fullname").disabled = true;
+												document.getElementById("position").disabled = true;
+												document.getElementById("round").disabled = true;
+											}
+									}
+								</script>
+									
 								</c:forEach>
 							</tbody>
 						</table>
 					</div>
 					
-					<script type="text/javascript">
-						function myFunction(val, id) {
-							if (val == 2) {
-								window.location.assign('start-schedule?id=' + id)
-								
-								document.getElementById("fullname").disabled = false;
-								document.getElementById("position").disabled = false;
-								document.getElementById("round").disabled = false;
-								
-								
-								var table = document.getElementById("simple-table"),rindex;
-								
-								for(var i =1 ; i < table.rows.length; i++)
-								{
-									alert("Huy");
-									 table.rows[i].onclick = function()
-									{
-										rindex = this.rowIndex;		
-										document.getElementById("fullname").value = this.cells[0].innerHTML;
-										document.getElementById("position").value = this.cells[1].innerHTML;
-										document.getElementById("round").value = this.cells[2].innerHTML;
-										
-									};
-								}
-								
-							} else if (val == 1) {
-								window.location.assign('update-schedule?id=' + id)
-								
-							}
-						}
-					</script>
+					
 				</div>
 			</div>
 		</div>
@@ -354,8 +378,8 @@
 								<div class="col-sm-5">
 		
 									<div id="viz">
-									    <canvas id="analyser" width="200px" height="60px"></canvas>
-									    <canvas id="wavedisplay" width="200px" height="60px"></canvas>
+									    <canvas id="analyser" width="400px" height="60px"></canvas>
+									    <canvas id="wavedisplay" width="400px" height="60px"></canvas>
 									</div>
 									<div id="controls">
 									    <img id="record" src="Style/images/mic128.png" onclick="toggleRecording(this);">
@@ -364,94 +388,21 @@
 								</div>	
 								<div class="col-sm-7">
 									<div class="">
-									
-										<span>Full Name: </span> 
-										<input style="width: 230px!important;" type="text" class="form-control" name="fullname" 
-											id ="fullname" required value="Nguyen Quang Huy" disabled>
-										<br>
-										<span>Position:</span> <br>
-											<input style="width: 230px!important; " type="text" class="form-control" name="position" 
-											id ="position" required value="Fresher JAVA" disabled>
-			                   			<br>
-										<span>Round: </span>  
-										<input style="width: 230px!important;" class="form-control" type="text" name="round" 
-											id ="round" required value="2" disabled>
-											
-										<br>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		
-		</c:when>
-		
-<!-- 		Chưa xong chổ update -->
-		
-		<c:when test="${mode == 'UPDATE'}">
-		
-			<div class="main-content">
-
-				<div class="main-content-inner">
-					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-						<ul class="breadcrumb">
-							<li><i class="ace-icon fa fa-home home-icon"></i> <a href="home">Home</a>
-							</li>
-	
-							<li><a href="candidate">Manage Interview Schedule</a></li>
-							<li class="active">List Interview Schedule</li>
-						</ul>
-					</div>
-	
-					<div class="page-content">
-						<div class="page-header">
-							<h1> Add, Update and Delete Candidate 
-								<small> 
-									<i class="ace-icon fa fa-angle-double-right"></i> 
-									You can delete candidate or update candidate or delete candidate
-								</small>
-							</h1>
-						</div>
-						<div class="col-xs-12">
-							<h2>Interview Schedule</h2>
-						</div>
 						
-						<div class="modal-body" style="padding: 20px 30px;">
-									
-							<script src="Style/Huy/js/audiodisplay.js"></script>
-						    <script src="Style/Huy/js/recorderjs/recorder.js"></script>
-						    <script src="Style/Huy/js/main.js"></script>
-									
-								<div class="row">
-								<div class="col-sm-5">
-		
-									<div id="viz">
-									    <canvas id="analyser" width="200px" height="60px"></canvas>
-									    <canvas id="wavedisplay" width="200px" height="60px"></canvas>
-									</div>
-									<div id="controls">
-									    <img id="record" src="Style/images/mic128.png" onclick="toggleRecording(this);">
-									    <a id="save" href="#"><img src="Style/images/save.svg" style="margin-left: 30px;margin-top: 20px;"></a>
-									</div>
-								</div>	
-								<div class="col-sm-7">
-									<div class="">
-									
-										<span>Full Name: </span> 
-										<input style="width: 230px!important;" type="text" class="form-control" name="fullname" 
-											id ="fullname" required value="Nguyen Quang Huy" disabled>
-										<br>
-										<span>Position:</span> <br>
-											<input style="width: 230px!important; " type="text" class="form-control" name="position" 
-											id ="position" required value="Fresher JAVA" disabled>
-			                   			<br>
-										<span>Round: </span>  
-										<input style="width: 230px!important;" class="form-control" type="text" name="round" 
-											id ="round" required value="2" disabled>
-											
-										<br>
+											<span>Full Name: </span> 
+											<input style="width: 230px!important;" type="text" class="form-control" name="fullname" 
+												id ="fullname" required value="${starts.fullname }" disabled>
+											<br>
+											<span>Position:</span> <br>
+												<input style="width: 230px!important; " type="text" class="form-control" name="position" 
+												id ="position" required value="${starts.position }" disabled>
+				                   			<br>
+											<span>Round: </span>  
+											<input style="width: 230px!important;" class="form-control" type="text" name="round" 
+												id ="round" required value="${starts.round }" disabled>
+												
+											<br>
+									 
 									</div>
 								</div>
 							</div>
@@ -461,6 +412,9 @@
 			</div>
 		
 		</c:when>
+		
+		
+
 		
 		</c:choose>
 	<!-- FOOTER -->
@@ -488,42 +442,20 @@
                 </div>
             </div>
         </div>
-	<!-- MODAL  -->
-		
-		
-		
+
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
 	
-	<!-- Start Schedule -->
-	<div class="modal fade" id="myModal_1" role="dialog">
-		<div class="modal-dialog">
-
-			<!-- Modal content-->
-			<div class="modal-content" >
-					<div class="modal-header" style="padding: 0px 10px; background:skyblue">
-						<button style="margin-top:12px;" type="button" class="close" data-dismiss="modal">&times;</button>
-						<h2>
-							<span class="glyphicon glyphicon-user"></span>Start Interview
-						</h2>
-					</div>
-					<div class="modal-body" style="padding: 20px 30px;">
-							
-							<script src="Style/Huy/js/audiodisplay.js"></script>
-						    <script src="Style/Huy/js/recorderjs/recorder.js"></script>
-						    <script src="Style/Huy/js/main.js"></script>
-							
-						<div class="row">
-						<div class="col-sm-5">
-
-								<div id="viz">
-									    <canvas id="analyser" width="200px" height="60px"></canvas>
-									    <canvas id="wavedisplay" width="200px" height="60px"></canvas>
-									</div>
-									<div id="controls">
-									    <img id="record" src="Style/images/mic128.png" onclick="toggleRecording(this);">
-									    <a id="save" href="#"><img src="Style/images/save.svg" style="margin-left: 30px;margin-top: 20px;"></a>
-									</div>
-						</div>	
-						<div class="col-sm-7">
+				<!-- Modal content-->
+				<div class="modal-content" >
+						<div class="modal-header" style="padding: 0px 10px; background:skyblue">
+							<button style="margin-top:12px;" type="button" class="close" data-dismiss="modal">&times;</button>
+							<h2>
+								<span class="glyphicon glyphicon-user"></span>Start Interview
+							</h2>
+						</div>
+						<div class="modal-body" style="padding: 20px 30px;">
+								
 							<div class="">
 								<span>Full Name: </span> 
 								<input style="width: 230px!important;" type="text" class="form-control" name="fullname" 
@@ -532,7 +464,7 @@
 								<span>Position:</span> <br>
 									<input style="width: 230px!important; " type="text" class="form-control" name="position" 
 									id ="position" required value="Fresher JAVA" disabled>
-	                   			<br>
+		                  			<br>
 								<span>Round: </span>  
 								<input style="width: 230px!important;" class="form-control" type="text" name="round" 
 									id ="round" required value="2" disabled>
@@ -541,10 +473,8 @@
 							</div>
 						</div>
 					</div>
-				</div>
 			</div>
-		</div>
 	</div>	
-
+	
 </body>
 </html>
