@@ -11,7 +11,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Manage Interviewer</title>
+<title>Manage Interview Process</title>
 
 <meta name="description" content="overview &amp; stats" />
 <meta name="viewport"
@@ -143,9 +143,8 @@
 					class="menu-icon fa fa-line-chart"></i> <span class="menu-text">Manage
 						Position </span>
 			</a></li>
-			<li class="active"><a href="interviewer"> <i
-					class="menu-icon fa fa-users"></i> <span class="menu-text">Manage
-						Interviewer</span>
+			<li><a href="interviewer"> <i
+					class="menu-icon fa fa-users"></i> <span class="menu-text">Manage Interviewer</span>
 			</a></li>
 			<li><a href="candidate"> <i
 					class="menu-icon fa fa-user"></i> <span class="menu-text">Manage Candidate</span>
@@ -153,25 +152,25 @@
 			<li><a href="question"> <i
 					class="menu-icon fa fa-folder-open-o"></i> <span class="menu-text">Manage Question</span>
 			</a></li>
-                <li> 
-                	<a href="InterviewResult"> 
-	                	<i class="menu-icon fa fa-pencil-square-o"></i> 
-	                	<span class="menu-text">Manage Result</span>
-					</a>			
-                </li>
-                <li> 
-                	<a href="InterviewSchedule"> 
-	                	<i class="menu-icon fa fa-calendar"></i> 
-	                	<span class="menu-text">Manage Schedule</span>
-					</a>			
-                </li>
+			<li> 
+              	<a href="InterviewResult"> 
+	               	<i class="menu-icon fa fa-pencil-square-o"></i> 
+	               	<span class="menu-text">Manage Result</span>
+				</a>			
+            </li>
+            <li> 
+              	<a href="InterviewSchedule"> 
+	               	<i class="menu-icon fa fa-calendar"></i> 
+	               	<span class="menu-text">Manage Schedule</span>
+				</a>			
+            </li>
             <li> 
               	<a href="interview_process"> 
 	               	<i class="menu-icon fa fa-hourglass-start"></i> 
 	               	<span class="menu-text">Manage Process</span>
 				</a>			
             </li>
-            <li> 
+            <li  class="active"> 
               	<a href="user"> 
 	               	<i class="menu-icon fa fa-github-alt"></i> 
 	               	<span class="menu-text">Manage Users</span>
@@ -198,55 +197,61 @@
 							<li><i class="ace-icon fa fa-home home-icon"></i> <a
 								href="home">Home</a></li>
 
-							<li><a href="interviewer">Manage Interviewer</a></li>
+							<li><a href="user">Manage User</a></li>
 						</ul>
 					</div>
 
 					<div class="page-content">
 						<div class="page-header text-center">
-							<b><h1>MANAGE INTERVIEWER INFORMATION</h1></b>
+							<b><h1>MANAGE USER</h1></b>
 						</div>
 						<div class="col-sm-1 col-xs-1"></div>
-						<div class="col-sm-5 col-xs-5">
-							<h2>INTERVIEWER</h2>
+						<div class="col-sm-12 col-xs-12">
+						<div class="col-sm-6 col-xs-6">
+							<h2>USER</h2>
 						</div>
-						<div class="col-sm-5 col-xs-5">
-							<a href="new-interviewer"><button
+						<div class="col-sm-6 col-xs-6">
+							<a href="new-user"><button
 									style="border: 0 !important; margin-top: 12px;"
 									class="addcandidate btn btn-primary btn pull-right">
-									<span class="fa fa-plus-circle"> </span> Add Interviewer
+									<span class="fa fa-plus-circle"> </span> Add User
 								</button></a>
+						</div>
 						</div>
 						<div class="col-sm-1 col-xs-1"></div>
 
 						<div class="col-sm-12 col-xs-12">
 							<div class="col-sm-1 col-xs-1"></div>
 
-							<div class="table-responsive col-sm-10 col-xs-10">
+							<div class="table-responsive col-sm-12 col-xs-12">
 								<table id="table"
 									class="table table-bordered table-striped text-center">
 									<thead>
 										<tr style="background: skyblue">
-											<th class="text-center" style="width: 150px">&emsp;&emsp;Name</th>
-											<th class="text-center" style="width: 150px">&emsp;&emsp;Account
-												Fsoft</th>
-											<th class="text-center">&emsp;&emsp;Email</th>
-											<th class="text-center" style="width: 100px">Action</th>
+											<th class="text-center">ID</th>
+											<th class="text-center">Account</th>
+											<th class="text-center">Role</th>
+											<th class="text-center">Action</th>
 										</tr>
 									</thead>
 									<tbody id="myTable">
-										<c:forEach var="interviewer" items="${interviewers}">
+										<c:forEach var="user" items="${users}">
 											<tr>
-												<td>${interviewer.name}</td>
-												<td>${interviewer.accountfsoft}</td>
-												<td>${interviewer.email}</td>
+												<td>${user.id}</td>
+												<td>${user.account}</td>
+												<td>
+													<c:forEach var="role" items="${roles}">
+														<c:if test="${user.role == role.id}">
+															${role.rolename}
+														</c:if>
+													</c:forEach>
+												</td>
 												<td><select
 													style="width: 80px !important; height: 26px !important;"
-													onchange="myFunction(this.value, ${interviewer.id})">
+													onchange="myFunction(this.value, ${user.id})">
 														<option value="0">Option</option>
-														<option value="1">Calendar</option>
-														<option value="2">Edit</option>
-														<option id="delete" value="3">Delete</option>
+														<option value="1">Edit</option>
+														<option id="delete" value="2">Delete</option>
 												</select></td>
 											</tr>
 										</c:forEach>
@@ -258,7 +263,7 @@
 							<!-- chọn action -->
 							<script type="text/javascript">
 								function myFunction(val, id) {
-									if (val == 3) {
+									if (val == 2) {
 										 var dynamicDialog = $('<div id="conformBox">Are you sure to delete?</div>');
 									        
 									        dynamicDialog.dialog({
@@ -271,7 +276,7 @@
 									                                text : "Delete",
 									                                click : function() {
 									                                	$(this).dialog("close");
-									                                	window.location.assign('delete-interviewer?id=' + id)
+									                                	window.location.assign('delete-user?id=' + id)
 									                                }
 									                        },
 									                        {
@@ -281,10 +286,8 @@
 									                                }
 									                        }]
 									        });
-									} else if (val == 2) {
-										window.location.assign('update-interviewer?id=' + id)
 									} else if (val == 1) {
-										window.location.assign('view-calendar?id=' + id)
+										window.location.assign('update-user?id=' + id)
 									}
 									}
 							</script>
@@ -304,138 +307,67 @@
 							<li><i class="ace-icon fa fa-home home-icon"></i> <a
 								href="home">Home</a></li>
 
-							<li><a href="interviewer">Manage interviewer</a></li>
+							<li><a href="user">Manage User</a></li>
 						</ul>
 					</div>
 				</div>
 
 				<div class="page-content">
 					<div class="page-header text-center">
-						<b><h1>MANAGE INTERVIEWER INFORMATION</h1></b>
+						<b><h1>MANAGE USER</h1></b>
 					</div>
-					<div class="col-sm-6 col-xs-6">
-						<h2>
+					<div class="col-sm-12 col-xs-12">
+						<h2 style="font-size: 19px; padding-left: 50px; margin-top: 30px;">
 							<c:out value="${mode}"></c:out>
-							INTERVIEWER
+							USER
 						</h2>
 					</div>
 					<div class="col-sm-5 col-xs-5"></div>
 					<div class="col-sm-1 col-xs-1"></div>
 
-					<br> <br> <br> <br> <br>
+					<br> <br> <br> <br>
 					<div class="col-sm-12 col-xs-12">
-						<form action="save-interviewer" method="POST"
-							style="align-items: center;">
-							<div class="col-sm-2 col-xs-2">
-								<input type="hidden" name="id" value="${interviewer.id}" />
+						<form action="save-user" method="POST" style="padding-left: 200px;">
+							<div class="col-sm-12 col-xs-12">
+								<input type="hidden" name="id" value="${user.id}" />
 							</div>
-							<div class="col-sm-10 col-xs-10">
-								<label style="color: black; width: 110px; font-size: 20px;"><b>Name</b></label>
-								<input name="name" type="text"
-									style="width: 500px !important; height: 33px !important; text-align: center; font-size: 17px !important; color: black;"
-									value="${interviewer.name}" required="required" />
-							</div>
-							<br> <br> <br>
-							<div class="col-sm-2 col-xs-2"></div>
-							<div class="col-sm-10 col-xs-10">
-								<label style="color: black; width: 110px; font-size: 20px;"><b>Account</b></label>
-								<input name="accountfsoft" type="text"
-									style="width: 500px !important; height: 33px !important; text-align: center; font-size: 17px !important; color: black;"
-									value="${interviewer.accountfsoft}" required="required" />
+							<div class="col-sm-12 col-xs-12">
+								<label style="color: black; width: 110px; font-size: 15px;"><b>Account name</b></label>
+								<input name="account" type="text"
+									style="width: 500px !important; height: 33px !important; font-size: 15px !important; color: black;"
+									value="${user.account}" required="required" />
 							</div>
 							<br> <br> <br>
-							<div class="col-sm-2 col-xs-2"></div>
-							<div class="col-sm-7 col-xs-7">
-								<label style="color: black; width: 110px; font-size: 20px;"><b>Email</b></label>
-								<input onfocusout="KTEmail('email')" id="email" name="email"
-									type="text"
-									style="width: 500px !important; height: 33px !important; text-align: center; font-size: 17px !important; color: black;"
-									value="${interviewer.email}" required="required" />
+							<div class="form-group col-sm-12">
+								<label style="color: black; width: 110px; font-size: 15px;"><b>Role</b></label>
+								<select style="width: 500px !important; height: 33px !important; text-align: center; font-size: 15px !important; color: black;" name="role" id="role" required>
+									<c:forEach var="role" items="${roles}">	
+	                    				<c:if test="${user.role == role.id}">
+	                    					<option selected="selected" value="${role.id}">${role.rolename}</option>
+										</c:if>
+										<c:if test="${user.role != role.id}">
+	                    					<option value="${role.id}">${role.rolename}</option>
+										</c:if>								
+									</c:forEach>
+	                    		</select>
 							</div>
+							
 							<div class="col-sm-3 col-xs-3">
 								<p style="color: red;" id="pthongbao"></p>
 							</div>
 							<br> <br> <br>
-							<div class="col-sm-9 col-xs-9">
-								<div class="col-sm-9 col-xs-9">
-
-									<button class="pull-right" type="submit"
-										style="color: white; width: 80px; font-size: 15px; background-color: #337ab7;">
-										<b>SAVE</b>
-									</button>
-								</div>
-								<a href="interviewer"><button type="button"
-										class="pull-right"
-										style="color: white; width: 80px; font-size: 15px; background-color: #337ab7; margin-left: 50px;">
-										<b>CLOSE</b>
-									</button></a>
+							<div class="col-sm-2 col-xs-12">
+								<button style="border: 0!important;" type="submit" class="btn btn-success btn-block">
+									<span class="glyphicon glyphicon-ok"></span> Save
+								</button>	
 							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</c:when>
-
-		<c:when test="${mode == 'VIEW'}">
-			<div class="main-content">
-
-				<div class="main-content-inner">
-					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-						<ul class="breadcrumb">
-							<li><i class="ace-icon fa fa-home home-icon"></i> <a
-								href="home">Home</a></li>
-
-							<li><a href="interviewer">Manage Interviewer</a></li>
-						</ul>
-					</div>
-
-					<div class="page-content">
-						<div class="page-header text-center">
-							<b><h1>MANAGE INTERVIEWER INFORMATION</h1></b>
-						</div>
-						<div class="col-sm-1 col-xs-1"></div>
-						<div class="col-sm-5 col-xs-5">
-							<h2>VIEW CALENDAR</h2>
-						</div>
-						<div class="col-sm-4 col-xs-4"></div>
-						<div class="col-sm-2 col-xs-2"><h3>${interviewer.name}</h3></div>
-						
-
-						<div class="col-sm-12 col-xs-12">
-							<div class="col-sm-1 col-xs-1"></div>
-
-							<div class="table-responsive col-sm-10 col-xs-10">
-								<table id="table"
-									class="table table-bordered table-striped text-center">
-									<thead>
-										<tr style="background: skyblue">
-											<th class="text-center">&emsp;&emsp;Room</th>
-											<th class="text-center">&emsp;&emsp;Start
-												Time</th>
-											<th class="text-center">&emsp;&emsp;End Time</th>
-											<th class="text-center">&emsp;&emsp;Round Name</th>
-											<th class="text-center">&emsp;&emsp;Process Name</th>
-											<th class="text-center">&emsp;&emsp;Start Date</th>
-										</tr>
-									</thead>
-									<tbody id="myTable">
-										<c:forEach var="calendar" items="${calendars}">
-											<tr>
-												<td>${calendar.room}</td>
-												<td>${calendar.starttime}</td>
-												<td>${calendar.endtime}</td>
-												<td>${calendar.roundname}</td>
-												<td>${calendar.processname}</td>
-												<td>${calendar.startdate}</td>
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
+							<div class="col-sm-2 col-xs-12">
+								<a href="user" type="button" class="btn btn-danger btn-block" style="border: 0!important;">
+									<span class="glyphicon glyphicon-remove"></span> Close
+								</a>
 							</div>
-
-							<div class="col-sm-1 col-xs-1"></div>
-						</div>
-
+							
+						</form> 	
 					</div>
 				</div>
 			</div>

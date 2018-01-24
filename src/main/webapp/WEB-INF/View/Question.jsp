@@ -171,6 +171,12 @@
 	               	<span class="menu-text">Manage Process</span>
 				</a>			
             </li>
+            <li> 
+              	<a href="user"> 
+	               	<i class="menu-icon fa fa-github-alt"></i> 
+	               	<span class="menu-text">Manage Users</span>
+				</a>			
+            </li>
 		</ul>
 		<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 			<i id="sidebar-toggle-icon"

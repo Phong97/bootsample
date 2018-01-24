@@ -33,7 +33,7 @@ public class InterviewerProcessController {
 	}
 	
 	@GetMapping("/delete-interview-process")
-	public String deleteInterviewer(@RequestParam int id, HttpServletRequest request) {
+	public String deleteInterviewProcess(@RequestParam int id, HttpServletRequest request) {
 		try {
 			interviewprocessService.delete(id);
 			request.setAttribute("announce", "You delete successfully");
@@ -47,7 +47,7 @@ public class InterviewerProcessController {
 	}
 	
 	@GetMapping("/new-interview-process")
-	public String newInterviewer(HttpServletRequest request) {
+	public String newInterviewProcess(HttpServletRequest request) {
 		request.setAttribute("announce", "");
 		request.setAttribute("positions", positionService.findAll());
 		request.setAttribute("mode", "NEW");
@@ -55,7 +55,7 @@ public class InterviewerProcessController {
 	}
 	
 	@GetMapping("/update-interview-process")
-	public String updateInterviewer(@RequestParam int id, HttpServletRequest request) {
+	public String updateInterviewProcess(@RequestParam int id, HttpServletRequest request) {
 		request.setAttribute("announce", "");
 		request.setAttribute("interviewprocess", interviewprocessService.findInterviewProcess(id));
 		request.setAttribute("positions", positionService.findAll());
@@ -64,7 +64,7 @@ public class InterviewerProcessController {
 	}
 	
 	@PostMapping("/save-interview-process")
-	public String saveInterviewer(@ModelAttribute Interview_process interviewprocess, BindingResult bindingResult, HttpServletRequest request) {
+	public String saveInterviewProcess(@ModelAttribute Interview_process interviewprocess, BindingResult bindingResult, HttpServletRequest request) {
 		String announce = null;		
 		if(interviewprocess.getNo()==0)
 		{
