@@ -147,7 +147,13 @@
 	               	<i class="menu-icon fa fa-hourglass-start"></i> 
 	               	<span class="menu-text">Manage Process</span>
 				</a>			
-            </li>
+            	</li>
+            	<li> 
+              	<a href="user"> 
+	               	<i class="menu-icon fa fa-github-alt"></i> 
+	               	<span class="menu-text">Manage Users</span>
+				</a>			
+            	</li>
 			</ul>
 			<!-- /.nav-list -->
 

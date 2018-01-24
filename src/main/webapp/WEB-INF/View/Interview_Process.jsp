@@ -170,6 +170,12 @@
 	               	<span class="menu-text">Manage Process</span>
 				</a>			
             </li>
+            <li> 
+              	<a href="user"> 
+	               	<i class="menu-icon fa fa-github-alt"></i> 
+	               	<span class="menu-text">Manage Users</span>
+				</a>			
+            </li>
 		</ul>
 		<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 			<i id="sidebar-toggle-icon"
@@ -200,22 +206,24 @@
 							<b><h1>MANAGE INTERVIEW PROCESS</h1></b>
 						</div>
 						<div class="col-sm-1 col-xs-1"></div>
-						<div class="col-sm-5 col-xs-5">
+						<div class="col-sm-12 col-xs-12">
+						<div class="col-sm-6 col-xs-6">
 							<h2>INTERVIEW PROCESS</h2>
 						</div>
-						<div class="col-sm-5 col-xs-5">
+						<div class="col-sm-6 col-xs-6">
 							<a href="new-interview-process"><button
 									style="border: 0 !important; margin-top: 12px;"
 									class="addcandidate btn btn-primary btn pull-right">
 									<span class="fa fa-plus-circle"> </span> Add Process
 								</button></a>
 						</div>
+						</div>
 						<div class="col-sm-1 col-xs-1"></div>
 
 						<div class="col-sm-12 col-xs-12">
 							<div class="col-sm-1 col-xs-1"></div>
 
-							<div class="table-responsive col-sm-10 col-xs-10">
+							<div class="table-responsive col-sm-12 col-xs-12">
 								<table id="table"
 									class="table table-bordered table-striped text-center">
 									<thead>
