@@ -52,6 +52,11 @@
 		$("#table").DataTable();
 	});
 </script>
+<script>
+	$(document).ready(function() {
+		$("#table2").DataTable();
+	});
+</script>
 
 <!-- ace scripts -->
 <script src="Style/js/ace-elements.min.js"></script>
@@ -78,7 +83,7 @@
 	<div id="navbar"
 		class="img-responsive navbar navbar-default ace-save-state">
 		<img class="img-responsive" src="Style/images/background1.png"
-			style="height: 70px;" alt="FPT Software" />
+			alt="FPT Software" />
 		<div class="navbar-container ace-save-state" id="navbar-container">
 			<button type="button" class="navbar-toggle menu-toggler pull-left"
 				id="menu-toggler" data-target="#sidebar">
@@ -254,6 +259,7 @@
 													style="width: 80px !important; height: 26px !important;"
 													onchange="myFunction(this.value, ${interviewprocess.no})">
 														<option value="0">Option</option>
+														<option value="3">Detail</option>
 														<option value="1">Edit</option>
 														<option id="delete" value="2">Delete</option>
 												</select></td>
@@ -292,6 +298,8 @@
 									        });
 									} else if (val == 1) {
 										window.location.assign('update-interview-process?id=' + id)
+									} else if (val == 3) {
+										window.location.assign('view-interview-process?id=' + id)
 									}
 									}
 							</script>
@@ -301,7 +309,127 @@
 				</div>
 			</div>
 		</c:when>
+		<c:when test="${mode == 'DETAIL'}">
+			<!-- Details Candidate -->
+			<div class="main-content">
 
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li><i class="ace-icon fa fa-home home-icon"></i> <a
+								href="home">Home</a></li>
+
+							<li><a href="interview_process">Manage Interview Process</a></li>
+						</ul>
+					</div>
+				</div>
+			<br> <br>
+			<div class="page-content">
+				<div class="page-header text-center">
+					<b><h1>INTERVIEW PROCESS INFORMATION</h1></b>
+				</div>
+				<div class="col-sm-12 col-xs-12">
+				<div style="padding: 0px 10px;">
+					<h2>
+						Detail Interview Process
+					</h2>
+				</div>
+				<hr>
+				<div class="row">
+					<h3 class="col-sm-12 col-xs-12"><b>Information Interview Process</b></h3>				
+					<div class="form-group col-sm-6">
+						<span>Process name: </span> ${interviewprocess.processname}
+					</div>
+					<div class="form-group col-sm-6">
+						<span>Start date: </span> ${interviewprocess.startdate}
+					</div>
+					<div class="form-group col-sm-6">
+						<c:forEach var="position" items="${positions}">	
+		          	     	<c:if test="${interviewprocess.position_id == position.id}">
+		          	     		<span>Location: </span> ${position.name}
+							</c:if>					
+						</c:forEach>
+					</div>
+					<div class="form-group col-sm-6">
+						<span>Status: </span> ${interviewprocess.status} 							
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<h3 class="col-sm-12 col-xs-12"><b>Interview Rounds</b></h3>
+									
+					<div class="table-responsive col-sm-12 col-xs-12">
+						<table id="table"
+							class="table table-bordered table-striped text-center">
+							<thead>
+								<tr style="background: skyblue">
+									<th class="text-center">&emsp;&emsp;N.o</th>
+									<th class="text-center">&emsp;&emsp;Round name</th>
+									<th class="text-center">&emsp;&emsp;Description</th>
+								</tr>
+							</thead>
+							<tbody id="myTable">
+								<c:forEach var="interviewroundprocess" items="${interviewroundprocesses}">
+									<c:if test="${interviewprocess.no == interviewroundprocess.process_id}">
+										<c:forEach var="interviewround" items="${interviewrounds}">
+											<c:if test="${interviewroundprocess.round_id == interviewround.no}">
+												<tr>
+													<td>${interviewround.no}</td>
+													<td>${interviewround.roundname}</td>
+													<td>${interviewround.description}</td>
+												</tr>
+											</c:if>
+										</c:forEach>
+									</c:if>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<h3 class="col-sm-12 col-xs-12"><b>List Candidate</b></h3>
+					<div class="table-responsive col-sm-12 col-xs-12">
+						<table id="table2"
+							class="table table-bordered table-striped text-center">
+							<thead>
+								<tr style="background: skyblue">
+									<th class="text-center">&emsp;&emsp;ID</th>
+									<th class="text-center">&emsp;&emsp;Full name</th>
+									<th class="text-center">&emsp;&emsp;Email</th>
+									<th class="text-center">&emsp;&emsp;Phone</th>
+								</tr>
+							</thead>
+							<tbody id="myTable2">
+								
+								<c:forEach var="interviewroundprocess" items="${interviewroundprocesses}">
+									<c:if test="${interviewprocess.no == interviewroundprocess.process_id}">
+										<c:forEach var="candidate" items="${candidates}">
+											<c:if test="${interviewroundprocess.candidate_id == candidate.id}">
+												<tr>
+													<td>${candidate.id}</td>
+													<td>${candidate.name}</td>
+													<td>${candidate.email}</td>
+													<td>${candidate.phone}</td>
+												</tr>
+											</c:if>
+										</c:forEach>
+									</c:if>
+								</c:forEach>
+							</tbody>
+						</table>
+						<div style="width: 150px; padding-top: 20px;">
+							<a href="interview_process" type="button" class="btn btn-danger btn-block" style="border: 0!important;">
+								<span class="glyphicon glyphicon-remove"></span> Close
+							</a>
+						</div>
+					</div>
+				</div>
+						
+					</div>
+				</div>
+			</div>
+		</c:when>
 		<c:when test="${mode == 'NEW' || mode == 'UPDATE' }">
 			<div class="main-content">
 
