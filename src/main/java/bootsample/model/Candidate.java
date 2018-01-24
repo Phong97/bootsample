@@ -27,7 +27,6 @@ public class Candidate {
 	private String gst;
 	private String others;
 	private int position_id;
-	private String cv;
 	private int intervieweradmin_id;
 	private int coincidence;
 	
@@ -35,7 +34,7 @@ public class Candidate {
 	
 	public Candidate(int id, String name, int idcard, Date birth, String email, int phone, String address,
 			String university, String major, Double gpa, int graduationyear, int skill_id, String gst, String others,
-			int position_id, String cv, int intervieweradmin_id, int coincidence) {
+			int position_id, int intervieweradmin_id, int coincidence) {
 		
 		super();
 		this.id = id;
@@ -53,7 +52,6 @@ public class Candidate {
 		this.gst = gst;
 		this.others = others;
 		this.position_id = position_id;
-		this.cv = cv;
 		this.intervieweradmin_id = intervieweradmin_id;
 		this.coincidence = coincidence;
 	}
@@ -147,12 +145,6 @@ public class Candidate {
 	}
 	public void setPosition_id(int position_id) {
 		this.position_id = position_id;
-	}
-	public String getCv() {
-		return cv;
-	}
-	public void setCv(String cv) {
-		this.cv = cv;
 	}
 	public int getIntervieweradmin_id() {
 		return intervieweradmin_id;
