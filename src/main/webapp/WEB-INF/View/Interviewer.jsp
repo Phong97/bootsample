@@ -348,7 +348,7 @@
 							<div class="col-sm-7 col-xs-7">
 								<label style="color: black; width: 110px; font-size: 20px;"><b>Email</b></label>
 								<input onfocusout="KTEmail('email')" id="email" name="email"
-									type="text"
+									type="email"
 									style="width: 500px !important; height: 33px !important; text-align: center; font-size: 17px !important; color: black;"
 									value="${interviewer.email}" required="required" />
 							</div>

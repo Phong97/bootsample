@@ -334,7 +334,7 @@
 								
 								<span>Position: </span> <span style="color: red;">(*)</span> 
 								<select style="width: 230px!important;" name="position_id" id="position" required>
-									<option>Choose Positon</option>	             
+									<option disabled >Choose Position</option>	             
 	                    			<c:forEach var="position" items="${positions}">
 										<option value="${position.id}">${position.name}</option>
 									</c:forEach>

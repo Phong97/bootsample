@@ -47,6 +47,7 @@
 <script src="Style/js/bootstrap.min.js"></script>
 <script src="Style/js/jquery.dataTables.min.js"></script>
 <script src="Style/js/dataTables.bootstrap.min.js"></script>
+
 <script>
 	$(document).ready(function() {
 		$("#table").DataTable();
@@ -369,7 +370,7 @@
 							</div>
 							<div class="form-group col-sm-6">
 								<span>ID card:</span> 
-								<input style="width: 230px!important;" type="text" class="form-control" value="999999999" name="idcard" 
+								<input style="width: 230px!important;" type="number" class="form-control"  name="idcard"  value="999999999"
 									id="idcard">								
 							</div>
 							<div class="form-group col-sm-6">
@@ -385,7 +386,7 @@
 	
 							<div class="form-group col-sm-6">
 								<span>Phone:</span><span style="color: red;">(*)</span>  
-								<input style="width: 230px!important;" type="text" class="form-control" name="phone" 
+								<input style="width: 230px!important;" type="number" class="form-control" name="phone" 
 									id="phone" required>
 							</div>
 							<div class="form-group col-sm-6">
@@ -409,7 +410,7 @@
 							</div>
 							<div class="form-group col-sm-6">
 								<span>Graduation year:</span> 
-								<input style="width: 230px!important;" type="text" class="form-control" value="9999" name="graduationyear" 
+								<input style="width: 230px!important;" type="number" class="form-control" value="9999" name="graduationyear" 
 									id="graduationyear">
 							</div>
 	
@@ -421,7 +422,7 @@
 							<p><strong>Skills</strong></p>
 							<div class="form-group col-sm-12">
 									<select style="width: 230px!important;" name="skill_id" id="skill">
-										<option value="1">Choose Skill</option>            
+										<option disabled value="1">Choose Skill</option>            
 	                    			<c:forEach var="skill" items="${skills}">
 										<option value="${skill.no}">${skill.name}</option>
 									</c:forEach>
@@ -441,7 +442,7 @@
 							<div class="form-group col-sm-6">
 									<span>Position:</span><span style="color: red;">(*)</span> <br>
 									<select style="width: 230px!important;" name="position_id" id="position" required>
-										<option>Choose Positon</option>	             
+										<option disabled>Choose Position</option>	             
 		                    			<c:forEach var="position" items="${positions}">
 											<option value="${position.id}">${position.name}</option>
 										</c:forEach>
@@ -450,19 +451,12 @@
 							<div class="form-group col-sm-6">
 									<span>Interviewer admin:</span><br>
 									<select style="width: 230px!important;" name="intervieweradmin_id" id="intervieweradmin">
-										<option value="1">Choose Interviewer Admin</option>
+										<option disabled value="1">Choose Interviewer Admin</option>
 										<c:forEach var="interviewer" items="${interviewers}">
 											<option value="${interviewer.id}">${interviewer.name}</option>
 										</c:forEach>
 		                    		</select>
 							</div>
-							<p><strong>Documents</strong></p>
-							<div class="form-group col-sm-12 col-xs-12">					
-								<div class="col-sm-6 col-xs-12">
-									<input style="width: 230px!important;" type="file" name="cv" id="file">
-		                    	</div>
-							</div>
-							
 							<div class="col-sm-6 col-xs-12">
 								<button style="border: 0!important;" type="submit" class="btn btn-success btn-block">
 									<span class="glyphicon glyphicon-ok"></span> Save
@@ -520,12 +514,12 @@
 							</div>
 							<div class="form-group col-sm-6">
 								<span>ID card:</span> 
-								<input style="width: 230px!important;" type="text" class="form-control" name="idcard" 
+								<input style="width: 230px!important;" type="number" class="form-control" name="idcard" 
 									value="${candidate.idcard}" id="idcard">								
 							</div>
 							<div class="form-group col-sm-6">
 								<span>Email:</span>
-								<input style="width: 230px!important;" type="text" class="form-control" name="email" 
+								<input style="width: 230px!important;" type="email" class="form-control" name="email" 
 									value="${candidate.email}" id ="email" required>
 							</div>
 							<div class="form-group col-sm-6">
@@ -536,7 +530,7 @@
 	
 							<div class="form-group col-sm-6">
 								<span>Phone:</span>  
-								<input style="width: 230px!important;" type="text" class="form-control" name="phone" 
+								<input style="width: 230px!important;" type="number" class="form-control" name="phone" 
 									value="0${candidate.phone}" id="phone" required>
 							</div>
 							<div class="form-group col-sm-6">
@@ -560,7 +554,7 @@
 							</div>
 							<div class="form-group col-sm-6">
 								<span>Graduation year:</span> 
-								<input style="width: 230px!important;" type="text" class="form-control" name="graduationyear" 
+								<input style="width: 230px!important;" type="number" class="form-control" name="graduationyear" 
 									value="${candidate.graduationyear}" id="graduationyear">
 							</div>
 	
@@ -618,17 +612,7 @@
 											</c:if>								
 										</c:forEach>
 		                    		</select>
-							</div>
-							<p><strong>Documents</strong></p>
-							<div class="form-group col-sm-12 col-xs-12">
-								<div class="col-sm-6 col-xs-12">
-									<span><a href="#"><span>${candidate.cv}</span></a></span> 
-								</div>
-								<div class="col-sm-6 col-xs-12">
-									<input style="width: 230px!important;" type="file" name="cv" id="file">
-		                    	</div>
-							</div>
-							
+							</div>									
 							<div class="col-sm-6 col-xs-12">
 								<button style="border: 0!important;" type="submit" class="btn btn-success btn-block">
 									<span class="glyphicon glyphicon-ok"></span> Save
@@ -746,18 +730,16 @@
 								</c:if>
 							</c:forEach> 						
 						</div>
-						<p><strong>Documents</strong></p>
-						<hr>
-						<div class="form-group col-sm-12 col-xs-12">
-								<a href="#"><span>${candidate.cv}</span></a>
-						</div>
 						<p><strong>Interviewer history</strong></p>
 						<hr>
 						<div class="form-group col-sm-6">
-							<span>Interviewer: </span>Nguyễn Văn Thanh
-						</div>
-						<div class="form-group col-sm-6">
-							<span>Result: </span><span style="color: #0fda0f;">PASS</span> 						
+							<span>Result: </span><span style="color: #0fda0f;">
+								<c:forEach var="result" items="${results}">
+									<c:if test="${result.no == candidate.id}">
+										${result.result}
+									</c:if>
+								</c:forEach> 
+							</span> 						
 						</div>
 					</div>
 				</div>

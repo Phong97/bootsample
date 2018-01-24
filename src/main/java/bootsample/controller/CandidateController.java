@@ -14,6 +14,7 @@ import bootsample.model.Candidate;
 import bootsample.service.CandidateService;
 import bootsample.service.InterviewerService;
 import bootsample.service.PositionService;
+import bootsample.service.ResultService;
 import bootsample.service.SkillService;
 
 @Controller
@@ -28,6 +29,8 @@ public class CandidateController {
 	private SkillService skillService ;
 	@Autowired
 	private InterviewerService interviewerService;
+	@Autowired
+	private ResultService resultService;
 	
 	@GetMapping("/candidate")
 	public String doGet(HttpServletRequest request) {
@@ -83,6 +86,7 @@ public class CandidateController {
 		request.setAttribute("positions", positionService.findAll());
 		request.setAttribute("skills", skillService.findAll());
 		request.setAttribute("interviewers", interviewerService.findAll());
+		request.setAttribute("results", resultService.findAll());
 		request.setAttribute("mode", "DETAIL");
 		return PATH;
 	}
