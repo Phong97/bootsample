@@ -20,10 +20,8 @@
 	<link rel="stylesheet" href="Style/css/dataTables.bootstrap.min.css">
 	<link rel="stylesheet" href="Style/css/font-awesome.min.css" />
 	
-	
 	<!-- page specific plugin styles -->
 	<link rel="stylesheet" href="Style/css/fullcalendar.min.css" />
-	
 	
 	<!-- text fonts -->
 	<link rel="stylesheet" href="Style/css/fonts.googleapis.com.css" />
@@ -82,14 +80,14 @@
         }
 
         #record.recording {
+        
             background: red;
             background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%, lightgrey 75%, lightgrey 100%, #7db9e8 100%);
             background: -moz-radial-gradient(center, ellipse cover, #ff0000 0%, lightgrey 75%, lightgrey 100%, #7db9e8 100%);
             background: radial-gradient(center, ellipse cover, #ff0000 0%, lightgrey 75%, lightgrey 100%, #7db9e8 100%);
         }
 
-        #save, #save 
-		{
+        #save, #save img {
             height: 10vh;
         }
 
@@ -281,7 +279,7 @@
 										<td>${list.position }</td>
 										<td>${list.round }</td>
 										<td class="text-center">
-											<select style="width: 80px !important; height: 26px!important; "
+											<select style="width: 80px !important; height: 26px!important;"
 											 onchange="myFunction(this.value, ${list.id})">
 											  <option value="0">Option</option>
 											  <option value="1">Start</option>
@@ -370,9 +368,9 @@
 						
 						<div class="modal-body" style="padding: 20px 30px;">
 									
-							<script src="Style/Huy/js/audiodisplay.js"></script>
-						    <script src="Style/Huy/js/recorderjs/recorder.js"></script>
-						    <script src="Style/Huy/js/main.js"></script>
+							<script src="Huy/js/audiodisplay.js"></script>
+						    <script src="Huy/js/recorderjs/recorder.js"></script>
+						    <script src="Huy/js/main.js"></script>
 									
 								<div class="row">
 								<div class="col-sm-7">
@@ -382,11 +380,12 @@
 									    <canvas id="wavedisplay" width="400px" height="80px"></canvas>
 									</div>
 									<div id="controls">
-									    <img id="record" src="Style/images/mic128.png" onclick="toggleRecording(this);">
-									    <a id="save" href="#"><img src="Style/images/save.svg" style="margin-left: -200px;margin-top: 50px;"></a>
+									    <img id="record" src="Style/img/mic128.png" onclick="toggleRecording(this);">
+									    <a id="save" href="#"><img src="Style/img/save.svg" style="margin-left: -200px;margin-top: 30px;"></a>
 									</div>
+										
 								</div>	
-								<div class="col-sm-5	">
+								<div class="col-sm-5">
 									<div class="">
 						
 											<span>Full Name: </span> 
