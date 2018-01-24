@@ -20,10 +20,8 @@
 	<link rel="stylesheet" href="Style/css/dataTables.bootstrap.min.css">
 	<link rel="stylesheet" href="Style/css/font-awesome.min.css" />
 	
-	
 	<!-- page specific plugin styles -->
 	<link rel="stylesheet" href="Style/css/fullcalendar.min.css" />
-	
 	
 	<!-- text fonts -->
 	<link rel="stylesheet" href="Style/css/fonts.googleapis.com.css" />
@@ -82,14 +80,14 @@
         }
 
         #record.recording {
+        
             background: red;
             background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%, lightgrey 75%, lightgrey 100%, #7db9e8 100%);
             background: -moz-radial-gradient(center, ellipse cover, #ff0000 0%, lightgrey 75%, lightgrey 100%, #7db9e8 100%);
             background: radial-gradient(center, ellipse cover, #ff0000 0%, lightgrey 75%, lightgrey 100%, #7db9e8 100%);
         }
 
-        #save, #save 
-		{
+        #save, #save img {
             height: 10vh;
         }
 
@@ -255,17 +253,17 @@
 						<div class="form-group col-sm-3">
 							<span>Full Name: </span> 
 							<input style="width: 230px!important;" type="text" class="form-control" name="fullname" 
-								id ="fullname" required value="Nguyen Quang Huy" disabled>
+								id ="fullname" required value="" disabled>
 							<br>
 							<span>Position:</span> <br>
 								<input style="width: 230px!important; " type="text" class="form-control" name="position" 
-								id ="position" required value="Fresher JAVA" disabled>
+								id ="position" required value="" disabled>
                    			<br>
 							<span>Round: </span>  
 							<input style="width: 230px!important;" class="form-control" type="text" name="round" 
-								id ="round" required value="2" disabled>
+								id ="round" required value="" disabled>
 							<br>
-							<button type="submit" class=" btn-success" onclick="return show_comfirm()">Save</button>
+<!-- 							<button type="submit" class=" btn-success" onclick="return show_comfirm()">Save</button> -->
 						</div>
 					</form>
 					<div  class="table-responsive  col-sm-9 ">	
@@ -287,7 +285,7 @@
 										<td>${list.position }</td>
 										<td>${list.round }</td>
 										<td class="text-center">
-											<select style="width: 80px !important; height: 26px!important; "
+											<select style="width: 80px !important; height: 26px!important;"
 											 onchange="myFunction(this.value, ${list.id})">
 											  <option value="0">Option</option>
 											  <option value="1">Start</option>
@@ -302,28 +300,29 @@
 											
 											if (val == 2) {
 												
-											document.getElementById("fullname").disabled = false;
-											document.getElementById("position").disabled = false;
-											document.getElementById("round").disabled = false;
+// 											document.getElementById("fullname").disabled = false;
+// 											document.getElementById("position").disabled = false;
+// 											document.getElementById("round").disabled = false;
 											
-											var table = document.getElementById("simple-table"),rindex;
-											
-											for(var i =1 ; i < table.rows.length; i++)
-											{
-												
-												 table.rows[i].onclick = function()
-												{
-													rindex = this.rowIndex;		
-													document.getElementById("fullname").value = this.cells[0].innerHTML;
-													document.getElementById("position").value =  this.cells[2].innerHTML;
-													document.getElementById("round").value = this.cells[3].innerHTML;
-												};
-											}
-											
+											window.location.assign('edit-informations?id=' + id)
+// 											window.location.assign('update-candidate?id=' + id)
 											
 											} else if (val == 1) {
 												
 												window.location.assign('start-schedule?id=' + id)
+												var table = document.getElementById("simple-table"),rindex;
+												
+												for(var i =1 ; i < table.rows.length; i++)
+												{
+													
+													 table.rows[i].onclick = function()
+													{
+														rindex = this.rowIndex;		
+														document.getElementById("fullname").value = this.cells[0].innerHTML;
+														document.getElementById("position").value =  this.cells[2].innerHTML;
+														document.getElementById("round").value = this.cells[3].innerHTML;
+													};
+												}
 								 
 											}
 											else{
@@ -376,23 +375,24 @@
 						
 						<div class="modal-body" style="padding: 20px 30px;">
 									
-							<script src="Style/Huy/js/audiodisplay.js"></script>
-						    <script src="Style/Huy/js/recorderjs/recorder.js"></script>
-						    <script src="Style/Huy/js/main.js"></script>
+							<script src="Huy/js/audiodisplay.js"></script>
+						    <script src="Huy/js/recorderjs/recorder.js"></script>
+						    <script src="Huy/js/main.js"></script>
 									
 								<div class="row">
-								<div class="col-sm-5">
+								<div class="col-sm-7">
 		
 									<div id="viz">
-									    <canvas id="analyser" width="400px" height="60px"></canvas>
-									    <canvas id="wavedisplay" width="400px" height="60px"></canvas>
+									    <canvas id="analyser" width="400px" height="80px"></canvas>
+									    <canvas id="wavedisplay" width="400px" height="80px"></canvas>
 									</div>
 									<div id="controls">
-									    <img id="record" src="Style/images/mic128.png" onclick="toggleRecording(this);">
-									    <a id="save" href="#"><img src="Style/images/save.svg" style="margin-left: 30px;margin-top: 20px;"></a>
+									    <img id="record" src="Style/img/mic128.png" onclick="toggleRecording(this);">
+									    <a id="save" href="#"><img src="Style/img/save.svg" style="margin-left: -200px;margin-top: 30px;"></a>
 									</div>
+										
 								</div>	
-								<div class="col-sm-7">
+								<div class="col-sm-5">
 									<div class="">
 						
 											<span>Full Name: </span> 
@@ -406,7 +406,6 @@
 											<span>Round: </span>  
 											<input style="width: 230px!important;" class="form-control" type="text" name="round" 
 												id ="round" required value="${starts.round }" disabled>
-												
 											<br>
 									 
 									</div>

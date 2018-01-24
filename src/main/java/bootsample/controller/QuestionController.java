@@ -70,8 +70,8 @@ public class QuestionController {
 		String announce = null;		
 		if(question.getNo()==0)
 		{
-			announce = "add new skill";
-		} else announce = "update skill";
+			announce = "add new question";
+		} else announce = "update question";
 		
 		try {
 			request.setCharacterEncoding("UTF-8");

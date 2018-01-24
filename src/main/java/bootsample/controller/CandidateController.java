@@ -26,7 +26,6 @@ public class CandidateController {
 	private PositionService positionService;
 	@Autowired
 	private SkillService skillService ;
-	
 	@Autowired
 	private InterviewerService interviewerService;
 	
@@ -45,7 +44,7 @@ public class CandidateController {
 			candidateService.delete(id);
 			request.setAttribute("announce", "You delete successfully");
 		} catch (Exception e) {
-			request.setAttribute("announce", "Error when you delete question");
+			request.setAttribute("announce", "Error when you delete candidate");
 		}
 		request.setAttribute("candidates", candidateService.findAll());
 		request.setAttribute("positions", positionService.findAll());
@@ -75,6 +74,8 @@ public class CandidateController {
 		request.setAttribute("mode", "UPDATE");
 		return PATH;
 	}
+
+	
 	@GetMapping("/detail-candidate")
 	public String detailCandidate(@RequestParam int id, HttpServletRequest request) {
 		request.setAttribute("announce", "");
@@ -92,8 +93,8 @@ public class CandidateController {
 		String announce = null;		
 		if(candidate.getId()==0)
 		{
-			announce = "add new skill";
-		} else announce = "update skill";
+			announce = "add new candidate";
+		} else announce = "update candidate";
 		
 		try {
 			request.setCharacterEncoding("UTF-8");

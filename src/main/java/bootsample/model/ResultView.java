@@ -14,9 +14,13 @@ public class ResultView {
 	private String starttime;
 	private String endtime;
 	private String result;
+	private String skill;
+	private String university;
+	private String gpa;
+	private String gst;
 
 	public ResultView(int no, String candidate, String position, String interviewer, String starttime, String endtime,
-			String result) {
+			String result, String skill, String university, String gpa, String gst) {
 		super();
 		this.no = no;
 		this.candidate = candidate;
@@ -25,6 +29,42 @@ public class ResultView {
 		this.starttime = starttime;
 		this.endtime = endtime;
 		this.result = result;
+		this.skill = skill;
+		this.university = university;
+		this.gpa = gpa;
+		this.gst = gst;
+	}
+
+	public String getSkill() {
+		return skill;
+	}
+
+	public void setSkill(String skill) {
+		this.skill = skill;
+	}
+
+	public String getUniversity() {
+		return university;
+	}
+
+	public void setUniversity(String university) {
+		this.university = university;
+	}
+
+	public String getGpa() {
+		return gpa;
+	}
+
+	public void setGpa(String gpa) {
+		this.gpa = gpa;
+	}
+
+	public String getGst() {
+		return gst;
+	}
+
+	public void setGst(String gst) {
+		this.gst = gst;
 	}
 
 	public String getResult() {

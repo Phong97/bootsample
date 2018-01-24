@@ -281,7 +281,7 @@
 					
 					<div class="row">
 					<div class="col-sm-7">
-						<div class="tab">
+						<div class="tab" style="background: skyblue">
 						  <button class="tablinks" onclick="openCity(event, 'round1')">Round 1</button>
 						  <button class="tablinks" onclick="openCity(event, 'round2')">Round 2</button>
 						  <button class="tablinks" onclick="openCity(event, 'round3')">Round 3</button>
@@ -290,12 +290,12 @@
 						<div class="tabcontent" id="round1">
 							 
 							 <span>Account :</span> <span>AnhPH10</span> 
-							 <span style="margin-left: 80px">Name :</span> <span>Nguyễn Quang Huy</span>
+							 <span style="margin-left: 80px">Name :</span> <span>${results.candidate }</span>
 								<br><br>
 							 <table id="table" class="table table-bordered table-striped">
 							 	
 							 	<thead>
-							 		<tr>
+							 		<tr style="background: skyblue">
 							 			<th colspan="3">Skill </th>
 							 			<th>Answer the question </th>
 							 			<th>Mask </th>
@@ -342,19 +342,18 @@
 							 <span>Replay ...</span>
 							 <br>
 							<audio controls autoplay></audio><br>
-							  <button type="button" class="  btn-success">Save</button>
-							    <button type="button" class="  btn-danger">Cancel</button>
+							  
 						</div>
 							
 						<div class="tabcontent" id="round2">
 						 
 							 <span>Account :</span> <span>AnhPH10</span> 
-							 <span style="margin-left: 80px">Name :</span> <span>Nguyễn Quang Huy</span>
+							 <span style="margin-left: 80px">Name :</span> <span>${results.candidate }</span>
 								<br><br>
 							 <table id="table" class="table table-bordered table-striped">
 							 	
 							 	<thead>
-							 		<tr>
+							 		<tr style="background: skyblue">
 							 			<th colspan="3">Skill </th>
 							 			<th>Answer the question </th>
 							 			<th>Mask </th>
@@ -402,12 +401,12 @@
 						<div class="tabcontent" id="round3">
 							 
 							<span>Account :</span> <span>AnhPH10</span> 
-							 <span style="margin-left: 80px">Name :</span> <span>Nguyễn Quang Huy</span>
+							 <span style="margin-left: 80px">Name :</span> <span>${results.candidate }</span>
 								<br><br>
 							 <table id="table" class="table table-bordered table-striped">
 							 	
 							 	<thead>
-							 		<tr>
+							 		<tr style="background: skyblue">
 							 			<th colspan="3">Skill </th>
 							 			<th>Answer the question </th>
 							 			<th>Mask </th>
@@ -455,19 +454,19 @@
 					<div class="col-sm-5">
 						
 						<p><strong>Information Candidate</strong></p>
-						<span>Name: </span><span class="viewresult">Nguyễn Quang Huy</span> 
+						<span>Name: </span><span class="viewresult">${results.candidate }</span> 
 						<br><br>
-						<span>Position: </span><span class="viewresult">Fresher JAVA</span> 
+						<span>Position: </span><span class="viewresult">${results.position }</span> 
 						<br><br>
-						<span>Skill: </span> <span class="viewresult">Java,Net</span>
+						<span>Skill: </span> <span class="viewresult">${results.skill }</span>
 						<br><br>
-						<span>University: </span> <span class="viewresult">ĐH Sư Phạm Kỹ Thuật Tp Hồ Chí Minh</span>
+						<span>University: </span> <span class="viewresult">${results.university }</span>
 						<br><br>
-						<span>GST: </span> <span class="viewresult">Không</span>
+						<span>GST: </span> <span class="viewresult">${results.gst }</span>
 						<br><br>
-						<span>GPA: </span> <span class="viewresult">3</span>
+						<span>GPA: </span> <span class="viewresult">${results.gpa }</span>
 						<br><br>
-						<table id="table" class="table table-bordered table-striped">
+						<table id="table" class="table table-bordered table-striped" style="width: 300px;">
 						
 							 <thead>
 							    <tr style="background: skyblue">
@@ -476,21 +475,20 @@
 								</tr>
 						    </thead>
 							<tbody id="myTable">
+								
 									<tr>
-										<td>Round 1</td>
-										<td>PASS</td>
-										
+										<th class="text-center">Round 1</th>
+										<td class="text-center">${results.result }</td>
 									</tr>
 									<tr>
-										<td>Round 2</td>
-										<td>PASS</td>
-										
+										<th class="text-center">Round 2</th>
+										<td class="text-center">${results.result }</td>
 									</tr>
 									<tr>
-										<td>Round 3</td>
-										<td>PASS</td>
-										
+										<th class="text-center">Round 3</th>
+										<td class="text-center">${results.result }</td>
 									</tr>
+									
 							</tbody>
 						</table>
 					</div>
@@ -785,7 +783,7 @@
         </div>
 		<!-- FOOTER -->
 	<!--  Script các tab trong result  -->
-		<script>
+		<script type="text/javascript">
 			function openCity(evt, cityName) {
 			    var i, tabcontent, tablinks;
 			    tabcontent = document.getElementsByClassName("tabcontent");
