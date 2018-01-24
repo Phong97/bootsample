@@ -299,7 +299,7 @@
 							</div>
 							<p><strong>Apply for</strong></p>
 							<div class="form-group col-sm-6">
-									<span>Position:</span><span style="color: red;">(*)</span> <br>
+									<span>Position:</span><br>
 									<select style="width: 230px!important;" name="position_id" id="position" required>
 										<c:forEach var="position" items="${positions}">	
 		                    				<c:if test="${candidate.position_id == position.id}">
