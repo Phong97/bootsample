@@ -247,17 +247,17 @@
 						<div class="form-group col-sm-3">
 							<span>Full Name: </span> 
 							<input style="width: 230px!important;" type="text" class="form-control" name="fullname" 
-								id ="fullname" required value="Nguyen Quang Huy" disabled>
+								id ="fullname" required value="" disabled>
 							<br>
 							<span>Position:</span> <br>
 								<input style="width: 230px!important; " type="text" class="form-control" name="position" 
-								id ="position" required value="Fresher JAVA" disabled>
+								id ="position" required value="" disabled>
                    			<br>
 							<span>Round: </span>  
 							<input style="width: 230px!important;" class="form-control" type="text" name="round" 
-								id ="round" required value="2" disabled>
+								id ="round" required value="" disabled>
 							<br>
-							<button type="submit" class=" btn-success" onclick="return show_comfirm()">Save</button>
+<!-- 							<button type="submit" class=" btn-success" onclick="return show_comfirm()">Save</button> -->
 						</div>
 					</form>
 					<div  class="table-responsive  col-sm-9 ">	
@@ -294,28 +294,29 @@
 											
 											if (val == 2) {
 												
-											document.getElementById("fullname").disabled = false;
-											document.getElementById("position").disabled = false;
-											document.getElementById("round").disabled = false;
+// 											document.getElementById("fullname").disabled = false;
+// 											document.getElementById("position").disabled = false;
+// 											document.getElementById("round").disabled = false;
 											
-											var table = document.getElementById("simple-table"),rindex;
-											
-											for(var i =1 ; i < table.rows.length; i++)
-											{
-												
-												 table.rows[i].onclick = function()
-												{
-													rindex = this.rowIndex;		
-													document.getElementById("fullname").value = this.cells[0].innerHTML;
-													document.getElementById("position").value =  this.cells[2].innerHTML;
-													document.getElementById("round").value = this.cells[3].innerHTML;
-												};
-											}
-											
+											window.location.assign('edit-informations?id=' + id)
+// 											window.location.assign('update-candidate?id=' + id)
 											
 											} else if (val == 1) {
 												
 												window.location.assign('start-schedule?id=' + id)
+												var table = document.getElementById("simple-table"),rindex;
+												
+												for(var i =1 ; i < table.rows.length; i++)
+												{
+													
+													 table.rows[i].onclick = function()
+													{
+														rindex = this.rowIndex;		
+														document.getElementById("fullname").value = this.cells[0].innerHTML;
+														document.getElementById("position").value =  this.cells[2].innerHTML;
+														document.getElementById("round").value = this.cells[3].innerHTML;
+													};
+												}
 								 
 											}
 											else{
@@ -399,7 +400,6 @@
 											<span>Round: </span>  
 											<input style="width: 230px!important;" class="form-control" type="text" name="round" 
 												id ="round" required value="${starts.round }" disabled>
-												
 											<br>
 									 
 									</div>

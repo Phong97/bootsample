@@ -757,6 +757,8 @@
 				</div>
 			</div>
 		</c:when>
+		
+			
 	</c:choose>
 
 	<!-- FOOTER -->

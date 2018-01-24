@@ -74,6 +74,8 @@ public class CandidateController {
 		request.setAttribute("mode", "UPDATE");
 		return PATH;
 	}
+
+	
 	@GetMapping("/detail-candidate")
 	public String detailCandidate(@RequestParam int id, HttpServletRequest request) {
 		request.setAttribute("announce", "");

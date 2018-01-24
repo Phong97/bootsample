@@ -275,7 +275,7 @@
 					
 					<div class="row">
 					<div class="col-sm-7">
-						<div class="tab">
+						<div class="tab" style="background: skyblue">
 						  <button class="tablinks" onclick="openCity(event, 'round1')">Round 1</button>
 						  <button class="tablinks" onclick="openCity(event, 'round2')">Round 2</button>
 						  <button class="tablinks" onclick="openCity(event, 'round3')">Round 3</button>
@@ -289,7 +289,7 @@
 							 <table id="table" class="table table-bordered table-striped">
 							 	
 							 	<thead>
-							 		<tr>
+							 		<tr style="background: skyblue">
 							 			<th colspan="3">Skill </th>
 							 			<th>Answer the question </th>
 							 			<th>Mask </th>
@@ -336,8 +336,7 @@
 							 <span>Replay ...</span>
 							 <br>
 							<audio controls autoplay></audio><br>
-							  <button type="button" class="  btn-success">Save</button>
-							    <button type="button" class="  btn-danger">Cancel</button>
+							  
 						</div>
 							
 						<div class="tabcontent" id="round2">
@@ -348,7 +347,7 @@
 							 <table id="table" class="table table-bordered table-striped">
 							 	
 							 	<thead>
-							 		<tr>
+							 		<tr style="background: skyblue">
 							 			<th colspan="3">Skill </th>
 							 			<th>Answer the question </th>
 							 			<th>Mask </th>
@@ -401,7 +400,7 @@
 							 <table id="table" class="table table-bordered table-striped">
 							 	
 							 	<thead>
-							 		<tr>
+							 		<tr style="background: skyblue">
 							 			<th colspan="3">Skill </th>
 							 			<th>Answer the question </th>
 							 			<th>Mask </th>
