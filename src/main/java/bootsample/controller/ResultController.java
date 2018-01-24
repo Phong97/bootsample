@@ -1,5 +1,7 @@
 package bootsample.controller;
 
+import java.util.*;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,7 @@ public class ResultController {
 	private PositionService positionService;
 	@Autowired
 	private SkillService skillService ;
+ 
 	
 	@GetMapping("/InterviewResult")
 	public String doGet(HttpServletRequest request) {
@@ -41,6 +44,7 @@ public class ResultController {
 //		request.setAttribute("candidates", candidateService.findCandidate(no));
 //		request.setAttribute("positions", positionService.findPosition(no));
 //		request.setAttribute("skills", skillService.findSkill(no));
+//		request.setAttribute("catalogs", catalogService.findAll());
 		request.setAttribute("mode", "VIEW");
 		return PATH;
 	}

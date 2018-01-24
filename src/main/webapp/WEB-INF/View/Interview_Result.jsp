@@ -301,7 +301,7 @@
 							 	
 							 	<tr>
 							 		<th rowspan="3">1</th>
-							 		<td>Basic Knowledge</td>
+							 		<td>Basic Knowledge </td>
 							 		<td></td>
 							 		<td></td>
 							 		<td></td>
@@ -315,8 +315,8 @@
 							 		<td></td>
 							 	<tr>
 						 		<tr>
-							 		<th rowspan="3">1</th>
-							 		<td>Basic Knowledge</td>
+							 		<th rowspan="3">2</th>
+							 		<td>Basic Knowledge </td>
 							 		<td></td>
 							 		<td></td>
 							 		<td></td>

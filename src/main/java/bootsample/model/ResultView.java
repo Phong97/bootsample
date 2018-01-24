@@ -19,6 +19,9 @@ public class ResultView {
 	private String gpa;
 	private String gst;
 
+	public ResultView() {
+	}
+
 	public ResultView(int no, String candidate, String position, String interviewer, String starttime, String endtime,
 			String result, String skill, String university, String gpa, String gst) {
 		super();
@@ -73,9 +76,6 @@ public class ResultView {
 
 	public void setResult(String result) {
 		this.result = result;
-	}
-
-	public ResultView() {
 	}
 
 	public int getNo() {
