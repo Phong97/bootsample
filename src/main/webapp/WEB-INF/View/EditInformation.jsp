@@ -170,6 +170,12 @@
 	               	<span class="menu-text">Manage Process</span>
 				</a>			
             </li>
+             <li> 
+              	<a href="user"> 
+	               	<i class="menu-icon fa fa-github-alt"></i> 
+	               	<span class="menu-text">Manage Users</span>
+				</a>			
+            </li>
 		</ul>
 		<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 			<i id="sidebar-toggle-icon"
@@ -323,15 +329,6 @@
 											</c:if>								
 										</c:forEach>
 		                    		</select>
-							</div>
-							<p><strong>Documents</strong></p>
-							<div class="form-group col-sm-12 col-xs-12">
-								<div class="col-sm-6 col-xs-12">
-									<span><a href="#"><span>${candidate.cv}</span></a></span> 
-								</div>
-								<div class="col-sm-6 col-xs-12">
-									<input style="width: 230px!important;" type="file" name="cv" id="file">
-		                    	</div>
 							</div>
 							
 							<div class="col-sm-6 col-xs-12">
