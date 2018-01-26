@@ -4,6 +4,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
@@ -147,36 +148,28 @@
 					class="menu-icon fa fa-users"></i> <span class="menu-text">Manage
 						Interviewer</span>
 			</a></li>
-			<li><a href="candidate"> <i
-					class="menu-icon fa fa-user"></i> <span class="menu-text">Manage Candidate</span>
+			<li><a href="candidate"> <i class="menu-icon fa fa-user"></i>
+					<span class="menu-text">Manage Candidate</span>
 			</a></li>
 			<li><a href="question"> <i
-					class="menu-icon fa fa-folder-open-o"></i> <span class="menu-text">Manage Question</span>
+					class="menu-icon fa fa-folder-open-o"></i> <span class="menu-text">Manage
+						Question</span>
 			</a></li>
-                <li> 
-                	<a href="InterviewResult"> 
-	                	<i class="menu-icon fa fa-pencil-square-o"></i> 
-	                	<span class="menu-text">Manage Result</span>
-					</a>			
-                </li>
-                <li> 
-                	<a href="InterviewSchedule"> 
-	                	<i class="menu-icon fa fa-calendar"></i> 
-	                	<span class="menu-text">Manage Schedule</span>
-					</a>			
-                </li>
-            <li> 
-              	<a href="interview_process"> 
-	               	<i class="menu-icon fa fa-hourglass-start"></i> 
-	               	<span class="menu-text">Manage Process</span>
-				</a>			
-            </li>
-            <li> 
-              	<a href="user"> 
-	               	<i class="menu-icon fa fa-github-alt"></i> 
-	               	<span class="menu-text">Manage Users</span>
-				</a>			
-            </li>
+			<li><a href="InterviewResult"> <i
+					class="menu-icon fa fa-pencil-square-o"></i> <span
+					class="menu-text">Manage Result</span>
+			</a></li>
+			<li><a href="InterviewSchedule"> <i
+					class="menu-icon fa fa-calendar"></i> <span class="menu-text">Manage
+						Schedule</span>
+			</a></li>
+			<li><a href="interview_process"> <i
+					class="menu-icon fa fa-hourglass-start"></i> <span
+					class="menu-text">Manage Process</span>
+			</a></li>
+			<li><a href="user"> <i class="menu-icon fa fa-github-alt"></i>
+					<span class="menu-text">Manage Users</span>
+			</a></li>
 		</ul>
 		<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 			<i id="sidebar-toggle-icon"
@@ -377,6 +370,15 @@
 		</c:when>
 
 		<c:when test="${mode == 'VIEW'}">
+
+			<sql:setDataSource var="data" driver="com.mysql.jdbc.Driver"
+				url="jdbc:mysql://localhost/ipm?useSSL=false" user="root"
+				password="12345" />
+			<sql:query dataSource="${data}" var="calendars">
+	         		SELECT * FROM ipm.calendarview where interviewer_id=?;
+	         		<sql:param value="${id}" />
+			</sql:query>
+
 			<div class="main-content">
 
 				<div class="main-content-inner">
@@ -398,8 +400,10 @@
 							<h2>VIEW CALENDAR</h2>
 						</div>
 						<div class="col-sm-4 col-xs-4"></div>
-						<div class="col-sm-2 col-xs-2"><h3>${interviewer.name}</h3></div>
-						
+						<div class="col-sm-2 col-xs-2">
+							<h3>${interviewer.name}</h3>
+						</div>
+
 
 						<div class="col-sm-12 col-xs-12">
 							<div class="col-sm-1 col-xs-1"></div>
@@ -410,8 +414,7 @@
 									<thead>
 										<tr style="background: skyblue">
 											<th class="text-center">&emsp;&emsp;Room</th>
-											<th class="text-center">&emsp;&emsp;Start
-												Time</th>
+											<th class="text-center">&emsp;&emsp;Start Time</th>
 											<th class="text-center">&emsp;&emsp;End Time</th>
 											<th class="text-center">&emsp;&emsp;Round Name</th>
 											<th class="text-center">&emsp;&emsp;Process Name</th>
@@ -419,7 +422,7 @@
 										</tr>
 									</thead>
 									<tbody id="myTable">
-										<c:forEach var="calendar" items="${calendars}">
+										<c:forEach var="calendar" items="${calendars.rows}">
 											<tr>
 												<td>${calendar.room}</td>
 												<td>${calendar.starttime}</td>
