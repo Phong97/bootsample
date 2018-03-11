@@ -239,10 +239,10 @@
 
 				<div class="page-content">
 					<div class="page-header">
-						<h1> Add, Update and Delete Candidate 
+						<h1> Start, Edit information candidate
 							<small> 
 								<i class="ace-icon fa fa-angle-double-right"></i> 
-								You can delete candidate or update candidate or delete candidate
+								You can start record, edit information candidate
 							</small>
 						</h1>
 					</div>
@@ -362,10 +362,10 @@
 	
 					<div class="page-content">
 						<div class="page-header">
-							<h1> Add, Update and Delete Candidate 
+							<h1> Start, Edit information candidate
 								<small> 
 									<i class="ace-icon fa fa-angle-double-right"></i> 
-									You can delete candidate or update candidate or delete candidate
+									You can start record, edit information candidate
 								</small>
 							</h1>
 						</div>

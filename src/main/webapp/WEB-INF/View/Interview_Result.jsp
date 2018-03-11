@@ -341,7 +341,11 @@
 							 
 							 <span>Replay ...</span>
 							 <br>
-							<audio controls autoplay></audio><br>
+							<audio controls autoplay>
+								 <source src="" type="audio/ogg">
+								  <source src="" type="audio/mpeg">
+<!-- 								  Your browser does not support the audio element. -->
+							</audio><br>
 							  
 						</div>
 							
