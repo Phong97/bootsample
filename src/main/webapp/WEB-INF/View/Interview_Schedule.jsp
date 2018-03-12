@@ -366,6 +366,7 @@
 								<small> 
 									<i class="ace-icon fa fa-angle-double-right"></i> 
 									You can start record, edit information candidate
+									
 								</small>
 							</h1>
 						</div>
