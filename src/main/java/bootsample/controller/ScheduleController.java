@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import bootsample.model.Candidate;
 import bootsample.model.ScheduleView;
 import bootsample.service.CandidateService;
+import bootsample.service.InterviewResultService;
 import bootsample.service.InterviewerService;
+import bootsample.service.InterviewroundService;
 import bootsample.service.PositionService;
 import bootsample.service.SchdeduleService;
 import bootsample.service.SkillService;
@@ -34,9 +36,12 @@ public class ScheduleController {
 	@Autowired
 	private SchdeduleService scheduleService;
 	
+	@Autowired
+	private InterviewResultService interviewResultService;
+	
 	@GetMapping("/InterviewSchedule")
 	public String doGet(HttpServletRequest request) {
-		request.setAttribute("schedules", scheduleService.findAll());
+		request.setAttribute("schedules", interviewResultService.findAll());
 		request.setAttribute("announcement", "Show data successfull");
 		request.setAttribute("mode", "LIST");
 		return PATH;

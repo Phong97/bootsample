@@ -280,16 +280,16 @@
 							<tbody id="myTable">
 								<c:forEach items="${schedules }" var="list">
 									<tr>
-										<td>${list.fullname }</td>
-										<td>${list.start }</td>
-										<td>${list.position }</td>
-										<td>${list.round }</td>
+										<td>${list.candidate.name }</td>
+										<td>${list.starttime }</td>
+										<td>${list.candidate.position.name }</td>
+										<td>${list.interview_round.roundname }</td>
 										<td class="text-center">
 											<select style="width: 80px !important; height: 26px!important;"
-											 onchange="myFunction(this.value, ${list.id})">
+											 onchange="myFunction(this.value, ${list.candidate.id})">
 											  <option value="0">Option</option>
 											  <option value="1">Start</option>
-											  <option value="2" id="myBtn${list.id }">Edit Information</option>
+											  <option value="2" id="myBtn${list.candidate.id }">Edit Information</option>
 											</select>	
 										</td>
 									</tr>

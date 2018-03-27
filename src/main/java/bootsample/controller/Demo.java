@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import bootsample.dao.InterviewResultRepository;
 import bootsample.model.Candidate;
 import bootsample.model.InterviewResult;
+import bootsample.model.Interview_round;
 import bootsample.model.Interviewer;
 import bootsample.service.CandidateService;
 import bootsample.service.InterviewResultService;
 import bootsample.service.InterviewerService;
+import bootsample.service.InterviewroundService;
 
 @Controller
 public class Demo {
@@ -22,7 +24,10 @@ public class Demo {
 	private InterviewResultService interviewResultService;
 	
 	@Autowired
-	private InterviewerService interivewerService;
+	private InterviewerService interiviewerService;
+	
+	@Autowired
+	private InterviewroundService intervi;
 	
 	@GetMapping("/hello")
 	public String doGet() {
@@ -31,8 +36,8 @@ public class Demo {
 //			System.out.println(can.getPosition().getName());
 //		}
 		
-		for(InterviewResult can : interviewResultService.findAll()) {
-			System.out.println(can.getCandidate().getName());
+		for(Interview_round can : intervi.findAll()) {
+			System.out.println(can.getInterviewresult());
 		}
 		
 //		for(Interviewer can : interivewerService.findAll()) {
