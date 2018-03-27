@@ -1,9 +1,12 @@
 package bootsample.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity(name="interview_round")
 public class Interview_round {
@@ -14,6 +17,9 @@ public class Interview_round {
 	private int guideline_id;
 	private String description;
 	
+	@ManyToMany(mappedBy = "rounds")
+	private Set<Interview_process> processes;
+	
 	public Interview_round() {}
 	
 	public Interview_round(int no, String roundname, int guideline_id, String description) {
@@ -21,6 +27,14 @@ public class Interview_round {
 		this.roundname = roundname;
 		this.guideline_id = guideline_id;
 		this.description = description;
+	}
+	
+	public Set<Interview_process> getProcesses() {
+		return processes;
+	}
+	
+	public void setProcesses(Set<Interview_process> processes) {
+		this.processes = processes;
 	}
 	
 	public int getNo() {

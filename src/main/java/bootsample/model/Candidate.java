@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -53,6 +54,9 @@ public class Candidate {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "skill_id", nullable = false, insertable = false, updatable = false)
 	private Skill skill;
+	
+	@ManyToMany(mappedBy = "candidates")
+	private Set<Interview_process> processes;
 
 	public Candidate(int id, String name, int idcard, Date birth, String email, int phone, String address,
 			String university, String major, Double gpa, int graduationyear, int skill_id, String gst, String others,
@@ -82,6 +86,14 @@ public class Candidate {
 		this.skill = skill;
 	}
 
+	public Set<Interview_process> getProcesses() {
+		return processes;
+	}
+	
+	public void setProcesses(Set<Interview_process> processes) {
+		this.processes = processes;
+	}
+	
 	public Skill getSkill() {
 		return skill;
 	}

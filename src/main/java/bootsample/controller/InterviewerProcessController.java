@@ -11,11 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import bootsample.model.Interview_process;
-import bootsample.service.CandidateService;
 import bootsample.service.InterviewprocessService;
 import bootsample.service.PositionService;
-import bootsample.service.InterviewroundService;
-import bootsample.service.InterviewroundprocessService;
 
 @Controller
 public class InterviewerProcessController {
@@ -25,17 +22,10 @@ public class InterviewerProcessController {
 	private InterviewprocessService interviewprocessService;
 	@Autowired
 	private PositionService positionService;
-	@Autowired
-	private InterviewroundService interviewroundService;
-	@Autowired
-	private InterviewroundprocessService interviewroundprocessService;
-	@Autowired
-	private CandidateService candidateService;
 	
 	@GetMapping("/interview_process")
 	public String doGet(HttpServletRequest request) {
 		request.setAttribute("interviewprocesses", interviewprocessService.findAll());
-		request.setAttribute("positions", positionService.findAll());
 		request.setAttribute("announce", "");
 		request.setAttribute("mode", "LIST");
 		return PATH;
@@ -50,7 +40,6 @@ public class InterviewerProcessController {
 			request.setAttribute("announce", "Error when you delete interview process");
 		}
 		request.setAttribute("interviewprocesses", interviewprocessService.findAll());
-		request.setAttribute("positions", positionService.findAll());
 		request.setAttribute("mode", "LIST");
 		return PATH;
 	}
@@ -75,10 +64,6 @@ public class InterviewerProcessController {
 	public String viewInterviewProcess(@RequestParam int id, HttpServletRequest request) {
 		request.setAttribute("announce", "");
 		request.setAttribute("interviewprocess", interviewprocessService.findInterviewProcess(id));
-		request.setAttribute("interviewrounds", interviewroundService.findAll());
-		request.setAttribute("interviewroundprocesses", interviewroundprocessService.findAll());
-		request.setAttribute("candidates", candidateService.findAll());
-		request.setAttribute("positions", positionService.findAll());
 		request.setAttribute("mode", "DETAIL");
 		return PATH;
 	}
@@ -100,7 +85,6 @@ public class InterviewerProcessController {
 			request.setAttribute("announce", "Error when you "+ announce);
 		}
 		request.setAttribute("interviewprocesses", interviewprocessService.findAll());
-		request.setAttribute("positions", positionService.findAll());
 		request.setAttribute("mode", "LIST");
 		return PATH;
 	}

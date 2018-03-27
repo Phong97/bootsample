@@ -246,13 +246,7 @@
 											<tr>
 												<td>${interviewprocess.no}</td>
 												<td>${interviewprocess.processname}</td>
-												<td>
-													<c:forEach var="position" items="${positions}">
-														<c:if test="${interviewprocess.position_id == position.id}">
-															${position.name}
-														</c:if>
-													</c:forEach>
-												</td>
+												<td>${interviewprocess.position.name}</td>
 												<td>${interviewprocess.startdate}</td>
 												<td>${interviewprocess.status}</td>
 												<td><select
@@ -344,11 +338,7 @@
 						<span>Start date: </span> ${interviewprocess.startdate}
 					</div>
 					<div class="form-group col-sm-6">
-						<c:forEach var="position" items="${positions}">	
-		          	     	<c:if test="${interviewprocess.position_id == position.id}">
-		          	     		<span>Location: </span> ${position.name}
-							</c:if>					
-						</c:forEach>
+		          	     		<span>Location: </span> ${interviewprocess.position.name}
 					</div>
 					<div class="form-group col-sm-6">
 						<span>Status: </span> ${interviewprocess.status} 							
@@ -369,18 +359,12 @@
 								</tr>
 							</thead>
 							<tbody id="myTable">
-								<c:forEach var="interviewroundprocess" items="${interviewroundprocesses}">
-									<c:if test="${interviewprocess.no == interviewroundprocess.process_id}">
-										<c:forEach var="interviewround" items="${interviewrounds}">
-											<c:if test="${interviewroundprocess.round_id == interviewround.no}">
-												<tr>
-													<td>${interviewround.no}</td>
-													<td>${interviewround.roundname}</td>
-													<td>${interviewround.description}</td>
-												</tr>
-											</c:if>
-										</c:forEach>
-									</c:if>
+								<c:forEach var="interviewround" items="${interviewprocess.rounds}">
+									<tr>
+										<td>${interviewround.no}</td>
+										<td>${interviewround.roundname}</td>
+										<td>${interviewround.description}</td>
+									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
@@ -401,20 +385,13 @@
 								</tr>
 							</thead>
 							<tbody id="myTable2">
-								
-								<c:forEach var="interviewroundprocess" items="${interviewroundprocesses}">
-									<c:if test="${interviewprocess.no == interviewroundprocess.process_id}">
-										<c:forEach var="candidate" items="${candidates}">
-											<c:if test="${interviewroundprocess.candidate_id == candidate.id}">
-												<tr>
-													<td>${candidate.id}</td>
-													<td>${candidate.name}</td>
-													<td>${candidate.email}</td>
-													<td>${candidate.phone}</td>
-												</tr>
-											</c:if>
-										</c:forEach>
-									</c:if>
+								<c:forEach var="candidate" items="${interviewprocess.candidates}">
+									<tr>
+										<td>${candidate.id}</td>
+										<td>${candidate.name}</td>
+										<td>${candidate.email}</td>
+										<td>${candidate.phone}</td>
+									</tr>
 								</c:forEach>
 							</tbody>
 						</table>

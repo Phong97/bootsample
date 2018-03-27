@@ -2,8 +2,8 @@ package bootsample.dao;
 
 import org.springframework.data.repository.CrudRepository;
 
-import bootsample.model.Interview_round_process;
+import bootsample.model.InterviewRoundProcess;
 
-public interface InterviewRoundProcessRepository extends CrudRepository<Interview_round_process, Integer>{
+public interface InterviewRoundProcessRepository extends CrudRepository<InterviewRoundProcess, Integer>{
 	
 }

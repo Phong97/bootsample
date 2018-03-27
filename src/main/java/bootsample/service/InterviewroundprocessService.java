@@ -8,7 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import bootsample.dao.InterviewRoundProcessRepository;
-import bootsample.model.Interview_round_process;
+import bootsample.model.InterviewRoundProcess;
 
 @Service
 @Transactional
@@ -20,9 +20,9 @@ public class InterviewroundprocessService {
 		this.interviewroundprocessRepository = interviewroundprocessRepository;
 	}
 	
-	public List<Interview_round_process> findAll(){
-		List<Interview_round_process> interviewroundprocesses = new ArrayList<>();
-		for(Interview_round_process interviewroundprocess:interviewroundprocessRepository.findAll()) {
+	public List<InterviewRoundProcess> findAll(){
+		List<InterviewRoundProcess> interviewroundprocesses = new ArrayList<>();
+		for(InterviewRoundProcess interviewroundprocess:interviewroundprocessRepository.findAll()) {
 			interviewroundprocesses.add(interviewroundprocess);
 		}
 		
