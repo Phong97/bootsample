@@ -216,15 +216,15 @@
 									<c:forEach items="${results }" var="list">
 									<tr>
 										<td>${list.no }</td>
-										<td>${list.candidate }</td>
-										<td>${list.position }</td>
-										<td>${list.interviewer }</td>
+										<td>${list.candidate.name }</td>
+										<td>${list.candidate.position.name}</td>
+										<td>${list.candidate.interviewer.name}</td>
 										<td>${list.starttime }</td>
 										<td>${list.endtime }</td>
 										<td>${list.result }</td>
 										<td>
 											<select style="width: 80px !important; height: 26px!important; "
-											 onchange="myFunction(this.value, ${list.no})">
+											 onchange="myFunction(this.value, ${list.candidate_id})">
 											  <option value="0">Option</option>
 											  <option value="1">View</option>
 											  <option value="2">Edit</option>
