@@ -28,8 +28,12 @@ public class InterviewResult {
 	@JoinColumn(name = "candidate_id", nullable = false, insertable = false, updatable = false)
 	private Candidate candidate;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "interview_round_no", nullable = false, insertable = false, updatable = false)
+	private Interview_round interview_round;
+
 	public InterviewResult(int no, int candidate_id, int interviewer_id, Date starttime, Date endtime, String result,
-			int interview_round_no, int interview_mask_no, Candidate candidate) {
+			int interview_round_no, Integer interview_mask_no, Candidate candidate, Interview_round interview_round) {
 		super();
 		this.no = no;
 		this.candidate_id = candidate_id;
@@ -40,6 +44,15 @@ public class InterviewResult {
 		this.interview_round_no = interview_round_no;
 		this.interview_mask_no = interview_mask_no;
 		this.candidate = candidate;
+		this.interview_round = interview_round;
+	}
+
+	public Interview_round getInterview_round() {
+		return interview_round;
+	}
+
+	public void setInterview_round(Interview_round interview_round) {
+		this.interview_round = interview_round;
 	}
 
 	public Candidate getCandidate() {
@@ -49,8 +62,6 @@ public class InterviewResult {
 	public void setCandidate(Candidate candidate) {
 		this.candidate = candidate;
 	}
-
-	
 
 	public InterviewResult() {
 	}
