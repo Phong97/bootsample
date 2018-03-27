@@ -34,27 +34,44 @@ public class ResultController {
 	
 	@GetMapping("/InterviewResult")
 	public String doGet(HttpServletRequest request) {
-		request.setAttribute("results", interviewResultService.findAll());
-		request.setAttribute("announcement", "Show data successfull");
-		request.setAttribute("mode", "LIST");
-		return PATH;
+		try {
+			request.setAttribute("results", interviewResultService.findAll());
+			request.setAttribute("announcement", "Show data successfull");
+			request.setAttribute("mode", "LIST");
+			return PATH;
+		}
+		catch (Exception e) {
+			return "Error";
+		}
+		
 	}
 	
 	@GetMapping("/view-result")
 	public String ViewResult(@RequestParam int no, HttpServletRequest request) {
-		request.setAttribute("announcement", "");
-		request.setAttribute("results", resultService.findResult(no));
-		request.setAttribute("mode", "VIEW");
-		return PATH;
+		try {
+			request.setAttribute("announcement", "");
+			request.setAttribute("results", resultService.findResult(no));
+			request.setAttribute("mode", "VIEW");
+			return PATH;
+		}
+		catch (Exception e) {
+			return "Error";
+		}
 	}
 	
 	
 	@GetMapping("/update-result")
 	public String UpdateResult(@RequestParam int no, HttpServletRequest request) {
-		request.setAttribute("announcement", "");
-		request.setAttribute("resultAll", resultService.findAll());
-		request.setAttribute("results", resultService.findResult(no));
-		request.setAttribute("mode", "UPDATE");
-		return PATH;
+		try {
+			request.setAttribute("announcement", "");
+			request.setAttribute("resultAll", resultService.findAll());
+			request.setAttribute("results", resultService.findResult(no));
+			request.setAttribute("mode", "UPDATE");
+			return PATH;
+		}
+		catch (Exception e) {
+			return "Error";
+		}
+		
 	}
 }
